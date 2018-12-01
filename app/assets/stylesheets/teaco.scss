@@ -1,0 +1,1619 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+
+.pointer {
+  cursor: pointer;
+}
+
+#suggestion_view #corner {
+  width: 50px;
+  height: 40px;
+  background:url('corner_2.png') no-repeat;
+  /*background-color: $tertiary-color;*/
+  float: left;
+}
+
+#suggestion_view #day_bar_box {
+  width: auto;
+  height: 30px;
+  overflow: hidden;
+  /*background:url('headline_bg_meeting.jpg') repeat-x;*/
+  background-color: $background;
+  margin-bottom: 10px;
+}
+
+#suggestion_view #day_bar_box #day_bar {
+  width: auto;
+  height: 30px;
+  position:relative;
+  //margin-left: -10px;
+}
+
+#suggestion_view #day_bar_box #day_bar div.day_gap_header {
+  float:left;
+  height: 100%;
+  background-color: $background;
+}
+
+#suggestion_view #day_bar_box #day_bar div.day_gap_header div.left_gap_header {
+  background: url('day_gap_header_left.png') no-repeat;
+  /*background-color: $tertiary-color;*/
+  float: left;
+  width: 15px;
+  height: 100%;
+  /*margin-left: -10px;*/
+}
+
+#suggestion_view #day_bar_box #day_bar div.day_gap_header div.gap_header {
+  float: left;
+  width: 0px;
+  height: 100%;
+}
+
+#suggestion_view #day_bar_box #day_bar div.day_gap_header div.right_gap_header {
+  background: url('day_gap_header_right.png') no-repeat;
+  /*background-color: $tertiary-color;*/
+  float: left;
+  width: 15px;
+  height: 100%;
+  /*margin-left: 0px;*/
+}
+
+#suggestion_view #day_bar_box #day_bar div.day_nogap_header {
+  background: url('day_nogap_header.png') no-repeat;
+  /*background-color: $tertiary-color;*/
+  float: left;
+  width: 3px;
+  height: 100%;
+}
+
+#suggestion_view #day_bar_box #day_bar .day_header {
+  width: 200px;
+  height: 25px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 5px;
+  text-align: center;
+  background: $background;
+  font-size: 11pt;
+  font-weight: bold;
+  color: $tertiary-color;
+}
+
+#suggestion_view #day_bar_box #day_bar .day_gap_header .gap_header {
+  height: 25px;
+  float: left;
+  padding-top: 5px;
+  text-align: center;
+  font-size: 11pt;
+  font-weight: bold;
+  color: $background;
+}
+
+#suggestion_view #time_bar_box {
+  width: 40px;
+  height: 520px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  font-size: 15px;
+  margin-right: 10px;
+}
+#suggestion_view #time_bar_box #time_bar {
+  width: 40px;
+  /*background-color: #333;*/
+  background-color: $background;
+  height: 1152px;
+  position: relative;
+  color: $tertiary-color;
+  font-size: 115%;
+  font-weight: bold;
+}
+
+#suggestion_view #time_bar_box #time_bar .time_box {
+  position: absolute;
+  width: 100%;
+  text-align:center;
+  border-top: 1px solid #999999;
+  margin-top: -1px;
+}
+
+#suggestion_view #time_bar_box #time_bar .time_box_half {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  margin-top: -1px;
+}
+
+#suggestion_view #view_window {
+  width: auto;
+  overflow: hidden;
+  position: relative;
+  height: 520px;
+  cursor: url('cursors/grab.cur'), move;
+}
+
+#suggestion_view #view_window.dragged {
+  cursor: url('cursors/grabbing.cur'), move;
+}
+
+#suggestion_view #suggestion_area {
+  height: 1152px;
+  max-height: 1152px;
+  position: relative;
+  float: left;
+  background: url("grid_bg.png") repeat;
+  /*background-color: white;*/
+}
+
+#suggestion_view #suggestion_area .jump_arrow {
+  position: absolute;
+  z-index: 1000;
+  cursor: pointer;
+}
+#suggestion_view #suggestion_area .jump_arrow.up {
+  background: url('arrow_up.png') no-repeat;
+  width: 80px;
+  height: 30px;
+}
+#suggestion_view #suggestion_area .jump_arrow.down {
+  background: url('arrow_down.png') no-repeat;
+  width: 80px;
+  height: 30px;
+}
+#suggestion_view #suggestion_area .jump_arrow.left {
+  background: url('arrow_left.png') no-repeat;
+  height: 80px;
+  width: 30px;
+}
+#suggestion_view #suggestion_area .jump_arrow.right {
+  background: url('arrow_right.png') no-repeat;
+  height: 80px;
+  width: 30px;
+}
+#suggestion_view #suggestion_area div.day_gap {
+  float: left;
+  height: 100%;
+  width: auto;
+}
+
+#suggestion_view #suggestion_area div.day_gap div.left_gap {
+  background: url('day_gap_left.png') repeat-y;
+  /*background-color: blue;*/
+  float: left;
+  width: 15px;
+  height: 100%;
+}
+
+#suggestion_view #suggestion_area div.day_gap div.gap {
+  float: left;
+  width: 0px;
+  height: 100%;
+}
+
+#suggestion_view #suggestion_area div.day_gap div.right_gap {
+  background: url('day_gap_right.png') repeat-y;
+  /*background-color: pink;*/
+  float: left;
+  width: 15px;
+  height: 100%;
+}
+
+#suggestion_view #suggestion_area div.day_nogap {
+  background: url('day_nogap.png') repeat-y;
+  /*background-color: deeppink;*/
+  float: left;
+  width: 3px;
+  height: 100%;
+}
+#suggestion_view #suggestion_area .day_box {
+  width: 200px;
+  height: 1152px;
+  float: left;
+  position: relative;
+  padding: 0 10px;
+}
+
+.date_picker {
+  width: 180px;
+  height: 160px;
+  float: left;
+}
+
+a.qtip-button {
+  padding-top: 1px;
+  margin-right: -8px;
+}
+
+.qtip-wrapper {
+  overflow: visible !important;
+}
+/*
+ul.vote_list {
+	list-style: none;
+}
+ul.vote_list * {
+	line-height: 200%;
+	font-weight: bold;
+	padding-left: 24px;
+	padding-top: 2px;
+}
+ul.vote_list li.red {
+	background: url('redbutton_active.png') 0% 50% no-repeat;
+}
+ul.vote_list li.yellow {
+	background: url('yellowbutton_active.png') 0% 50% no-repeat;
+}
+ul.vote_list li.green {
+	background: url('greenbutton_active.png') 0% 50% no-repeat;
+}
+ul.vote_list li.gray {
+	color: gray;
+}
+*/
+ul.fb_list {
+  list-style: none;
+  width:100%;
+}
+ul.fb_list * {
+  line-height: 140%;
+  padding-top: 2px;
+}
+
+.pick_button.send_dates {
+  cursor: pointer;
+}
+
+.keep-in-line {
+  float:left;
+}
+
+.tut_button {
+  margin:0 5px;
+  font-size:15px;
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.tut_text {
+  width:100%;
+  margin:5px 0;
+  float:left;
+  text-align:center;
+  line-height:22px;
+}
+
+.tut_content {
+  float:left;
+  text-align:center;
+}
+
+
+#dashboard .popover {
+  max-width: 700px !important;
+  width: auto !important;
+  max-height: 350px;
+  height: auto !important;
+}
+
+#dashboard .popover-content {
+  width: 490px;
+}
+
+.popover {
+  .btn-vote {
+    width: 2vw;
+    height: 16px;
+  }
+}
+
+/*
+.popover-content .date_picker {
+  position: absolute;
+  left: 0;
+}
+
+#popover_progress_bar .progress {
+  height: 5px;
+  width: 480px;
+}
+
+*/
+.progress {
+  height: 4px;
+}
+
+#edit_suggestion_modal .btn-vote {
+  width: 3vw;
+}
+
+/*#edit_form_modal .date_picker {
+  position: absolute;
+  left: 0;
+}*/
+
+/*
+.popover_vote_buttons .btn-vote {
+  width: 80px;
+}
+*/
+
+.sugg_delete_btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.vote_results_btn {
+  margin-left: -10px;
+}
+
+/*
+.small_size {
+  color: #aaaaaa;
+}
+*/
+
+
+
+/* ##################################### RWD ######################################## */
+
+/* ---------------- Allgemein ----------------- */
+.teaco_background {
+  background-color: white;
+}
+
+body {
+  background-color: white;
+  color: $tertiary-color;
+}
+
+.inline {
+  display: inline;
+}
+
+.full_width {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+}
+
+.selector_header {
+  border-color: $tertiary-color;
+  @media(min-width: 768px) and (max-width: 800px) {
+    width: 200px;
+  }
+}
+
+.area_border {
+  border: 1px grey;
+}
+
+.welcome_box_alert {
+  background-color: $btn-red;
+  height: 35px;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (min-width: 992px) {
+    margin-top: -6px;
+  }
+  @media (max-width: 992px) {
+    margin-top: -10px;
+  }
+}
+
+.welcome_box_notice {
+  background-color: $btn-green;
+  height: 35px;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (min-width: 992px) {
+    margin-top: -6px;
+  }
+  @media (max-width: 992px) {
+    margin-top: -10px;
+  }
+}
+
+.welcome_text {
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover {
+  width: 300px;
+}
+
+.form-control {
+  padding: 5px;
+}
+
+.dropdown-menu {
+  margin: 0;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+.hidden-xxs {
+  @media(max-width: 360px){
+    display: none !important;
+  }
+}
+
+.icon_border {
+  //border: 1px solid $tertiary-color;
+  padding-top: 4px;
+}
+
+
+/* ---------------- Links ----------------- */
+.teaco_footer a {
+  color: $tertiary-color;
+  text-decoration: none;
+}
+
+a {
+  color: $tertiary-color;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  @media(min-width: 992px) {
+    color: $primary-color;
+  }
+}
+
+a:active {
+  outline: 0;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
+  text-decoration: none;
+}
+
+span:active {
+  outline: 0;
+  text-decoration: none;
+}
+
+span:focus {
+  outline: 0;
+  text-decoration: none;
+}
+
+/* ---------------- Buttons ----------------- */
+.btn {
+  border-radius: 0 !important;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn-primary:active {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn-primary:focus {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.open > .btn-primary.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn-secondary {
+  color: $tertiary-color;
+  background-color: white;
+  border-color: $tertiary-color;
+}
+
+.btn-secondary:hover {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn-secondary:active {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn-secondary:focus {
+  color: white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+
+
+.btn-vote {
+  border-width: 2px;
+  width: 11vw;
+  height: 1.5em;
+}
+
+.btn-yes {
+  color: $btn-green;
+  background-color: white;
+  border-color: $btn-green;
+}
+
+.btn-yes-active {
+  color: white;
+  background-color: $btn-green;
+  border-color: $btn-green;
+}
+
+.btn-maybe {
+  color: $btn-yellow;
+  background-color: white;
+  border-color: $btn-yellow;
+}
+
+.btn-maybe-active {
+  color: white;
+  background-color: $btn-yellow;
+  border-color: $btn-yellow;
+}
+
+.btn-no {
+  color: $btn-red;
+  background-color: white;
+  border-color: $btn-red;
+}
+
+.btn-no-active {
+  color: white;
+  background-color: $btn-red;
+  border-color: $btn-red;
+}
+
+.btn-pick {
+  color: $btn-blue;
+  background-color: white;
+  border-color: $btn-blue;
+}
+
+.btn-pick:hover {
+  color: white;
+  background-color: $btn-blue;
+  border-color: $btn-blue;
+}
+
+.btn-pick-active {
+  color: white;
+  background-color: $btn-blue;
+  border-color: $btn-blue;
+}
+
+.btn-pick-active:hover {
+  color: white;
+  background-color: #00AFEE;
+  border-color: #00AFEE;
+}
+
+.btn-expand {
+  width: 2vw;
+  height: 1.5em;
+  color: $tertiary-color;
+  background-color: white;
+  border-color: $tertiary-color;
+}
+
+.btn-mobile {
+  color: $tertiary-color;
+  background-color: white;
+  border-color: $tertiary-color;
+}
+
+.btn-mobile-active {
+  color: $primary-color;
+  background-color: white;
+  border-color: $primary-color;
+}
+
+.button_width {
+  width: 170px;
+}
+
+.panel-default > .panel-heading .panel-title {
+  font-size: 16px;
+}
+
+.panel-default > .panel-heading {
+  background-color: $background;
+  border-color: $border-color;
+  color: $tertiary-color;
+  height: 38px;
+  padding: 10px 0 0 15px;
+}
+
+.panel-default > .panel-heading.active {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: white;
+}
+
+.panel-default > .panel-heading a:active {
+  color: white;
+}
+
+.panel-default {
+  border-color: $border-color;
+}
+
+.row .accordion {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.show_all_meetings_button a {
+  color: white;
+}
+
+.btn-primary:active, .btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  color: white;
+  background-color: $secondary-color;
+  border: none;
+}
+
+.btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus,
+.btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus,
+.open > .btn-primary.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus,
+.open > .btn-primary.dropdown-toggle.focus {
+  color: white;
+  background-color: $secondary-color;
+  border: none;
+}
+
+/* ---------------- Icons ----------------- */
+.small_icon {
+  font-size: 14px;
+}
+
+.medium_icon {
+  font-size: 17px;
+}
+
+.large_icon {
+  font-size: 19px;
+}
+
+.extra_large_icon {
+  font-size: 30px;
+}
+
+
+/* ---------------- Text ----------------- */
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px;
+}
+
+.text_white {
+  color: white;
+}
+
+.info_text {
+  color: $info-text;
+}
+
+.text_orange {
+  color: $primary-color;
+}
+
+.sm_text {
+  /*TODO noch festlegen*/
+}
+
+.responsive_title_underlined {
+  font-size: 20px;
+  /*color: $tertiary-color;*/
+}
+.responsive_title {
+  font-size: 20px;
+  color: $tertiary-color;
+  background-color: $background;
+  border: 1px solid $border-color;
+  border-bottom: none;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  margin-bottom: 0;
+  /*margin-left: 15px;*/
+}
+
+
+.meeting_title_bar {
+  font-size: 20px;
+  color: $tertiary-color;
+  border: 1px solid $border-color;
+  background-color: $background;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  margin-bottom: 0;
+  /*margin-left: 15px;*/
+
+  @media (min-width: 992px) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 16px;
+    height: 38px;
+    padding: 10px 0 0 15px;
+  }
+}
+
+.mobile_padding {
+  @media (max-width: 991px){
+    padding: 0;
+  }
+}
+
+.user_box {
+  border: 1px solid $border-color;
+  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  //horizontal, vertikal, blur, spread-radius(schatten wird größer) farbe
+}
+
+.meeting_title {
+  font-size: 3rem;
+  color: $tertiary-color;
+}
+
+.date_text {
+  font-size: 15px;
+}
+
+.label_margin {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.picked_text {
+  color: $btn-blue;
+}
+
+/* ---------------- Footer-Bar ----------------- */
+
+.teaco_footer {
+  background-color: white;
+  height: 8rem;
+  padding-top: 2rem;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.19);
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+  @media(max-width: 991px) {
+    margin-bottom: 100px;
+  }
+}
+
+.footer {
+  position:absolute;
+  bottom:0;
+  //box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.19);
+  /* Set the fixed height of the footer here */
+  padding-top:2rem;
+  background-color: $background;
+  @media (max-width:768px){
+    height: auto;
+    width:100%;
+  }
+  @media (min-width:768px){
+    height:60px;
+    width:100%;
+  }
+}
+
+
+/* ---------------- Header-Bar ----------------- */
+
+.header_bar_item {
+  display:block;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.header_bar_button {
+  margin-top: 10px;
+}
+
+.header_bar_logo {
+  display:block;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-top: -21px;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 65px;
+}
+
+/* Gibt es nicht mehr, da kein Text mehr im Header (im Moment) */
+/*
+.header_bar_text {
+  display:block;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 0px !important;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: $primary-color;
+}
+*/
+
+.header_bar_link {
+  margin-top: 3px;
+  color: $tertiary-color;
+}
+
+.nav.nav-center {
+  display: inline-block;
+  left: 0;
+  right: 0;
+  margin:0;
+  float:none;
+}
+
+.navbar-inner{
+  text-align:center;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.header_bar {
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.small_header_bar {
+  height: 3.5rem;
+  padding-top: 0.75rem;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $tertiary-color;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: $primary-color;
+}
+
+
+.navbar_options {
+  @media (min-width: 992px) {
+    margin-right: 1rem;
+  }
+  @media (max-width: 992px) {
+    margin-right: 0;
+  }
+}
+
+.only_small {
+  @media (min-width: 768px)
+  {
+    visibility: hidden;
+  }
+}
+
+.only_large {
+  @media (max-width: 768px)
+  {
+    visibility: hidden;
+  }
+}
+
+.header_bar_height {
+  height: 30px;
+}
+
+.header_bar_margin {
+  @media(max-width: 991px){
+    margin-top: 8px;
+  }
+}
+
+.navbar-default .navbar-toggle {
+  margin-top: 5px;
+  margin-bottom: 6px;
+  padding: 0;
+  border: none;
+  background-color: white;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: white;
+}
+
+.flash_notices {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+/*
+.welcome_box {
+  background-color: $primary-color;
+  height: 35px;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (min-width: 992px) {
+    margin-top: -6px;
+  }
+  @media (max-width: 992px) {
+    margin-top: -10px;
+  }
+}
+*/
+
+
+/* ---------------- Detail Panel --------------------- */
+.dropdown_window {
+  min-width: 400px;
+  max-width: 800px;
+}
+
+.detail_panel_box {
+  background-color: white;
+  margin-top: -5px;
+}
+
+.panel_button {
+  @media (min-width: 992px) {
+    width: 175px;
+  }
+}
+
+.new_sugg_button {
+  @media (min-width: 992px) {
+    width: 205px;
+  }
+}
+
+.panel-field {
+  @media (min-width: 992px) {
+    width: 205px;
+  }
+}
+
+.checkbox_margin {
+  @media(min-width: 992px){
+    margin-top: 9px;
+  }
+}
+
+
+
+
+
+/* ---------------- Padding - Margin ----------------- */
+
+.margin-0 {
+  margin: 0;
+}
+
+.margin-top-0 {
+  margin-top: 0;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.margin-left-0{
+  margin-left: 0;
+}
+
+.margin-right-0 {
+  margin-right: 0;
+}
+
+.margin-top-1 {
+  margin-top: 1rem;
+}
+
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.margin-left-1 {
+  margin-left: 1rem;
+}
+
+.margin-right-1 {
+  margin-right: 1rem;
+}
+
+.margin-left-2 {
+  margin-left: 2rem;
+}
+
+.margin-left-3 {
+  margin-left: 3rem;
+}
+
+.margin-right-2 {
+  margin-right: 2rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: 2rem;
+}
+
+.margin-right-3 {
+  margin-right: 3rem;
+}
+
+.margin-top-2 {
+  margin-top: 2rem;
+}
+
+.margin-bottom-3 {
+  margin-bottom: 3rem;
+}
+
+.margin-top-3 {
+  margin-top: 3rem;
+}
+
+.margin-top-4 {
+  margin-top: 4rem;
+}
+
+.margin-bottom-4 {
+  margin-bottom: 4rem;
+}
+
+.margin-left-5 {
+  margin-left: 5rem;
+}
+
+.margin-right-5 {
+  margin-right: 5rem;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5rem;
+}
+
+.margin-left-7 {
+  margin-left: 7rem;
+}
+
+.margin-top-10 {
+  margin-top: 10rem;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.padding-left-0 {
+  padding-left: 0;
+}
+
+.padding-right-0 {
+  padding-right: 0;
+}
+
+.padding-top-0 {
+  padding-top: 0;
+}
+
+.padding-bottom-0 {
+  padding-bottom: 0;
+}
+
+.padding-left-1 {
+  padding-left: 1rem;
+}
+
+.padding-right-1 {
+  padding-right: 1rem;
+}
+
+.padding-bottom-1 {
+  padding-bottom: 1rem;
+}
+
+.padding-left-2 {
+  padding-left: 2rem;
+}
+
+.padding-right-2 {
+  padding-right: 2rem;
+}
+
+.padding-bottom-2 {
+  padding-bottom: 2rem;
+}
+
+.padding-left-3 {
+  padding-left: 3rem;
+}
+
+/* ------------------ Mobile Margins ----------------- */
+.mobile-margin-top-1 {
+  @media (max-width: 991px) {
+    margin-top: 1rem;
+  }
+}
+
+.mobile-margin-bottom-1 {
+  @media (max-width: 991px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.mobile-margin-top-2 {
+  @media (max-width: 991px) {
+    margin-top: 2rem;
+  }
+}
+
+.mobile-margin-bottom-2 {
+  @media (max-width: 991px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.mobile-margin-top-3 {
+  @media (max-width: 991px) {
+    margin-top: 3rem;
+  }
+}
+
+.mobile-margin-bottom-3 {
+  @media (max-width: 991px) {
+    margin-bottom: 3rem;
+  }
+}
+
+
+/* ------------------ Suggestions ----------------- */
+.suggestion_expand {
+  background-color: white;
+  border: none;
+}
+
+.prog_bar {
+  height: 3px;
+}
+
+.prog_bar .resized_prog_bar {
+  display: inline-block;
+  height: 20px;
+}
+
+.day_background {
+  background-color: $background;
+}
+
+#edit_form{
+  display: none;
+}
+
+.edit_suggestion{
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 1px;
+  text-decoration: none !important;
+}
+
+
+
+/* ------------------ Flash Notices ----------------- */
+.alert_box {
+  background-color: $primary-color;
+  height: 30px;
+}
+
+.alert_box .alert {
+  color: white;
+}
+
+.info_box {
+}
+
+
+
+/* ------------------ Tabelle - Meeting List ----------------- */
+td .actions span{
+  @media (max-width: 319px){
+    padding-right: 30px;
+  }
+  @media (min-width: 320px){
+    padding-right: 40px;
+  }
+}
+
+/*.meeting_list {
+  width: 100%;
+}
+
+.meeting_list_head {
+  color: $tertiary-color;
+  border-bottom: solid 1px $background;
+}
+*/
+
+/* ------------------ Hilfe ----------------- */
+ol.help_list {
+  list-style-type: none;
+}
+
+ol.help_list li a {
+  font-weight: bold;
+}
+ol.help_list li div{
+  font-weight: normal;
+}
+
+/*
+ol.help_list {
+  margin: 0 0 1.5em;
+  padding: 0;
+  counter-reset: item;
+}
+
+ol.help_list > li {
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol.help_list > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 1.5em;
+  font-weight: bold;
+  text-align: left;
+  content: counter(item) ".";
+}
+*/
+
+/* ------------------ Neues Meeting ----------------- */
+tr.space_bottom>td {
+  padding-bottom: 1rem;
+}
+
+.no_border {
+  border: none;
+}
+
+.no_shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.new_meeting_box {
+  @media (min-width: 768px) {
+    width: 430px;
+    height: auto;
+    margin: 15px;
+    margin-top: 0;
+  }
+}
+
+
+/* ------------------ Dashboard ----------------- */
+.cont_meeting {
+  @media (min-width: 992px){
+    border: 1px solid $border-color;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.checkbox-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: inherit;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+
+/* ------------------ Meeting ----------------- */
+.box_shadow {
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  //horizontal, vertikal, blur, spread-radius(schatten wird größer) farbe
+}
+
+.meeting_restricted_icon {
+  display: inline-block;
+  float: left;
+  margin-top: 15px;
+  margin-right: -8px;
+  @media (max-width: 991px) {
+    margin-top: 26px;
+  }
+}
+
+
+
+
+
+/* ------------------ Modal ----------------- */
+.modal-dialog {
+  @media (min-width: 992px) {
+    width: 50%;
+  }
+}
+
+.modal-title {
+  font-size: 18px;
+}
+
+.modal-content {
+  border: 2px solid $background;
+
+}
+
+.modal-header {
+  background-color: $background;
+  color: $tertiary-color;
+  height: 36px;
+  text-align: left;
+  padding: 8px 5px 0 15px;
+
+  .close {
+    margin-top: -27px;
+    font-size: 24px;
+  }
+}
+
+#help_mobile .modal-header {
+  .close {
+    margin-top: -5px;
+    font-size: 24px;
+  }
+}
+
+#about_teaco_large .modal-header {
+  .close {
+    margin-top: -5px;
+    font-size: 24px;
+  }
+}
+
+
+.detail_panel_modals{
+  .close{
+    font-size: 24px;
+    margin-top: -5px;
+  }
+
+  .commit {
+    border: none;
+  }
+}
+
+.modal-footer {
+  padding-top: 0;
+  border: none;
+
+  .btn-default{
+    font-size: 100%;
+    border-color: $tertiary-color;
+  }
+}
+
+.detail_panel_modals {
+  .modal-dialog {
+    @media (min-width: 992px) {
+      width: 50%;
+    }
+  }
+
+  .modal-content {
+    border: 2px solid $background;
+
+  }
+
+  .modal-header {
+    background-color: $background;
+    color: $tertiary-color;
+    height: 36px;
+    text-align: left;
+    padding: 8px 5px 0 15px;
+  }
+
+  .modal-footer {
+    visibility: hidden;
+  }
+
+  .invitation_modal {
+    @media(min-width: 1200px) {
+      width: 80%;
+      max-width: 1200px;
+    }
+    @media(max-width: 1199px) {
+      width: 90%;
+    }
+    @media(max-width: 768px) {
+      width: auto;
+    }
+
+  }
+
+}
+
+
+
+
+/* ------------------ Comment ----------------- */
+.comment_name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+comments_space {
+  @media(min-width: 992px) {
+    margin-top: 2rem;
+  }
+  @media(max-width: 991px) {
+    //margin-top: -25px;
+    margin-top: 2rem;
+  }
+}
+
+p.no_comments {
+  font-size: 17px;
+  font-style: italic;
+  @media (max-width: 991px) {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ------------------ Turbolinks ----------------- */
+.turbolinks-progress-bar {
+  height: 3px;
+  background-color: $primary-color;
+}
+
+
+  /* ------------------ Datepicker ----------------- */
+div.date_picker{
+
+  @media (max-width:991px) {
+    width: 220px;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  @media (min-width: 992px) and (max-width: 1199px ) {
+    position: absolute;
+    left: 0;
+  }
+  @media (min-width: 1200px){
+    position: absolute;
+    left: 25%;
+    right: 25%;
+  }
+}
+
+.datepicker table tr td.active:active,
+.datepicker table tr td.active.highlighted:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.highlighted.active {
+  color: white;
+  background-color: $primary-color;
+  border: none;
+}
+
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active.highlighted:hover,
+.datepicker table tr td.active.hover,
+.datepicker table tr td.active.highlighted.hover {
+  color: white;
+  background-color: $primary-color;
+  border: none;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active.highlighted {
+  color: white;
+  background-color: $primary-color;
+  border: none;
+}
+
+
+/* ------------------ Clockpicker ----------------- */
+.clockpicker-popover {
+  z-index: 999999;
+}
+
+.btn-default {
+  color: $tertiary-color;
+  left: 114px;
+  top: 133.765px;
+  font-size: 120%
+}
+
+/* ------------------ Forms ----------------- */
+.form-control:focus {
+  border-color: $primary-color;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
+}
+
+
+/* ------------------ Startseite ----------------- */
+.align-label {
+  @media (min-width: 992px){
+    text-align: right !important;
+  }
+
+  @media(max-width: 991px) {
+    text-align: left !important;
+  }
+}
+
+.align-button {
+  @media (min-width: 992px){
+    text-align: left !important;
+  }
+}

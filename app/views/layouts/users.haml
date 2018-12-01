@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title
+      = @page_title || if @user && !@user.new_record? then "#{user_name_or_email(@user)} :: TeaCo" else t('.welcome') end
+
+    %meta{ "http-equiv":"X-UA-Compatible", content: "IE=edge" }
+    %meta{ name:"viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no" }
+    %meta{ "http-equiv": "Content-Type", content: 'text/html; charset=UTF-8'}
+
+    = favicon_link_tag("favicon.png", rel: "icon", type: "image/png")
+    = favicon_link_tag("favicon.ico", rel: "shortcut_icon", type: "image/vnd.microsoft.icon")
+
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application'
+
+    = csrf_meta_tag
+
+    = javascript_tag " var AUTH_TOKEN = '#{form_authenticity_token.inspect}';" if protect_against_forgery?
+    = javascript_tag " var NOT_FROM_WITHIN = '#{@not_from_within}';"
+
+
+  %body#body
+    = render :partial => "meetings/header_bar"
+    %br
+    #dashboard= yield
+    = render :file => "layouts/footer_bar"

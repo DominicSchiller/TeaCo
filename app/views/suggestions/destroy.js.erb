@@ -1,0 +1,29 @@
+/*
+page.call "close_form_on_class", "delete_sugg_button"
+
+days = get_day_hash_for(@meeting.suggestions)
+
+page.replace "day_bar", :partial => "meetings/day_bar",
+:locals => { :days => days }
+
+page.replace "suggestion_area", :partial => "meetings/suggestion_area",
+:locals => { :days => days }
+
+page.call "reEnableDragScroll"
+page.call "adjustSuggestionAreaWidth"
+page.call "addJumpToSuggArrows"
+*/
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+close_form_on_class("delete_sugg_button");
+
+<% days = get_day_hash_for(@meeting.suggestions) %>
+
+$("#day_bar").html("<%= j render partial: "meetings/day_bar", locals: { days: days } %> ");
+
+$("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area", locals: { days: days } %>");
+$("#suggestion_area_mobile").html("<%= j render partial: "meetings/suggestion_area_mobile", locals: { days: days } %>");
+
+reEnableDragScroll();
+adjustSuggestionAreaWidth();
+addJumpToSuggArrows();

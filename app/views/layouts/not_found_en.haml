@@ -1,0 +1,19 @@
+%div.container_fluid#not_found_wrapper
+
+  %div.row#not_found_title
+    .col-xs-12
+      Meeting or user could not be found
+
+  %div.row#not_found_content
+    .col-xs-12
+      %p An error occured. This could have the following reasons:
+      %ul
+        %li There is no user with the user key in the URL,
+        %li you are not authorized to see the requested meeting, or it does not exist,
+        %li TeaCo contains a bug (very unlikely ;-) ).
+
+      %p.warning
+        In case you have lost your personal TeaCo access link, you can regain
+        it by entering your e-mail address on the
+        = succeed "." do
+          %a{ :href => root_path } home page

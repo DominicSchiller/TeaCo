@@ -1,0 +1,18 @@
+-##comment_list{ :rel => Comment::COMMENT_DELETED }
+-#  - if @meeting.comments.empty?
+-#    %p.no_comments= raw t('comments.list.no_comments_yet')
+-#  - else
+-#    .row#comment_items
+-#      .col-xs-12
+-#        - @meeting.comments.reverse_each do |comment|
+-#          = render :partial => "comments/comment.haml", :locals => { :comment => comment }
+
+
+
+%div#comment_list{ :rel => Comment::COMMENT_DELETED }
+  - if @meeting.comments.empty?
+    %h4= raw t('comments.list.no_comments_yet')
+  - else
+    %ul#comment_items.padding-0
+      - @meeting.comments.reverse_each do |comment|
+        = render :partial => "comments/comment.haml", :locals => { :comment => comment }

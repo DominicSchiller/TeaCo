@@ -1,0 +1,20 @@
+/*
+I18n.locale = @user.language
+#page.insert_html :top, "body", :partial => "shared/errors.iphone_native"
+#page.replace_html "user_account", :file => "users/show.iphone_native"
+#page.replace_html "alias_addresses", :partial => "users/alias_addresses.iphone_native"
+#page.replace_html "meeting_list", :partial => "users/meeting_list.iphone_native"
+
+#page.remove "errors"
+display_errors_iphone_native(page);
+*/
+
+
+I18n.locale = @user.language
+//$("body").append("<%#=  j render partial: "shared/errors.iphone_native" %>");
+//$("user_account").replaceWith(<%#= j render file: "users/show.iphone_native" %>);
+//$("alias_addresses").replaceWith(<%#= j render partial: "users/alias_addresses.iphone_native" %>);
+//$("meeting_list").replaceWith(<%#= j render partial: "users/meeting_list.iphone_native" %>);
+
+//$("#errors").remove();
+display_errors_iphone_native(page);

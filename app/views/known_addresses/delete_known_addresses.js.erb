@@ -1,0 +1,13 @@
+//page.call "close_form_on_class", "delete_ka_button"
+//page.call "close_form_on_id", "delete_known_addresses_submit"
+//page.call "$('#delete_known_addresses_submit').attr", "'disabled', 'disabled'"
+//page.replace "address_list", :partial => "users/known_addresses", :locals => { :known_addresses => @user.known_addresses }
+//page.call "update"
+
+
+//close_form_on_class("delete_ka_button");
+//close_form_on_id("delete_known_addresses_submit");
+$('#delete_known_addresses_submit').addClass("disabled");
+$("#address_list").html("<%= j render partial: 'users/known_addresses.haml', locals: { :known_addresses => @user.known_addresses } %>");
+update();
+setEqualHeightAdministration();

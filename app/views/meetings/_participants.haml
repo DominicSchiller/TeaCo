@@ -1,0 +1,14 @@
+%div#participants_box
+  %table#current_participants
+    - @meeting.participants.each do |participant|
+      %tr#participant_line
+        %td#check
+          - if participant != @user
+            = check_box_tag("participant_ids[]", participant.id, false, get_participant_check_attributes(participant, @meeting) )
+        %td#initiator
+          - if participant == @meeting.initiator
+            %i.icon-user-secret.medium_icon{ title: t('tooltips.is_initiator', user: user_name_or_email(participant)), class: "tipped_top" }
+        %td#name.visible-xs
+          = label_tag("uninvite_#{participant.id}", get_short_name(participant, 25, "true"))
+        %td#name.hidden-xs
+          = label_tag("uninvite_#{participant.id}", get_short_name(participant, 35, "false"))

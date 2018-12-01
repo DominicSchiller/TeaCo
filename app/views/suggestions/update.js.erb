@@ -1,0 +1,180 @@
+/*
+# Default is replacing only the current
+# suggestion (this is neccessary when other
+# controllers and actions, such as Votes.update,
+# use this template).
+
+@update_method ||= :inplace
+
+# Update the suggestion box, the day it is in
+# or the whole suggestion view depending on what
+# of the suggestion model was changed during
+# the update process:
+case @update_method
+when :inplace
+  day = @suggestion.date
+  day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day }
+  margins = get_margins_for_suggestions(day_suggestions)
+  sugg_margin = margins[@suggestion]
+  page.replace "sugg_#{@suggestion.id}", :partial => "meetings/suggestion_box",
+    :locals => { :sugg => @suggestion, :skip_outer => false, :left_margin => sugg_margin }
+  page.call "$('#sugg_#{@suggestion.id}').css", "zIndex", "100"
+
+  # Additionally, replace the picked_suggestions_list, in case the suggestion's
+  # pick-state was edited from within the send-dates-form:
+  page.replace "picked_suggestions", :partial => "meetings/picked_suggestions_list"
+  if @meeting.picked_suggestions.empty?
+    page.call "$('input#send_dates_submit').disable"
+  else
+    page.call "$('input#send_dates_submit').enable"
+  end
+
+  page.replace "open_sugg_area", :partial => "meetings/open_suggestions"
+
+when :only_day
+#  day = @suggestion.date
+#  day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day }
+#  day_freebusy = @meeting.freebusy_day_hash[day] || Array.new
+#  page.replace "day_#{day}", :partial => "meetings/day_box",
+#    :locals => { :suggestions => day_suggestions, :day => day, :freebusy => day_freebusy}
+#  page.call "$('#sugg_#{@suggestion.id}').css", "zIndex", "100"
+
+#  page.replace_html "edit_time_#{@suggestion.id}",   -> replaceWith
+#    :partial => "meetings/sugg_times", :locals => { :suggestion => @suggestion }
+
+  day = @suggestion.date
+  day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day }
+  margins = get_margins_for_suggestions(day_suggestions)
+  
+  sugg_margin = margins[@suggestion]
+  page.replace "sugg_#{@suggestion.id}", :partial => "meetings/suggestion_box",
+    :locals => { :sugg => @suggestion, :skip_outer => false, :left_margin => sugg_margin }
+  page.call "$('#sugg_#{@suggestion.id}').css", "zIndex", "100"
+  
+  day_suggestions.each do |suggestion|
+   id = suggestion.id
+   page.call "$('#sugg_#{id}').css", "margin-left", "#{margins[suggestion].to_s}px"
+  end
+  day_width = margins.values.max + MeetingsHelper::DAY_WIDTH
+  page.call "$('#day_#{day}').css", "width", "#{day_width}px"
+
+when :complete
+  page.call "close_form_on_id", "edit_time_#{@suggestion.id}"
+  days = get_day_hash_for(@meeting.suggestions)
+  page.replace "day_bar", :partial => "meetings/day_bar",
+                           :locals => { :days => days }
+  page.replace "suggestion_area", :partial => "meetings/suggestion_area",
+                           :locals => { :days => days }
+  page.call "scrollTo", "sugg_#{@suggestion.id}"
+
+  if @reset_votes
+    page.remove "errors"
+    page.insert_html :top, "body", :partial => "shared/errors", :locals => { :info => t('inform_users') }
+    page.remove "open_sugg_area"
+    page.insert_html :bottom, "body", :partial => "meetings/open_suggestions"
+    page.call "$('#sugg_#{@suggestion.id}').removeClass", "voted_on not_mine"
+  end
+end
+
+page.call "reEnableDragScroll"
+page.call "adjustSuggestionAreaWidth"
+page.call "addJumpToSuggArrows"
+*/
+
+
+
+
+
+// Default is replacing only the current
+// suggestion (this is neccessary when other
+// controllers and actions, such as Votes.update,
+// use this template).
+
+<% @update_method ||= :inplace %>
+
+// Update the suggestion box, the day it is in
+// or the whole suggestion view depending on what
+// of the suggestion model was changed during
+// the update process:
+<% case @update_method
+  when :inplace %>
+
+    <% day = @suggestion.date %>
+    <% day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day } %>
+    <% margins = get_margins_for_suggestions(day_suggestions) %>
+    <% sugg_margin = margins[@suggestion] %>
+    $("#sugg_<%= @suggestion.id %>").html("<%= j render partial: "meetings/suggestion_box.haml", locals: { sugg: @suggestion, skip_outer: false, left_margin: sugg_margin } %>");
+    $("#sugg_mobile_<%= @suggestion.id %>").html("<%= j render partial: "meetings/suggestion_box_mobile.haml", locals: { sugg: @suggestion, skip_outer: false, left_margin: sugg_margin } %>");
+    $("#sugg_<%= @suggestion.id %>").css("z-index", "1000");
+
+    // Additionally, replace the picked_suggestions_list, in case the suggestion's
+    // pick-state was edited from within the send-dates-form:
+    $("#picked_suggestions").replaceWith("<%= j render partial: "meetings/picked_suggestions_list.haml" %>");
+    <% if @meeting.picked_suggestions.empty? %>
+      $('input#send_dates_submit').disabled = true;
+    <% else %>
+      $('input#send_dates_submit').enabled = true;
+    <% end %>
+
+    <% days = get_day_hash_for(@meeting.suggestions) %>
+    $("#day_bar").html("<%= j render partial: "meetings/day_bar.haml", locals: { days: days } %>");
+    $("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area.haml", locals: { days: days } %>");
+    $("#suggestion_area_mobile").html("<%= j render partial: "meetings/suggestion_area_mobile.haml", locals: { days: days } %>");
+
+    <%#= TODO - wirft Fehler %>
+//    $("#open_sugg_area").html("<%#= j render partial: "meetings/open_suggestions.haml" %>");
+
+
+  <% when :only_day %>
+    <% day = @suggestion.date %>
+    <% day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day } %>
+    <% day_freebusy = @meeting.freebusy_day_hash[day] || Array.new %>
+    $("day_<%= day %>").html("<%= j render partial: "meetings/day_box", locals: { suggestions: day_suggestions, day: day, freebusy: day_freebusy} %>");
+    $('#sugg_<%= @suggestion.id %>').css("z-index", "1000");
+    $("edit_time_<%= @suggestion.id %>").html("<%== j render partial: "meetings/sugg_times", locals: { suggestion: @suggestion } %>");
+
+    <% day = @suggestion.date %>
+    <% day_suggestions = @meeting.suggestions.select { |sugg| sugg.date == day } %>
+    <% margins = get_margins_for_suggestions(day_suggestions) %>
+
+    <% sugg_margin = margins[@suggestion] %>
+    $("#sugg_<%= @suggestion.id %>").html('<%= j render partial: "meetings/suggestion_box.haml", locals: { sugg: @suggestion, skip_outer: false, left_margin: sugg_margin } %>');
+    $("#sugg_mobile_<%= @suggestion.id %>").html('<%= j render partial: "meetings/suggestion_box_mobile.haml", locals: { sugg: @suggestion, skip_outer: false, left_margin: sugg_margin } %>');
+    $("#sugg_<%= @suggestion.id %>").css("z-index", "1000");
+
+    <% day_suggestions.each do |suggestion| %>
+      <% id = suggestion.id %>
+      $("#sugg_<%= id %>").css("margin-left", <%= margins[suggestion].to_s %> + "px");
+    <% end %>
+
+    <% day_width = margins.values.max + MeetingsHelper::DAY_WIDTH %>
+    $("#day_<%= day %>").css("width", '<%= day_width %> px');
+
+    <% days = get_day_hash_for(@meeting.suggestions) %>
+    $("#day_bar").html("<%= j render partial: "meetings/day_bar.haml", locals: { days: days } %>");
+    $("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area.haml", locals: { days: days } %>");
+    $("#suggestion_area_mobile").html("<%= j render partial: "meetings/suggestion_area_mobile.haml", locals: { days: days } %>");
+
+
+<% when :complete %>
+    //close_form_on_id("edit_time_<%#= @suggestion.id %>");
+    <% days = get_day_hash_for(@meeting.suggestions) %>
+    $("#day_bar").html("<%= j render partial: "meetings/day_bar.haml", locals: { days: days } %>");
+    $("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area.haml", locals: { days: days } %>");
+    $("#suggestion_area_mobile").html("<%= j render partial: "meetings/suggestion_area_mobile.haml", locals: { days: days } %>");
+    scrollTo( "sugg_<%= @suggestion.id %>" );
+
+    <% if @reset_votes %>
+      $("#errors").remove();
+      $("body").append("<%= j render partial: "shared/errors", locals: { info: t('inform_users') } %>");
+      $("#open_sugg_area").remove();
+      $("body").append("<%= j render partial: "meetings/open_suggestions.haml" %>");
+      $("#sugg_<%= @suggestion.id %>").removeClass("voted_on not_mine");
+      $("#sugg_mobile_<%= @suggestion.id %>").removeClass("voted_on not_mine");
+    <% end %>
+<% end %>
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+reEnableDragScroll();
+adjustSuggestionAreaWidth();
+addJumpToSuggArrows();

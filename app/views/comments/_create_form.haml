@@ -1,0 +1,25 @@
+%div
+  = form_for [@user, @meeting, comment], method: 'post', html: { class: 'ajax comment_form' } do |f|
+    .form-group
+      = f.label :text, t("comments.comments_area.write_comment"), class: "control-label"
+      = f.text_area :text, class: "form-control", rows: "3", id: "comment_form_field" #, :class => 'gain_focus expand100-9999'
+      = f.hidden_field :author_id, value: @user.id
+      = f.hidden_field :meeting_id, value: @meeting.id
+    .form-group
+      .row#input
+        .col-xs-12.col-sm-7
+
+          -#%label.checkbox
+          -#%span.checkbox.margin-left-2.checkbox_margin= f.check_box :restricted, class: "checkbox"
+          -#%span.margin-left-1.margin-top-0= label_tag :restricted, t("meetings.restricted_meeting") + "?"
+
+          = check_box_tag 'also_mail', "1", comment.new_record?, :disabled => false
+          = label_tag :also_mail, t('comments.edit_form.also_mail'), style: "font-weight: normal;"
+
+          -#= check_box_tag :also_mail, "1", comment.new_record?, :disabled => false, class: "checkbox", style: "display: inline-block"
+          -#= label_tag :also_mail, t('comments.edit_form.also_mail'), class: "checkbox", style: "display: inline-block"
+
+        .hidden-xs.hidden-sm.col-md-5.text-right
+          = submit_tag t('comments.edit_form.send_comment'), class: "btn btn-primary"
+        .hidden-md.hidden-lg.col-xs-12
+          = submit_tag t('comments.edit_form.send_comment'), class: "btn btn-primary btn-block"

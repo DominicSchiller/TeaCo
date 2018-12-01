@@ -1,0 +1,16 @@
+%div#not_found_wrapper
+
+  %div#not_found_title Activation failed
+
+  %div#not_found_content
+    %p The address could not be activated. This could have the following reasons:
+    %ul
+      %li There is no address to be activated with this URL,
+      %li the address is already activated,
+      %li TeaCo contains a bug (very unlikely ;-) ).
+
+    %p.warning
+      In case you have lost your personal TeaCo access link, you can regain
+      it by entering your e-mail address on the
+      = succeed "." do
+        %a{ :href => root_path } home page

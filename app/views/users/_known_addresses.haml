@@ -1,0 +1,13 @@
+- sort_for_list!(known_addresses)
+
+%div#address_list.col-xs-12
+  .ka_list
+    - known_addresses.each do |known|
+      .row.pick_address.margin-bottom-1{ :rel => known.address }
+        = check_box_tag("known_addresses_ids[]", known.id, false, :class => "delete_check", :id => "delete_#{known.id}")
+        - user = User.find_by_alias(known.address)
+        - if user && !user.name.blank?
+          = content_tag(:strong, h(user.name)) + " [" + known.address + "]"
+        - else
+          = known.address
+

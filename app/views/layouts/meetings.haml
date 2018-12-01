@@ -1,0 +1,57 @@
+!!!
+%html
+  %head
+    %title
+      = @page_title || "#{@meeting.title} :: TeaCo"
+
+    %meta{ "http-equiv":"X-UA-Compatible", content: "IE=edge" }
+    %meta{ name:"viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no" }
+    %meta{ 'http-equiv' => "Content-Type", 'content' => 'text/html; charset=UTF-8'}
+
+    = favicon_link_tag("favicon.png", rel: "icon", type: "image/png")
+    = favicon_link_tag("favicon.ico", rel: "shortcut_icon", type: "image/vnd.microsoft.icon")
+
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag "lang_#{@user.language}"
+    = csrf_meta_tag
+
+
+    //[IF IE]
+    //=# javascript_include_tag "excanvas.js"
+    = javascript_tag " var AUTH_TOKEN = '#{form_authenticity_token.inspect}';" if protect_against_forgery?
+    = javascript_tag " var NOT_FROM_WITHIN = '#{@not_from_within}';"
+    //[IF IE
+
+  %body#body
+    = render :partial => "/meetings/header_bar"
+
+    - start_tutorial
+    %div#arrow_up_dummy.up.invisible.tipped_bottom{ :src => "/images/arrow_up.png", :title => t('tooltips.suggestion_out_of_view') }
+    %div#arrow_down_dummy.down.invisible.tipped_top{ :src => "/images/arrow_down.png", :title => t('tooltips.suggestion_out_of_view') }
+    %div#arrow_left_dummy.left.invisible.tipped_right{ :src => "/images/arrow_left.png", :title => t('tooltips.suggestion_out_of_view') }
+    %div#arrow_right_dummy.right.invisible.tipped_left{ :src => "/images/arrow_right.png", :title => t('tooltips.suggestion_out_of_view') }
+    -#%div#confirmation_form.invisible
+    -#  %form.ajax
+    -#    %p= raw t('confirmation_text')
+    -#    %input.confirm{ :type => "submit", :value => t('confirm'), class: "btn btn-primary" }
+    -#    %input.cancel{ :type => "submit", :value => t('cancel'), class: "btn btn-primary" }
+    %div.invisible#not_mine_confirmation{ :rel => t('not_mine_warning') }
+    %div.invisible#reset_votes_confirmation{ :rel => t('reset_votes_warning') }
+
+    -#.flash_notices
+
+
+    .container-fluid#detail_panel
+      = render partial: "/meetings/detail_panel"
+
+    .container-fluid#suggestion_view
+      = yield
+
+    .container-fluid
+      = render partial: "/meetings/detail_panel_accordion"
+
+    .container-fluid
+      = render partial: "comments/comments_area.haml"
+
+    = render file: "layouts/footer_bar.haml"

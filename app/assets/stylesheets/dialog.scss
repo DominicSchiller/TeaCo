@@ -1,0 +1,216 @@
+
+.dialog .content, .dialog .t, .dialog .b, .dialog .b div {
+    /*background: transparent url("suggbox.png") no-repeat top right;*/
+    background-color: white;
+}
+
+/*
+.dialog.picked .content, .dialog.picked .t, .dialog.picked .b, .dialog.picked .b div {
+    background: transparent url("suggbox_picked.png") no-repeat top right;
+}
+*/
+
+.sugg_box {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 24px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 200;
+    left: 0;
+}
+
+.dialog {
+    position: relative;
+    margin: 0px auto;
+    z-index: 1;
+    margin-left: 0; /* default, width of left corner */
+    margin-bottom: 0.5em; /* spacing under dialog */
+    height: 100%;
+}
+
+.dialog .content {
+    position: relative;
+    margin-top: -2px;
+    height: 86%;
+    z-index: 1;
+}
+
+.dialog .t, .dialog.picked .t {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 5px; /* top slice width */
+    margin-left: -5px;
+    height: 100%;
+    _height: 1600px; /* arbitrary long height, IE 6 */
+    background-position: top left;
+}
+
+.dialog .b, .dialog.picked .b {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    min-height: 5px;
+    z-index: 0;
+    background-position: bottom right;
+}
+
+.dialog .b div, .dialog.picked .b div {
+    height: 100%;
+    min-height: 5px;
+    position: relative;
+    width: 5px; /* bottom corner width */
+    margin-left: -5px;
+    background-position: bottom left;
+}
+
+.content_inner {
+    width: 190px;
+    float: left;
+}
+
+.content_inner .vote_bar {
+    overflow: hidden;
+    width: 189px;
+    border: 1px solid #FFF;
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.big_box {
+  margin-top: 10px;
+}
+
+.small_box {
+  margin-top: 30px;
+}
+
+.content_inner .vote_bar div {
+    height: 5px;
+    float: left;
+}
+
+
+.content_inner .vote_bar .red {
+    /*background: url("vote_red.jpg") repeat-x red;*/
+    background-color: #d9534f;
+}
+
+.content_inner .vote_bar .yellow {
+    /*background: url("vote_yellow.jpg") repeat-x yellow;*/
+    background-color: #f0ad4e;
+}
+
+.content_inner .vote_bar .green {
+    /*background: url("vote_green.jpg") repeat-x green;*/
+    background-color: #5cb85c;
+}
+
+.content_inner .vote_bar .white {
+    background: url("vote_white.jpg") repeat-x gray;
+}
+
+.content_inner .only {
+    margin-top: 9px;
+    width: 106px;
+}
+
+
+.content_inner img.pick_button {
+    width: 30px;
+    height: 16px;
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    position:absolute;
+    top: 0;
+    left:0;
+}
+
+.content_inner img {
+  margin-left: 2px;
+}
+
+.content_inner img.delete_sugg_button {
+    /*float: left;
+    width: 15px;*/
+    height: 16px;
+    margin: 5px 5px 5px 0;
+    cursor: pointer;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.content_inner span.edit_time {
+    cursor: pointer;
+    display: block;
+    line-height: 15px;
+    margin: 15px 5px 5px 45px;
+    font-size: 14px;
+    width: auto;
+    height: 15px;
+    position:absolute;
+    //top: 10%;
+    //right: 20%;
+}
+
+/*.content_inner span.edit_time:hover {
+    outline: 1px solid orange;
+}*/
+
+.button_width_25 {
+  width: 25px;
+}
+
+.button_width_30 {
+  width: 30px;
+}
+
+.content_inner div.vote_buttons_xl {
+  //margin-left: 40px;
+  margin-top: 35px;
+  margin-bottom: 5px;
+  //float: left;
+  //position: absolute;
+  text-align: center;
+}
+
+.content_inner div.vote_buttons_lg {
+  //margin-left: 40px;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  //float: left;
+  //position: absolute;
+  text-align: center;
+}
+
+.vote_buttons_md {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.vote_buttons_sm {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.content_inner div.vote_buttons img {
+    margin: 5px 0 5px 5px;
+    cursor: pointer;
+}
+
+.busy_box {
+    width: 24px;
+    left: 0px;
+    position: absolute;
+    background: transparent url('fb.png') repeat;
+}
+
+.content_inner.to_replace {
+    display: none;
+}

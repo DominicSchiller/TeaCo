@@ -1,0 +1,97 @@
+                            Prefix Verb     URI Pattern                                                                              Controller#Action
+                   known_addresses GET      /known_addresses(.:format)                                                               known_addresses#index
+                                   POST     /known_addresses(.:format)                                                               known_addresses#create
+                 new_known_address GET      /known_addresses/new(.:format)                                                           known_addresses#new
+                edit_known_address GET      /known_addresses/:id/edit(.:format)                                                      known_addresses#edit
+                     known_address GET      /known_addresses/:id(.:format)                                                           known_addresses#show
+                                   PATCH    /known_addresses/:id(.:format)                                                           known_addresses#update
+                                   PUT      /known_addresses/:id(.:format)                                                           known_addresses#update
+                                   DELETE   /known_addresses/:id(.:format)                                                           known_addresses#destroy
+                              root GET      /                                                                                        users#new
+                             login GET|POST /users/login(.:format)                                                                   users#login
+                      show_imprint GET      /imprint(.:format)                                                                       users#imprint
+                      authenticate GET|POST /users/authenticate(.:format)                                                            users#authenticate
+              user_alias_addresses GET      /users/:user_id/alias_addresses(.:format)                                                alias_addresses#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/alias_addresses(.:format)                                                alias_addresses#create {:member_path=>":user_key"}
+            new_user_alias_address GET      /users/:user_id/alias_addresses/new(.:format)                                            alias_addresses#new {:member_path=>":user_key"}
+           edit_user_alias_address GET      /users/:user_id/alias_addresses/:id/edit(.:format)                                       alias_addresses#edit {:member_path=>":user_key"}
+                user_alias_address GET      /users/:user_id/alias_addresses/:id(.:format)                                            alias_addresses#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/alias_addresses/:id(.:format)                                            alias_addresses#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/alias_addresses/:id(.:format)                                            alias_addresses#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/alias_addresses/:id(.:format)                                            alias_addresses#destroy {:member_path=>":user_key"}
+              user_known_addresses GET      /users/:user_id/known_addresses(.:format)                                                known_addresses#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/known_addresses(.:format)                                                known_addresses#create {:member_path=>":user_key"}
+            new_user_known_address GET      /users/:user_id/known_addresses/new(.:format)                                            known_addresses#new {:member_path=>":user_key"}
+           edit_user_known_address GET      /users/:user_id/known_addresses/:id/edit(.:format)                                       known_addresses#edit {:member_path=>":user_key"}
+                user_known_address GET      /users/:user_id/known_addresses/:id(.:format)                                            known_addresses#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/known_addresses/:id(.:format)                                            known_addresses#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/known_addresses/:id(.:format)                                            known_addresses#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/known_addresses/:id(.:format)                                            known_addresses#destroy {:member_path=>":user_key"}
+                       user_tokens GET      /users/:user_id/tokens(.:format)                                                         tokens#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/tokens(.:format)                                                         tokens#create {:member_path=>":user_key"}
+                    new_user_token GET      /users/:user_id/tokens/new(.:format)                                                     tokens#new {:member_path=>":user_key"}
+                   edit_user_token GET      /users/:user_id/tokens/:id/edit(.:format)                                                tokens#edit {:member_path=>":user_key"}
+                        user_token GET      /users/:user_id/tokens/:id(.:format)                                                     tokens#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/tokens/:id(.:format)                                                     tokens#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/tokens/:id(.:format)                                                     tokens#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/tokens/:id(.:format)                                                     tokens#destroy {:member_path=>":user_key"}
+             user_meeting_comments GET      /users/:user_id/meetings/:meeting_id/comments(.:format)                                  comments#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings/:meeting_id/comments(.:format)                                  comments#create {:member_path=>":user_key"}
+          new_user_meeting_comment GET      /users/:user_id/meetings/:meeting_id/comments/new(.:format)                              comments#new {:member_path=>":user_key"}
+         edit_user_meeting_comment GET      /users/:user_id/meetings/:meeting_id/comments/:id/edit(.:format)                         comments#edit {:member_path=>":user_key"}
+              user_meeting_comment GET      /users/:user_id/meetings/:meeting_id/comments/:id(.:format)                              comments#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/meetings/:meeting_id/comments/:id(.:format)                              comments#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/meetings/:meeting_id/comments/:id(.:format)                              comments#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/meetings/:meeting_id/comments/:id(.:format)                              comments#destroy {:member_path=>":user_key"}
+     user_meeting_suggestion_votes GET      /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes(.:format)          votes#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes(.:format)          votes#create {:member_path=>":user_key"}
+  new_user_meeting_suggestion_vote GET      /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/new(.:format)      votes#new {:member_path=>":user_key"}
+ edit_user_meeting_suggestion_vote GET      /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/:id/edit(.:format) votes#edit {:member_path=>":user_key"}
+      user_meeting_suggestion_vote GET      /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/:id(.:format)      votes#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/:id(.:format)      votes#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/:id(.:format)      votes#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/meetings/:meeting_id/suggestions/:suggestion_id/votes/:id(.:format)      votes#destroy {:member_path=>":user_key"}
+          user_meeting_suggestions GET      /users/:user_id/meetings/:meeting_id/suggestions(.:format)                               suggestions#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings/:meeting_id/suggestions(.:format)                               suggestions#create {:member_path=>":user_key"}
+       new_user_meeting_suggestion GET      /users/:user_id/meetings/:meeting_id/suggestions/new(.:format)                           suggestions#new {:member_path=>":user_key"}
+      edit_user_meeting_suggestion GET      /users/:user_id/meetings/:meeting_id/suggestions/:id/edit(.:format)                      suggestions#edit {:member_path=>":user_key"}
+           user_meeting_suggestion GET      /users/:user_id/meetings/:meeting_id/suggestions/:id(.:format)                           suggestions#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/meetings/:meeting_id/suggestions/:id(.:format)                           suggestions#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/meetings/:meeting_id/suggestions/:id(.:format)                           suggestions#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/meetings/:meeting_id/suggestions/:id(.:format)                           suggestions#destroy {:member_path=>":user_key"}
+  invite_participants_user_meeting GET      /users/:user_id/meetings/:id/invite_participants(.:format)                               meetings#invite_participants {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings/:id/invite_participants(.:format)                               meetings#invite_participants {:member_path=>":user_key"}
+uninvite_participants_user_meeting POST     /users/:user_id/meetings/:id/uninvite_participants(.:format)                             meetings#uninvite_participants {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/meetings/:id/uninvite_participants(.:format)                             meetings#uninvite_participants {:member_path=>":user_key"}
+    send_message_form_user_meeting GET      /users/:user_id/meetings/:id/send_message_form(.:format)                                 meetings#send_message_form {:member_path=>":user_key"}
+         send_message_user_meeting POST     /users/:user_id/meetings/:id/send_message(.:format)                                      meetings#send_message {:member_path=>":user_key"}
+           send_dates_user_meeting GET      /users/:user_id/meetings/:id/send_dates(.:format)                                        meetings#send_dates {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings/:id/send_dates(.:format)                                        meetings#send_dates {:member_path=>":user_key"}
+                leave_user_meeting DELETE   /users/:user_id/meetings/:id/leave(.:format)                                             meetings#leave {:member_path=>":user_key"}
+                     user_meetings GET      /users/:user_id/meetings(.:format)                                                       meetings#index {:member_path=>":user_key"}
+                                   POST     /users/:user_id/meetings(.:format)                                                       meetings#create {:member_path=>":user_key"}
+                  new_user_meeting GET      /users/:user_id/meetings/new(.:format)                                                   meetings#new {:member_path=>":user_key"}
+                 edit_user_meeting GET      /users/:user_id/meetings/:id/edit(.:format)                                              meetings#edit {:member_path=>":user_key"}
+                      user_meeting GET      /users/:user_id/meetings/:id(.:format)                                                   meetings#show {:member_path=>":user_key"}
+                                   PATCH    /users/:user_id/meetings/:id(.:format)                                                   meetings#update {:member_path=>":user_key"}
+                                   PUT      /users/:user_id/meetings/:id(.:format)                                                   meetings#update {:member_path=>":user_key"}
+                                   DELETE   /users/:user_id/meetings/:id(.:format)                                                   meetings#destroy {:member_path=>":user_key"}
+                             users GET      /users(.:format)                                                                         users#index {:member_path=>":user_key"}
+                                   POST     /users(.:format)                                                                         users#create {:member_path=>":user_key"}
+                          new_user GET      /users/new(.:format)                                                                     users#new {:member_path=>":user_key"}
+                         edit_user GET      /users/:id/edit(.:format)                                                                users#edit {:member_path=>":user_key"}
+                              user GET      /users/:id(.:format)                                                                     users#show {:member_path=>":user_key"}
+                                   PATCH    /users/:id(.:format)                                                                     users#update {:member_path=>":user_key"}
+                                   PUT      /users/:id(.:format)                                                                     users#update {:member_path=>":user_key"}
+                                   DELETE   /users/:id(.:format)                                                                     users#destroy {:member_path=>":user_key"}
+               show_administration GET      /:user_key(.:format)                                                                     users#show
+        show_administration_mobile GET      /:user_key/settings(.:format)                                                            users#show
+                     confirm_alias PATCH    /confirm_alias/:confirmation_hash(.:format)                                              alias_addresses#confirm
+            delete_known_addresses DELETE   /users/:user_key/delete_known_addresses(.:format)                                        known_addresses#delete_known_addresses
+                         userinfos GET      /:user_key/userinfos(.:format)                                                           users#get_userinfos
+                 get_meeting_infos GET      /:user_key/meetinginfos/:meeting_id(.:format)                                            meetings#get_meetinginfos
+                  get_participants GET      /users/:user_key/meeting/:meeting_id/participants(.:format)                              meetings#get_participants
+                      show_meeting GET      /:user_key(/:id)(.:format)                                                               meetings#show
+                      edit_meeting GET      /:user_key/:id/edit(.:format)                                                            meetings#edit
+                   show_suggestion GET      /:user_key/:meeting_id(/:id)(.:format)                                                   suggestions#show
+                   pick_suggestion POST     /:user_key/meeting/:meeting_id/suggestions/:id/pick(.:format)                            suggestions#pick

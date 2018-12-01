@@ -1,0 +1,19 @@
+= raw t('.invited')
+
+= raw t('.user_invited_you', :user => user_name_or_email(@inviting_user) )
+= ""
+= @meeting.title
+= ""
+
+- unless @invitation_text.blank?
+  = '"' + h(@invitation_text) + '"'
+
+= ""
+= raw t('teaco_mailer.jump_to_meeting')
+= ""
+
+- meeting_link = show_meeting_url(:user_key => @user.key, :id => @meeting.id)
+= "#{meeting_link}"
+= ""
+
+= raw t('teaco_mailer.keep_link')

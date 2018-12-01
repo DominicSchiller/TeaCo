@@ -1,0 +1,13 @@
+-# MOBILE
+- i = 0
+- days ||= get_day_hash_for(@meeting.suggestions)
+- freebusy = @meeting.freebusy_day_hash
+- days.keys.sort.each do |day|
+  - suggestions = days[day]
+  - day_freebusy = freebusy[day] || []
+  .col-xs-12.day_background.margin-bottom-2
+    %b.date_text{ :id => "day_header_#{day}" }
+      = I18n.l(day, :format => :with_weekday)
+    /%hr.underlined{ style: "margin-top: 0px;" }
+  - suggestions.each do |suggestion|
+    = render :partial => "meetings/suggestion_box_mobile.haml", :locals => { :suggestions => suggestions, :day => day, :freebusy => day_freebusy, :sugg => suggestion, :skip_outer => false }

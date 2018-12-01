@@ -1,0 +1,106 @@
+.col-xs-12#complete_meeting_list
+  .row
+    - if meetings.empty?
+      %p.no_comments.margin-top-1= raw t('meetings.no_meetings_yet')
+
+    %table.meeting_list#meeting_list.margin-top-1.margin-bottom-1
+      - loopcounter = 0
+      -#%tr.meeting_list_head.visible-lg.visible-md
+        %th{ style: "width: 50px;" }
+          //= t('users.meeting_list.restricted')
+        %th{ style: "width: 50px;" }
+          //= t('users.meeting_list.initiator')
+        %th
+          = t('users.meeting_list.title')
+        %th
+          = t('users.meeting_list.participants')
+        %th
+          = t('users.meeting_list.vote_progress')
+        %th
+          = t('users.meeting_list.last_activity')
+        %th
+          = t('users.meeting_list.duplicate')
+        %th
+          = t('users.meeting_list.leave') + " / " + t('users.meeting_list.delete')
+
+      - meetings.sort_by{ |m| m.updated_at }.reverse_each do |meeting|
+        - loopcounter += 1
+        %tr#meetings_row{class: cycle("odd", "even")}
+          %td#restricted
+            - if meeting.restricted
+              %i.icon-lock.medium_icon{ title: t('tooltips.restricted_meeting_explain'), class: "tipped_right" }
+          %td#initiator
+            - if meeting.initiator == @user
+              %i.icon-user.medium_icon{ title: t('tooltips.you_are_initiator'), class: "tipped_right" }
+          %td#name
+            = link_to truncate(meeting.title, length: 20), user_meeting_path(@user, meeting), class: "visible-xs"
+            = link_to truncate(meeting.title, length: 30), user_meeting_path(@user, meeting), class: "visible-sm"
+            = link_to meeting.title, user_meeting_path(@user, meeting), class: "hidden-xs hidden-sm"
+          %td#participants.visible-md.visible-lg.visible-sm
+            %i.icon-users.medium_icon{ title: t('tooltips.number_of_participants'), class: "tipped_right" }
+            = meeting.participants.count
+          %td
+            .hidden-xs= get_percentage_of_open_suggestions(meeting).to_s + "% " + t('users.meeting_list.voted')
+            .hidden-xxs.hidden-sm.hidden-md.hidden-lg= get_percentage_of_open_suggestions(meeting).to_s + "% "
+          %td.visible-sm.visible-md.visible-lg= raw t('ago', :time => time_ago_in_words(meeting.updated_at))
+          %td.text-center#actions
+
+            -#= link_to t('users.meeting_list.clone'), :rel => new_user_meeting_path(@user, {:clone => meeting.id}), :class => "clone_meeting", :title => t('.clone_meeting')
+            // Mobil
+            =link_to new_user_meeting_path(@user, {:clone => meeting.id}), "data-toggle":"dropdown", :title => t('users.meeting_list.clone_meeting'), id: "trash", class: "dropdown-toggle hidden-md hidden-lg" do
+              %span.icon-clone.large_icon
+
+            // TODO geht noch nicht
+            -#=link_to "#", rel: new_user_meeting_path(@user, {:clone => meeting.id}), "data-toggle":"dropdown", :title => t('users.meeting_list.clone_meeting'), class: "clone_meeting dropdown-toggle hidden-xs hidden-sm" do
+            -#  =t('users.meeting_list.clone')
+            -#  %span.icon-clone.medium_icon{style: "padding-right: 50px;"}
+            -#  %div.dropdown-menu
+            -#    =render layout: false, template: 'meetings/new.haml', locals: { clone: meeting.id }
+
+            %div.dropdown
+              // Desktop TODO Wird komplett zum Link, nachdem man in das Textfeld geklickt hat? Es öffnet sich immerhin die NEW-Form
+              =link_to new_user_meeting_path(@user, {:clone => meeting.id}), "data-toggle":"dropdown", :title => t('users.meeting_list.clone_meeting'), class: "dropdown-toggle hidden-xs hidden-sm" do
+                =t('users.meeting_list.clone')
+                %span.icon-clone.medium_icon{style: "padding-right: 50px;"}
+
+              %div.dropdown-menu.dropdown-menu-right
+                =render layout: false, template: 'meetings/new.haml', locals: { clone: meeting}
+
+
+            // TODO Mobil: klonen-Funktion
+            // Mobil link auf create new meeting (erscheint ganz oben) TODO übergabe von bekannten Informationen -> wird normal über params mitgegeben -> probleme im Controller!
+            //  %li.margin-right-1.header_new_meeting{style: "margin-top: 4px; left: 100%;"}
+            //  .panel.panel-default.no_border.no_shadow.margin-bottom-0
+            //    .panel-heading.no_border#headingNewMeeting{ "data-toggle":"collapse", href:"#collapseNewMeeting" }
+            //      .panel-title.only_small
+            //        = link_to image_tag("icons/plus.png", style: "width: 25px;"), "aria-expanded":"false", "aria-controls":"collapseNewMeeting" , rel: new_user_meeting_path(@user) ,href: "#", class: "header_bar_button", :title => t('tooltips.create_new_meeting')
+
+            //= link_to t('users.meeting_list.clone'), clone_meeting_path(:id => meeting.id)
+          %td#actions
+            - if meeting.destroyable_by?(@user)
+              // Mobil
+              = link_to user_meeting_path(@user, meeting), method: :delete, :title => t('users.show.delete'), data: { confirm: t('confirmation_text') }, class: "hidden-md hidden-lg", remote: true do
+                %span.icon-trash-empty.large_icon
+              // Desktop
+              = link_to user_meeting_path(@user, meeting), method: :delete, :title => t('users.show.delete'), data: { confirm: t('confirmation_text') }, class: "hidden-xs hidden-sm", remote: true do
+                =t('users.show.delete')
+                %span.icon-trash-empty.medium_icon
+            - else
+              // Mobil
+              = link_to leave_user_meeting_path(@user, meeting), title: t('users.meeting_list.leave'), data: { confirm: t('confirmation_text') }, method: :delete, class: "hidden-md hidden-lg", remote: true do
+                %span.icon-logout.large_icon
+              // Desktop
+              = link_to leave_user_meeting_path(@user, meeting), title: t('users.meeting_list.leave'), "data-confirm": t('confirmation_text'), method: :delete, remote: true,  class: "hidden-xs hidden-sm" do
+                =t('users.show.leave')
+                %span.icon-logout.medium_icon
+
+  .row
+    - if loopcounter > 10
+      .col-xs-12.padding-right-0.hidden-xs.hidden-sm
+        %div.pull-right.margin-bottom-1#meetings_showAll
+          %a.panel_button#meetings_showAll_link{ rel: t('users.meeting_list.showTenMeetings'), role: "button", class:"btn btn-primary " }
+            = raw t('users.meeting_list.showAllMeetings')
+      .col-xs-12.hidden-md.hidden-lg
+        %div.margin-bottom-1#meetings_showAll
+          %a#meetings_showAll_link{ rel: t('users.meeting_list.showTenMeetings'), role: "button", class:"btn btn-primary btn-block " }
+            = raw t('users.meeting_list.showAllMeetings')

@@ -1,0 +1,566 @@
+fr:
+
+  "maybe": "peut-&ecirc;tre"
+  "yes": "oui"
+  "no": "non"
+  "?": "?"
+
+  intro:
+    time_scheduling: ordonnancement temps.
+    fast_and_easy: rapide et facile.
+    explain_teaco: "Avec TeaCo, la détermination de rendez-vous est un jeu d'enfants.<br>Suggérer des dates, inviter les participants et laissez les voter.<br>C'est tout."
+    pro1: "Planifier des meetings avec plusieurs participants."
+    pro2: "L'entrée est réussit rapidement et facilement."
+    pro3: "Pas besoin de retenir votre mot de passe."
+    pro4: "Utilisez TeaCo aussi sur votre portable."
+    new_account: "Créer un nouveau comtpe"
+    diashow: TODO
+    teaco_mobile: TeaCo Mobile.
+    everywhere_you_need_it: Toujours sur vous.
+    explain_mobile: "Vous pouvez également utiliser TeaCo en route.<br/>Soit avec votre browser mobile ou avec votre App iPhone.<br/>Pour vous, TeaCo est disponible partout."
+    no_password: Pas de mot de passe!
+    personal_link: Un lien personnel.
+    explain_password: "Vouz n'avez pas besoin de retenir un mot de passe. Vous pouvez accéder TeaCO avec votre lien personnel fourni dans l'e-mail. Il suffit de le sauvegarder directement dans vos favoris.<br />Si vous préférez un mot de passe, il suffit d'en créer un."
+
+  confirmation_text: Ce processus est irr&eacute;versible. Vous &ecirc;tes s&ucirc;r?
+  confirm: OK
+  cancel: Annuler
+  not_mine_warning: "Vous n'avez pas cr&eacute;e cette proposition. Vous &ecic;tes s&ucirc;r de vouloir le modifier?"
+  reset_votes_warning: "Autres participants ont d&eacute;j&agrave; vot&eacute; sur cette proposition!\nTous les votes pour cette proposition devraient &ecirc;tre recul&eacute;,
+    parceque vos participants n'auront peut-&eacute;tre pas de temps &agrave; la nouveau proposition.\n\nChoisissez OK pour reculer les votes."
+  inform_users: "Vous avez recul&eacute; les votes pour une proposition de date.
+    <br/>Informez vos participants par un commentaire qu'ils devaient voter encore une fois s.v.p.!"
+
+  notices:
+    comment_created: Commentaire ajouté
+    comment_destroyed: Commentaire supprimé
+    comment_updated: Mise à jour des commentaires
+    alias_address_created: Courriel enregistré
+    alias_address_deleted: Courriel supprimé
+    known_address_deleted: Courriel supprimé
+    meeting_created: Réunion créée
+    meeting_updated: Réunion mise à jour
+    meeting_destroyed: Suppression de la réunion
+    meeting_cloned: Réunion clonée
+    meeting_leaved: Rencontre feuilleté
+    participant_invited: Participants invités
+    participant_uninvited: Participants non invités
+    date_sent: Date d'envoi
+    message_sent: Message envoyé
+    suggestion_created: Suggestion ajoutée
+    suggestion_updated: Suggestion mise à jour
+    suggestion_deleted: Suggestion supprimée
+    suggestion_picked: Suggestion choisie
+    user_created: Compte créé
+    user_deleted: Compte supprimé
+    user_updated: Mise à jour du compte
+    logged_in: Bienvenue! Vous êtes maintenant connecté
+
+  alerts:
+    error: Désolé. Désolé. Quelque chose ne va pas
+    suggestion_not_created: La suggestion n' a pas pu être créée
+    suggestion_not_updated: Suggestion n' a pas pu être mise à jour
+    user_not_created: Le compte n' a pas pu être créé
+    user_not_updated: Le compte n' a pas pu être mis à jour
+    login_failed: Données de connexion non valides
+
+  layouts:
+    users:
+      welcome: Bienvenue chez TeaCo
+    header_bar:
+      new_meeting: Nouveau Meeting
+      new_meeting_short: Nouv.
+      login: Connexion
+      help: Aide
+      current_user: "Bienvenue, %{user}!"
+    footer_bar:
+      about: Concernant TeaCo
+      about_text: "<div>TeaCo est un outil léger qui doit faciliter la recherche de rendez-vous de toutes sortes,<br />
+        d'un meeting jusqu'&agrave; la soirée de cinéma,<br />
+        aux petits et grands groupes de personnes.<br />
+        TeaCo est un système qui est basé sur l'ImiCaToo développé par l'IMIS,<br />
+        qui se caractérise en particulier par une meilleure utilité dans l'application.<br />
+		Avec TeaCo il est possible:
+        <ul style='list-style-type:circle; margin:17px;'>
+          <li>de créer des meetings et d'inviter des participants</li>
+          <li>de créer des propositions de rendez-vous et de les faire voter</li>
+          <li>de laisser des commentaires</li>
+        </ul>
+      </div>"
+      imprint: Mentions l&eacute;gales
+      bugreport: Annoncer un bogue
+      expert_features: "Caractéristiques pour les experts"
+    imprint:
+      imprint: Mentions légales
+      credits: Credits
+      inOrder: (par ordre d'assistance)
+      publisher: Éditeur
+
+  users:
+    show:
+      my_meetings: Mes meetings
+      last_update: Modification plus r&eacute;cente
+      delete: supprimer
+      leave: quitter
+      settings: Param&egrave;tres
+      freebusy_url: "Free/Busy-URL"
+      freebusy_url_explain: "Sp&eacute;cifiez votre liste Free/Busy mise &agrave; disposition en ligne en format iCalender ici et TeaCo fera voir aux autres participants si vous n'&ecirc;tes pas disponible aux certains dates ou temps."
+      save_changes: "Enregistrer les modifications"
+      activate_aliases: "Adresses e-mails"
+      alias_explain: "Ici vous pouvez sp&eacute;cifier vos adresses e-mails supplementaires. Tant vous avez acc&egrave;s par une adresse centrale &agrave; tous vos meeting pour lesquels vous &ecirc;tes invit&eacute; par une de ces adresses. Si vous avez d&eacute;j&agrave; un compte avec une de ces adresses les meetings correspondants seront adopt&eacute; dans l'autre compte."
+      declare_different_address: "Pour changer cette adresse vous pouvez  d&eacute;verrouiller d'adresse supplementaire ci-apr&egrave;s."
+      delete_account: "Supprimer compte de TeaCo"
+      deletion_info: "Cliquez le lien ci-dessous pour supprimer votre compte de TeaCo.<br />
+        <span style='font-weight:bold'>Attention:</span> Avec votre compte toutes vos donn&eacute;es seront supprim&eacute;s, et ce sont:
+        <ul style='list-style:square inside;'>
+          <li>votre adresse e-mail,</li>
+          <li>votre nom,</li>
+          <li>toutes les propositions de date vous avez cr&eacute;es,</li>
+          <li>toute l'information concernant vos votes dans les meetings,</li>
+          <li>tous vos commentaires,</li>
+          <li>tous les meetings vous avez initi&eacute;s.</li>
+        </ul>
+        Si necessaire, informez donc tous les participants des meetings initi&eacute;s par vous avant de supprimer votre compte!"
+      delete_irreversibly: "Supprimer mon compte de TeaCo irr&eacute;versiblement!"
+      delete_account: "Supprimer un compte"
+    alias_addresses:
+      alias_address: "Adresse à activer"
+      register_alias: "Activer adresse"
+      registered_aliases: "Adresses d&eacute;j&agrave activ&eacute;es:"
+      awaits_confirmation: "Attendant confirmation"
+    known_addresses:
+      confirm_uninvitation_text: '&Ecirc;tes-vous s&ucirc;r de vouloir supprimer tous les adresses e-mail s&eacute;lectionn&eacute;s?'
+      confirm_delete_known_addresses_text: Are you sure you want to delete all selected e-mail addresses?
+    new:
+      create_new_account: Cr&eacute;er un nouveau compte
+      email: "Adresse e-mail:"
+      email_explain: "Votre lien personnel sera envoy&eacute; &agrave cet adresse e-mail, autant que des invitiations et des messages d'autres clients de TeaCo."
+      name: "Nom (optionnel):"
+      name_explain: "Si vous enregistrez votre nom il sera affich&eacute; aux autres clients de TeaCo au lieu de votre adresse e-mail."
+      password: "Mot de passe (opt.):"
+      password_explain: "Si vous indiquer un mot de passe, vous pouvez-vous connecter avec votre adresse e-mail et le mot de passe que vous avez indiqué."
+      language: Langage
+      create_submit: Cr&eacute;er compte
+      resend_link: Si vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute; chez TeaCo vous pouvez faire parvenir votre lien personnel de TeaCo encore une fois par donnant votre adresse-email.
+      tutorial: Activer le tutoriel
+      vote_tutorial: Votez
+      new_meeting_tutorial: Nouvelle réunion
+    update:
+      settings_saved: "Donn&eacute;es enregistr&eacute;es avec succ&egrave;s!"
+    create:
+      account_created: "<h2>Compte cr&eacute;&eacute; avec succ&egrave;s!</h2>Un e-mail avec votre lien de compte personnel a &eacute;t&eacute; envoy&eacute; a votre adresse e-mail. Controllez votre bo&icirc;te de r&eacute;ception maintenant!"
+      account_renewed: "<h2>E-mail avec les donn&eacute;es de connexion envoy&eacute;!</h2>Vous avez d&eacute;j&agrave; un compte chez TeaCo. Les donn&eacute;es de connexion correspondantes ont &eacute;t&eacute; envoy&eacute;es &agrave; votre adresse e-mail!"
+    meeting_list:
+      clone: "cloner"
+      clone_meeting: "Cloner meeting"
+      voted: "a voté"
+      showTenMeetings: afficher 10 meetings
+      showAllMeetings: afficher tous les meetings
+    login:
+      email: Adresse e-mail
+      password: Mot de passe
+      submit: Connecter
+
+  meetings:
+    title: Titre
+    select_a_meeting_long: Choisissez un meeting s.v.p.
+    select_a_meeting_short: Meetings
+    restricted_meeting: Meeting restreint
+    new:
+      submit_new_meeting: Cr&eacute;er meeting
+    invitation_form:
+      invited_user_addresses: "Adresses e-mails des personnes &agrave; inviter"
+      invitation_message: "Texte d'invitation"
+      also_create_comment: "Ajouter le texte d'invitation comme commentaire aussi"
+      invitation_submit: "Envoyer les invitations!"
+      uninvite_button: D&eacute;commander s&eacute;lectionn&eacute;s
+      uninvite_button_short: D&eacute;commander
+      send_message_button: Envoyer un message aux s&eacute;lectionn&eacute;s
+      send_message_button_short: Envoyer message
+      participants: Participants de ce meeting
+    picked_suggestions_list:
+      please_pick_suggestions: "Marquez au moins une proposition de date comme finale s.v.p. par cliquant le bouton correspondant."
+      remove_from_picked_list: Supprimer cette proposition de la liste des propositions de dates finales
+    send_dates_form:
+      message: "Message:"
+      location: "Lieu (facultatif):"
+      also_create_comment: "Ajouter le message comme commentaire aussi"
+      send_dates_submit: "Envoyer donn&eacute;es de date!"
+    send_message_form:
+      message: "Message:"
+      send_message_submit: "Envoyer message!"
+    open_suggestions:
+      open_suggestions: Propositions ouvertes
+    detail_panel:
+      confirm_uninvitation_text: '&Ecirc;tes-vous s&ucirc;r de vouloir d&eacute;commander tous les participants s&eacute;lectionn&eacute;s?'
+      new_suggestion: Nouvelle proposition de date
+      participants: Participants de ce meeting
+      invite_participants_button: Inviter de nouveaux participants
+      uninvite_confirm: D&eacute;commander!
+      uninvite_cancel: Annuler
+      uninvite_button: D&eacute;commander s&eacute;lectionn&eacute;s
+      uninvite_button_short: D&eacute;commander
+      send_message_button: Envoyer un message aux s&eacute;lectionn&eacute;s
+      send_message_button_short: Envoyer message
+      finish_planning: Terminer le planning du meeting
+      send_dates_button: Envoyer les donn&eacute;es de date
+      check_final_dates: Envoyer les donn&eacute;es de date
+      open_suggestions: "Propositions de dates &agrave; voter"
+
+  suggestions:
+    created: Nouvelle proposition de date cr&eacute;e!
+    edit_form:
+      start: "début"
+      duration: "durée"
+      end: "fin"
+      add: Ajouter
+      update: Actualiser
+      from: de
+      to: '&agrave;'
+
+  comments:
+    comment:
+      edit: modifier
+      delete: effacer
+      comment_deleted: "<i>Commentaire effac&eacute;</i>"
+    comments_area:
+      comments: Commentaires
+      write_comment: Ajouter un commentaire
+      write_comment_short: ajouter
+    edit_form:
+      comment_text: "Texte de commentaire:"
+      also_mail: Informer tous les participants par e-mail aussi
+      send_comment: Envoyer commentaire
+    list:
+      no_comments_yet: "Il n'y a pas encore de commentaire."
+
+  alias_addresses:
+    create:
+      confirm_alias_sent: "Un e-mail avec un lien d'activation &eacute;tait envoy&eacute; a l'adresse donn&eacute;. Suivez les instructions dans l'e-mail pour c&eacute;verrouiller l'adresse."
+    confirm:
+      address_activated_title: "Adresse activ&eacute; avec succ&egrave;s!"
+      address_activated: "L'adresse %{address} &eacute;tait d&eacute;verrouiller pour utilisation dans votre compte. Visiter votre compte de TeaCo maintenant et exp&eacute;perimentez!"
+    destroy:
+      confirm_alias_deleted: "L'adresse e-mail sélectionnée a éte supprimé avec succès"
+
+  known_addresses:
+    list:
+      known_addresses: "Adresses connues (cliquez pour accepter)"
+      known_addresses_short: "Adresses connues"
+
+  votes:
+    index:
+      edit_time: Modifier les temps
+
+  tooltips:
+    vote_yes: 'Voter pour "oui" '
+    vote_maybe: 'Voter pour "peut-&ecirc;tre"'
+    vote_no: 'Voter pour "non"'
+    edit: Modifier
+    restricted_meeting_tooltip: "Dans un meeting restreint chaque participant a seulement le droit de changer ou supprimer ses propres propositions de dates."
+    restricted_meeting_explain: Ce meeting est restreint:<br />Chaque participant a seulement le droit de modifier les proposition de dates qu'il a cr&eacute;&eacute; lui-m&ecirc;me.
+    restricted_suggestion_explain: Vous n'avez pas le droit de modifier cette proposition de date:<br /> Ce meeting est restreint et vous n'avez pas cr&eacute;&eacute; cette proposition.
+    delete_suggestion: Supprimer cette proposition de date
+    pick_suggestion: Marquer comme date finale
+    unpick_suggestion: Annuler le marquage comme date finale
+    meeting_selector: Voir un autre meeting
+    change_title: "Modifier titre"
+    edit_time: Cliquez ici pour changer les temps de cette proposition de date.
+    create_new_meeting: Cr&eacute;er un nouveau meeting et inviter de participants
+    is_initiator: "%{user} est intitateur de ce meeting."
+    write_comment: Ajouter un commentaire texte
+    delete_comment: Effacer commentaire
+    edit_comment: Modifier commentaire
+    click_to_close: Cliquer pour fermer
+    you_are_initiator: Vous &ecirc;tes initateur de ce meeting.
+    suggestion_out_of_view: "Au moins une proposition se trouve en dehors de la zone visible.<br />Cliquez ici pour l'afficher."
+    busy_users_title: "Participants pas disponible"
+    busy_users: "Selon leurs listes Free/Busy les participants suivants ne sont pas disponibles aux temps indiqu&eacute;s."
+    delete_alias: "Supprimer adresse"
+    make_master_address: "D&eacute;signer adresse principale"
+    is_master_address: "Ceci est votre adresse principale."
+    initiator_cannot_be_uninvited: "Il n'est pas possible de d&eacute;commander l'initateur d'un meeting."
+    vote_results: "R&eacute;sultats &eacute;lectoraux"
+    previous_suggestion: "Proposition de date pr&eacute;cedente"
+    next_suggestion: "Prochaine proposition de date"
+    delete_meeting: "Supprimer ce meeting"
+    leave_meeting: "Quitter ce meeting"
+    login: "Connectez-vous en utilisant votre adresse e-mail et votre mot de passe pour être transmis à votre profil"
+    number_of_participants: "Nombre de participants du meeting"
+    add_participant: Ajouter cet participant
+
+  teaco_mailer:
+    keep_link: "Ne passez ce lien &agrave; personne - autres gens auraient acc&egrave;s &agrave; votre compte de TeaCo! Faites attention &agrave; ce fait si vous r&eacute;pondiez &agrave; cet e-mail ou le transf&eacute;riez!"
+    jump_to_meeting: Avec le lien ci-dessous vous avec acc&egrave;s au meeting correnspondant chez TeaCo.
+    account_confirmation:
+      welcome_user: "Salut %{user}, bienvenue chez TeaCo."
+      myteaco_link: "Votre lien personnel de MyTeaCo:"
+    comment_notification:
+      subject: "TeaCo: Nouveau commentaire chez %{meeting}"
+      new_comment_written: "%{user} a ajout&eacute; un nouveau commentaire au meeting %{meeting} :"
+    dates_confirmation_html:
+      subject: "TeaCo: Dates pour %{meeting}"
+      planning_finished: Le planning du meeting %{meeting} est termin&eacute;.
+      picked_dates: "%{user} a declar&eacute; finales les dates suivantes:"
+      associated_message: "Le message suivant &eacute;tait compos&eacute; pour vous informer:"
+    invitation:
+      subject: "TeaCo: Invitation &agrave; %{meeting}"
+      invited: Vous &ecirc;tes invit&eacute;.
+      user_invited_you: "%{user} vous a invit&eacute; au planning de"
+    user_message:
+      subject: "TeaCo: Message concernant %{meeting}"
+      message_from_user: "%{user} vous a envoy&eacute; un message concernant le meeting de TeaCo '%{meeting}':"
+    alias_confirmation:
+      subject: "TeaCo: D&eacute;verrouiller adresse e-mail"
+      alias_confirmation: "D&eacute;verrouiller une adresse e-mail pour utilisation chez TeaCo"
+      attempt_to_activate: "Avec cet e-mail vous pouvez utiliser votre adresse e-mail %{address} avec votre compte de TeaCo."
+      follow_activation_link: "Vous devez premi&egrave;rement d&eacute;verrouiller votre adresse. Cliquez le lien ci-dessous pour activer l'adresse."
+      ignore_if_spam: "Si vous n'avez pas essay&eacute; d'activer cette adresse e-mail vous pouve ignorer ce message."
+
+  errors:
+    no_valid_url: "Pas de URL valide."
+    file_not_found: "Fichier ne pouvait pas &ecirc;tre trouv&eacute;."
+    file_too_large: "Le fichier donn&eacute; est trop grand et &eacute;tait refus&eacute;."
+    server_unavailable: "Il n'&eacute;tait pas possible de connecter au serveur donn&eacute;."
+    no_freebusy_found: "Le fichier donn&eacute; ne contient pas de donn&eacute;es Free/Busy valides."
+    common_error: "Un erreur s'est produit:: %{error}"
+    unique_alias: "est une adresse e-mail d&eacute;j&egrave; enregistr&eacute;e chez TeaCo et &agrave; cause de cela ne peut pas &ecirc;tre d&eacute;verrouill&eacute;e."
+    not_found: "TeaCo :: Introuvable"
+    confirmation_failed: "TeaCo :: Activation pas possible"
+    invalid_login: "Adresse e-mail ou mot de passe ne sont pas valides."
+
+  push:
+    invitation_message: "Invitation par %{name} au planning de \"%{title}\""
+    user_message: "%{name} &eacute;crit en r&eacute;f&eacute;rence &agrave; \"%{title}\": \"%{message}\""
+    final_dates_single: "Date limite pour la \"%{title}\": %{dates}"
+    final_dates_multi: "Dates limite pour la \"%{title}\": %{dates}"
+    location: "\nLieu: %{location}"
+    comment_message: "%{name} &eacute;crit dans \"%{title}\": \"%{message}\""
+
+  ago: "avant %{time} "
+  close: fermer
+  invited_users: "Les clients suivants &eacute;taient invit&eacute;s:"
+  final_dates: "Les dates finales suivantes &eacute;taient enveoy&eacute;es:"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      short_with_weekday: "%a, %b %e"
+      long: "%e %B %Y"
+      long_ordinal: "%e %B %Y"
+      only_day: "%e"
+      with_weekday: "%a, %b %e %Y"
+
+    day_names:
+      - dimanche
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
+    month_names:
+      - ~
+      - janvier
+      - février
+      - mars
+      - avril
+      - mai
+      - juin
+      - juillet
+      - août
+      - septembre
+      - octobre
+      - novembre
+      - décembre
+    abbr_month_names:
+      - ~
+      - jan.
+      - fév.
+      - mar.
+      - avr.
+      - mai
+      - juin
+      - juil.
+      - août
+      - sept.
+      - oct.
+      - nov.
+      - déc.
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%d %B %Y %H:%M"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M:%S %Z"
+      long_ordinal: "%A %d %B %Y %H:%M:%S %Z"
+      only_second: "%S"
+      time: "%H:%M"
+    am: 'am'
+    pm: 'pm'
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "une demi-minute"
+      less_than_x_seconds:
+        zero:  "moins d'une seconde"
+        one:   "moins de 1 seconde"
+        other: "moins de %{count} secondes"
+      x_seconds:
+        one:   "1 seconde"
+        other: "%{count} secondes"
+      less_than_x_minutes:
+        zero:  "moins d'une minute"
+        one:   "moins de 1 minute"
+        other: "moins de %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "environ une heure"
+        other: "environ %{count} heures"
+      x_days:
+        one:   "1 jour"
+        other: "%{count} jours"
+      about_x_months:
+        one:   "environ un mois"
+        other: "environ %{count} mois"
+      x_months:
+        one:   "1 mois"
+        other: "%{count} mois"
+      about_x_years:
+        one:   "environ un an"
+        other: "environ %{count} ans"
+      over_x_years:
+        one:   "plus d'un an"
+        other: "plus de %{count} ans"
+    prompts:
+      year:   "Année"
+      month:  "Mois"
+      day:    "Jour"
+      hour:   "Heure"
+      minute: "Minute"
+      second: "Seconde"
+
+  number:
+    format:
+      precision: 3
+      separator: ','
+      delimiter: ' '
+    currency:
+      format:
+        unit: '€'
+        precision: 2
+        format: '%n %u'
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        precision: 2
+      # Rails <= v2.2.2
+      # storage_units: [octet, kb, Mb, Gb, Tb]
+      # Rails >= v2.3
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "octet"
+            other: "octets"
+          kb: "ko"
+          mb: "Mo"
+          gb: "Go"
+          tb: "To"
+
+  support:
+    array:
+      sentence_connector: 'et'
+      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+
+  activerecord:
+    errors:
+      email_invalid: "n'est pas valide."
+      email_already_registered: " est déj&agrave; enregistré par vous."
+      suggestion:
+        duration_too_short: "Il faut avoir au moins 30 minutes entre le d&eacute;but et la fin de la proposition."
+        start_before_end: "Le d&eacute;but de la proposition doit &ecirc;tre avant la fin."
+        date_not_in_past: "Le date de la proposition ne peut pas &ecirc;tre au pass&eacute;."
+      template:
+        header:
+          one: "Impossible d'enregistrer %{model}: 1 erreur"
+          other: "Impossible d'enregistrer %{model}: %{count} erreurs."
+        body: "Veuillez vérifier les champs suivants :"
+
+      messages:
+        is_already_invited: "est d&eacute;j&agrave; participant de ce meeting et n'&eacute;tait pas invit&eacute; encore une fois."
+        no_valid_email: "n'est pas une adresse e-mail valide et et n'&eacute;tait pas invit&eacute;."
+        inclusion: "n'est pas inclus(e) dans la liste"
+        exclusion: "n'est pas disponible"
+        invalid: "n'est pas valide"
+        confirmation: "ne concorde pas avec la confirmation"
+        accepted: "doit être accepté(e)"
+        empty: "doit être rempli(e)"
+        blank: "doit être rempli(e)"
+        too_long: "est trop long (pas plus de %{count} caractères)"
+        too_short: "est trop court (au moins %{count} caractères)"
+        wrong_length: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
+        taken: "n'est pas disponible"
+        not_a_number: "n'est pas un nombre"
+        greater_than: "doit être supérieur &agrave; %{count}"
+        greater_than_or_equal_to: "doit être supérieur ou égal &agrave; %{count}"
+        equal_to: "doit être égal &agrave; %{count}"
+        less_than: "doit être inférieur &agrave; %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal &agrave; %{count}"
+        odd: "doit être impair"
+        even: "doit être pair"
+
+    models:
+      comment: Commentaire
+      meeting: Meeting
+      suggestion: Proposition de date
+      user: Client
+      vote: Vote
+
+    attributes:
+      alias_address:
+        address: Adresse e-mail
+      comment:
+        text: Texte
+        author: Auteur
+      meeting:
+        title: Titre
+        initiator: Initiateur
+        restricted: restreint
+      suggestion:
+        date: Date
+        start: D&eacute;but
+        end: Fin
+        creator: Cr&eacute;teur
+        picked: final
+      user:
+        name: Nom
+        email: Adresse e-mail
+        key: Key
+        language: Langage
+        freebusy_url: URL Free/Busy
+        freebusy_data: Donn&eacute;es Free/Busy
+      vote:
+        decision: Vote
+        voter: Voteur

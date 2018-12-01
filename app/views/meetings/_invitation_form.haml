@@ -1,0 +1,47 @@
+.container-fluid#diplayParticipants
+  .row
+    / Adressbuch
+    .col-xs-12.col-md-3#address_list_title.padding-right-2
+      = render :partial => "known_addresses/list.haml", :locals => { :known_addresses => @user.known_addresses }
+
+    / Neuer Teilnehmer
+    .col-xs-12.col-md-4.mobile-margin-top-2#td_text.padding-left-2.padding-right-2
+      %h4.participants_expand_headline= raw t('meetings.invitation_form.new_participant')
+      = form_tag invite_participants_user_meeting_path(@user, @meeting), :class => 'ajax invitation_form', :id => "invitation_form" do
+        / Adressen Textarea
+        .row
+          .col-xs-12{ style: "overflow: hidden;" }
+            .form-group
+              %div.participants_expand_headline= label_tag 'participants', t('.invited_user_addresses'), class: "control-label"
+              = text_area_tag 'participants', "", :class => 'gain_focus form-control', :rel => "#{user_known_addresses_path(@user)}?meeting_id=#{@meeting.id}", placeholder: t(".invited_user_addresses_placeholder")
+        / Einladungstext Textarea
+        .row
+          .col-xs-12
+            .form-group
+              %div.participants_expand_headline= label_tag 'message', t('.invitation_message'), class: "control-label"
+              = text_area_tag 'message', "", class: "form-control"
+        / Checkbox auch als Kommentar
+        .row
+          .col-xs-12
+            %label.checkbox
+              %span.checkbox.margin-left-2.checkbox_margin= check_box_tag 'also_comment', class: "checkbox"
+              %span.margin-left-1.margin-top-0= label_tag 'also_comment', t('.also_create_comment'), class: "control-label"
+
+        / Button Einladung versenden
+        .row
+          .col-xs-12
+            .hidden-xs.hidden-sm#sendInvitation.text-right
+              = submit_tag t('.invitation_submit'), :id => 'invite_submit', class: "btn btn-primary panel-button"
+            .hidden-md.hidden-lg#sendInvitation
+              = submit_tag t('.invitation_submit'), :id => 'invite_submit', class: "btn btn-primary btn-block"
+
+    / Teilnehmer dieser Abstimmung
+    .col-xs-12.col-md-5.mobile-margin-top-2#participants_list.padding-left-2
+      %h4.participants_expand_headline=t('.participants')
+      = render :partial => "participants.haml"
+      .margin-top-1
+        %input.hidden-xs.hidden-sm{ get_uninvite_participants_button_attributes("large") }
+        %input.hidden-md.hidden-lg{ get_uninvite_participants_button_attributes("small") }
+      .margin-top-1
+        %input#send_message_button{ :type => "submit", :value => t('.send_message_button_short'), :disabled => true, :rel => send_message_form_user_meeting_path(@user, @meeting), class: "btn btn-primary btn-block" }
+  %br

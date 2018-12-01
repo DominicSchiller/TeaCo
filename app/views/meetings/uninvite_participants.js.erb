@@ -1,0 +1,27 @@
+/*
+page.replace "table#diplayParticipants", :partial => "invitation_form"
+
+page.call "close_form_on_id", "uninvite_submit"
+page.call "close_form_on_class", "participant_check"
+page.call "$('#uninvite_submit, #send_message_button').disable"
+
+days = get_day_hash_for(@meeting.suggestions)
+
+page.replace "suggestion_area", :partial => "meetings/suggestion_area",
+:locals => { :days => days }
+page.call "reEnableDragScroll"
+page.call "adjustSuggestionAreaWidth"
+*/
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$("table#diplayParticipants").html("<%= j render partial: "invitation_form" %>");
+
+close_form_on_id("uninvite_submit");
+close_form_on_class("participant_check");
+$('#uninvite_submit, #send_message_button').disable();
+
+<%= days = get_day_hash_for( @meeting.suggestions )%>
+
+$("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area", locals: { days: days } %>");
+
+reEnableDragScroll();
+adjustSuggestionAreaWidth();

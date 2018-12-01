@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+- votes_sorted = @votes.sort { |a,b| user_name_or_email(a.voter) <=> user_name_or_email(b.voter) }
+- votes_sorted.each do |vote|
+  %dict
+    = '<key>Decision</key>'
+    = '<string>', vote.decision, '</string>'
+    = '<key>Voter</key>'
+    = '<string>', user_name_or_email_escaped(vote.voter), '</string>'
+</array>
+</plist>

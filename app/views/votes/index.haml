@@ -1,0 +1,6 @@
+- votes_sorted = @votes.sort { |a,b| user_name_or_email(a.voter) <=> user_name_or_email(b.voter) }
+
+%ul.vote_list
+  - votes_sorted.each do |vote|
+    - decision = t :"#{vote.decision}"
+    %li{ :class => get_vote_class_for(vote) }= "#{user_name_or_email(vote.voter)}: #{decision}"

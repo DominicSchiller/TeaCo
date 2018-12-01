@@ -1,0 +1,22 @@
+<key>AliasAddressesOwnerID</key>
+= "<string>#{@user.id}</string>"
+<key>AliasAddresses</key>
+<array>
+- @user.alias_addresses.each do |address|
+  %dict
+    = "<key>Address</key>"
+    = "<string>#{address.address}</string>"
+    = "<key>IsMain</key>"
+    - if address.address == @user.email
+      = "<true/>"
+    - else
+      = "<false/>"
+    = "<key>AddressPath</key>"
+    = "<string>#{user_alias_address_path(@user, address)}</string>"
+    
+    = "<key>Confirmed</key>"
+    - if address.confirmed?
+      = "<true/>"
+    - else
+      = "<false/>"
+</array>

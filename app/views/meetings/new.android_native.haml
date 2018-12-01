@@ -1,0 +1,31 @@
+<plist version="1.0">
+<dict>
+<key>Meeting</key>
+%dict
+  = "<key>Meeting_Title</key>"
+  = "<string>#{CGI.escapeHTML(@meeting.title)}</string>"
+  = "<key>Meeting_Value</key>"
+  = "<string>#{@meeting.id}</string>"
+  = "<key>Meeting_Owner</key>"
+  = "<true/>"
+  = "<key>Restricted</key>"
+  - if @meeting.restricted
+    = "<true/>"
+  - else
+    = "<false/>"
+  = "<key>Last_Update</key>"
+  = "<string>#{time_ago_in_words(@meeting.updated_at)}</string>"
+  = "<key>Last_Update_Plain</key>"
+  = "<string>#{@meeting.updated_at.to_s()}</string>"
+  = "<key>Clone_URL</key>"
+  = "<string>#{new_user_meeting_path(@user, {:clone => @meeting.id})}</string>"
+  = "<key>Delete_URL</key>"
+  = "<string>#{insert_delete_or_leave_link_native(@user, @meeting)}</string>"
+  = "<key>VotePercentage</key>"
+  = "<string></string>"
+  = "<key>FinalCount</key>"
+  = "<string>0</string>"
+  
+= render :partial => "known_addresses/list.android_native", :locals => { :known_addresses => @user.known_addresses }
+</dict>
+</plist>

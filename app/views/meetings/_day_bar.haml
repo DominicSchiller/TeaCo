@@ -1,0 +1,18 @@
+%div#day_bar
+  - i = 0
+  - last_day = nil
+  - days.keys.sort.each do |day|
+    -# Is there a gap between the current and the previous date?
+    - if last_day && day > last_day.tomorrow
+      -# Then insert a "day divider":
+      %div.day_gap_header{ :id => "day_gap_header_#{i}" }
+        %div.left_gap_header
+        %div.gap_header
+        %div.right_gap_header
+      - i = i+1
+    - else
+      - if last_day
+        %div.day_nogap_header
+    - last_day = day
+    %div.day_header{ :id => "day_header_#{day}" }
+      = I18n.l(day, :format => :with_weekday)

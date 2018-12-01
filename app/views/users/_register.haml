@@ -1,0 +1,67 @@
+%div#box_acc
+  = form_for User.new, :html => { :class => "ajax margin-top-2 margin-bottom-2" } do |f|
+    #my_acc_table
+      .row.form-group
+        .col-md-3.col-lg-2.align-label.padding-right-0
+          = f.label :email, t('.email')+":"
+          = link_to "#", class: "info_popover hidden-xs hidden-sm", "data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" ,
+                         "data-placement": "right" , "data-content": t('users.new.email_explain') do
+            %span.icon-info-circled.large_icon
+        .col-md-9.col-lg-10
+          = f.email_field :email, :size => nil, type: "email", class: "form-control", required: true
+          .info_text.hidden-md.hidden-lg= t('users.new.email_explain')
+
+      .row.form-group
+        .col-md-3.col-lg-2.align-label.padding-right-0
+          = f.label :name, t('.name')+":"
+          = link_to "#", class: "info_popover hidden-xs hidden-sm", "data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" ,
+                         "data-placement": "right" , "data-content": t('users.new.name_explain') do
+            %span.icon-info-circled.large_icon
+        .col-md-9.col-lg-10
+          = f.text_field :name, :size => nil, class: "form-control"
+          .info_text.hidden-md.hidden-lg= t('users.new.name_explain')
+
+      .row.form-group
+        .col-md-3.col-lg-2.align-label.padding-right-0
+          = f.label :language, t('users.new.language') + ":"
+        .col-md-9.col-lg-10
+          #td_edit_language= insert_language_selector('de')
+      .row#tr_language_desc.form-group
+        .col-md-12
+          #td_empty_language.caption
+          #td_desc_language.desc.hidden-xs.hidden-sm= raw t('users.new.resend_link')
+          #td_desc_language.desc.info_text.hidden-md.hidden-lg= raw t('users.new.resend_link')
+      .row
+        .col-xs-12.text-right.hidden-xs.hidden-sm
+          #td_empty_submit.caption
+          #td_edit_submit.edit= submit_tag t('users.new.create_submit'), class: "btn btn-primary panel_button"
+        .col-xs-12.hidden-md.hidden-lg
+          #td_empty_submit.caption
+          #td_edit_submit.edit= submit_tag t('users.new.create_submit'), class: "btn btn-primary btn-block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

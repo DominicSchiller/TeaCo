@@ -1,0 +1,19 @@
+- voted = ''
+- not_yet_voted = ''
+- meetings.sort_by{ |m| m.updated_at }.reverse_each do |meeting|
+  - meeting_info = meeting_info_for(@user, meeting)
+  - restricted = meeting.restricted ? '<true/>' : '<false/>'
+  - owner = meeting.initiator == @user ? '<true/>' : '<false/>'
+  - dict = '<dict><key>Meeting_Title</key><string>' + CGI.escapeHTML(meeting.title) + '</string><key>Meeting_Value</key><string>' + meeting.id.to_s() + '</string><key>Meeting_Owner</key>' + owner + '<key>Restricted</key>' + restricted + '<key>Last_Update</key><string>' + time_ago_in_words(meeting.updated_at) + '</string><key>Last_Update_Plain</key><string>' + meeting.updated_at.to_s() + '</string><key>Clone_URL</key><string>' + new_user_meeting_path(@user, {:clone => meeting.id}) + '</string><key>Delete_URL</key><string>' + insert_delete_or_leave_link_native(@user, meeting) + '</string><key>VotePercentage</key><string>' + meeting_info[1].to_s() + '</string><key>FinalCount</key><string>' + meeting_info[2].to_s() + '</string></dict>'
+  - if !meeting_info[0]
+    - not_yet_voted = not_yet_voted + dict
+  - else
+    - voted = voted + dict
+<key>NotYetVoted</key>
+<array>
+= not_yet_voted
+</array>
+<key>Voted</key>
+<array>
+= voted
+</array>

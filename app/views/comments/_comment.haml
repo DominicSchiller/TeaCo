@@ -1,0 +1,29 @@
+-#- name = user_name_or_email(comment.author)
+.row.comment_entry{ :id => "comment_#{comment.id}" }
+  .col-xs-9.col-md-9.col-lg-10
+    %span.name
+      %span.name.comment_name= "#{comment.author}"
+      %i.time= "(#{ t('ago', :time => time_ago_in_words(comment.updated_at)) })"
+  .col-xs-3.col-md-3.col-lg-2.padding-0
+    - if comment.manipulable_by?(@user)
+      %span.pull-right.margin-right-1
+        %a{ get_edit_link_attributes(comment), role: "button", "data-toggle": "collapse", href: "#collapse_#{comment.id}", "aria-expanded": "false", "aria-controls": "collapseExample", style: "margin-top: 0px;", remote: true }
+          %span.icon-edit.large_icon.visible-xs
+          %span.icon-edit.medium_icon.hidden-xs
+      %span.margin-right-1.pull-right
+        =link_to user_meeting_comment_path(@user, @meeting, comment), get_delete_link_attributes(comment) do
+          %span.icon-trash.large_icon.visible-xs
+          %span.icon-trash.medium_icon.hidden-xs
+
+.row
+  .col-xs-12
+    .collapse.padding-right-2.padding-left-2{ id: "collapse_#{comment.id}" }
+      = render partial: 'comments/edit_form', locals: { comment: comment }
+
+.row
+  .col-xs-10.padding-left-3
+    .text{ :id => "comment_text_#{comment.id}" }<= if comment.text != Comment::COMMENT_DELETED then format_input(comment.text) else t('comments.comment.comment_deleted') end
+
+.row
+  .col-xs-12
+    %hr.margin-top-1

@@ -1,0 +1,16 @@
+/*
+page.call "close_form_on_class", "confirmed"
+page.call "close_form_on_class", "confirmed_left"
+page.remove "meetings_showAll"
+page.replace "meeting_list", :partial => "users/meeting_list", :locals => { :meetings => @user.meetings }
+page.replace "header_bar", :partial => "meetings/header_bar"
+page.call "showTen"
+*/
+
+//close_form_on_class("confirmed");
+//close_form_on_class("confirmed_left");
+$("#meetings_showAll").remove();
+$('#complete_meeting_list').html("<%= j render partial: "users/meeting_list.haml", locals: { meetings: @user.meetings } %>");
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+//$("#header_bar").html("<%#= j render partial: "meetings/header_bar.haml" %>");
+showTen();

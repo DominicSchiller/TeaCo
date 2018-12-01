@@ -1,0 +1,6 @@
+= form_tag send_message_user_meeting_path(@user, @meeting), :class => "ajax message_form" do
+  = label_tag 'message', t('.message')
+  %br/
+  = text_area_tag 'message', "", :rows => 5, :cols => 44, :class => 'full_size_input gain_focus'
+  %br/
+  = submit_tag t('.send_message_submit'), :id => 'send_message_submit'

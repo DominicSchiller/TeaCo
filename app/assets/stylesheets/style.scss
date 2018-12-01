@@ -1,0 +1,249 @@
+/*
+@charset "UTF-8";
+!* CSS Document *!
+
+body {
+	margin:0;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	!*overflow-y: scroll;*!
+	font-size:13px;
+}
+
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0;}
+img,body,html{border:0;}
+ol,ul {list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+
+a {
+	color: #333;
+}
+
+a:focus {
+	outline: 0;
+}
+!*
+h1 {
+	font-size:30px;
+	width:100%;
+	float:left;
+	display:block;
+	font-weight:normal;
+	margin:0 0 20px 0;
+	text-align:left;
+}
+
+h2 {
+	font-size:17px;
+	width:100%;
+	float:left;
+	display:block;
+	font-weight:normal;
+	font-style:italic;
+	margin:0;
+}
+
+h4 {
+	height:40px;
+	margin:0 10px 10px 10px;
+	padding:0 10px;
+	line-height:40px;
+	font-weight:normal;
+	float:left;
+	color:#FFF;
+	font-size:14px;
+	background-image:url('headline_bg.jpg');
+	background-repeat:repeat-x;
+}
+
+h6 {
+	width:100%;
+	float:left;
+	color:#333;
+	font-size:14px;
+	margin:0 0 5px 0;
+	padding:0;
+}
+
+input {
+	padding: 1px 6px;
+}
+*!
+
+div#footer {
+	font-size:13px;
+	background-color:#EEE;
+	height:40px;
+	margin:0 10px;
+	float:left;
+	text-align:center;
+	line-height:40px;
+}
+
+div#footer a.ftr_link {
+	padding:0 15px;
+	color:#333;
+}
+
+form#new_mail_form input {
+	width:200px;
+	margin-right:10px;
+}
+
+.invisible {
+  display: none;
+}
+*/
+
+/* Help Button */
+.help_list {
+	max-height: 300px;
+	overflow-y: auto;
+	padding: 10px 20px 20px 20px;
+}
+.help_list li {
+	margin-bottom: 10px;
+}
+.help_list a {
+	color: #333;
+}
+.help_list a:focus {
+	outline: 0;
+    color: orange;
+    text-decoration: none;
+}
+.help_list a:hover {
+	text-decoration: none;
+    color: orange;
+}
+.help_list li div {
+	display: none;
+}
+
+/*
+
+!* Meldungen am oberen Bildschirmrand *!
+body #errors {
+    position: fixed;
+    top: 0px;
+    margin-left: 10%;
+    width: 80%;
+    padding: 10px;
+    background-color: #EEE;
+    border-width: 0px 2px 2px 2px;
+    border-style: solid;
+    border-color: #333333;
+    z-index: 9999;
+    cursor: pointer;
+    display:none;
+}
+body #errors #error_list {
+  width: 80%;
+  float: left;
+}
+
+!* Tutorials im Header *!
+
+p#tut_desc {
+	margin:0 0 10px 0;
+	width:100%;
+	text-align:center;
+}
+
+table#tut_table {
+	width:100%;
+	text-align:center;
+	border-collapse:collapse;
+}
+
+table#tut_table td {
+	width:50%;
+	padding-bottom:10px;
+	font-weight:bold;
+}
+
+/* Fehlerseite Not Found */
+
+div#not_found_wrapper {
+  float:left;
+  margin:10px;
+  margin-top: 60px;
+  padding:10px;
+}
+
+div#not_found_title {
+	font-size:25px;
+	font-weight:bold;
+	margin:0 0 20px 0;
+}
+
+div#not_found_subtitle {
+	font-weight:bold;
+	margin:0 0 20px 0;
+}
+
+div#not_found_content {
+	font-style: italic;
+	line-height: 1.5;
+  margin:0 0 20px 0;
+}
+
+/* Drop-Ziele */
+
+div#dropline-wrapper {
+	float:left;
+	margin:10px 5px;
+	width:210px;
+	overflow:hidden;
+}
+
+div.dropline-group {
+	float:left;
+	margin:5px 0 10px 0;
+}
+
+div.dropline {
+	height:30px;
+	margin:5px 0 0 0;
+	float:left;
+}
+
+div.dropfield {
+	height:30px;
+	width:30px;
+	margin:0;
+	line-height:30px;
+	text-align:center;
+	font-size:10px;
+	color:#FFF;
+	background-image:url('gap_overlay_center.png');
+	float:left;
+}
+
+div.dropfield.left {
+	background-image:url('gap_overlay_left.png');
+	clear:both;
+}
+
+div.dropfield.right {
+	background-image:url('gap_overlay_right.png');
+}
+
+div.dropfield.left.right {
+	background-image:url('gap_overlay_single.png');
+}
+
+div.dropfield.hover {
+	background-image:url('gap_overlay_center_active.png');
+}
+
+div.dropfield.left.hover {
+	background-image:url('gap_overlay_left_active.png');
+}
+
+div.dropfield.right.hover {
+	background-image:url('gap_overlay_right_active.png');
+}
+
+div.dropfield.left.right.hover {
+	background-image:url('gap_overlay_single_active.png');
+}

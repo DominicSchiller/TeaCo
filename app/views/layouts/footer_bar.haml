@@ -1,0 +1,57 @@
+%footer.footer#footer
+  .container
+    // Desktop
+    .row.hidden-xs
+      .col-sm-12.text-center
+        -#%a{ :href => "#", :title => t('layouts.footer_bar.about'), :rel => t('layouts.footer_bar.about_text') }= raw t('layouts.footer_bar.about')
+        //%a.margin-right-3.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t('layouts.footer_bar.about')
+        //%div.dropdown-menu.dropdown-menu-left
+        //  #about_teaco= t('layouts.footer_bar.about_text')
+        %a.margin-right-3{href: "#", "data-target": "#about_teaco_large", "data-toggle": "modal", type: "button"}= t('layouts.footer_bar.about')
+        -# Modal
+        #about_teaco_large.modal.fade{role: "dialog"}
+          .modal-dialog
+            // Modal content
+            .modal-content
+              .modal-header
+                %button.close{"data-dismiss": "modal", type: "button"}
+                  %span.icon-cancel.large_icon
+                %h4.modal-title= t('layouts.footer_bar.about')
+              .modal-body
+                .text-left= t('layouts.footer_bar.about_text')
+              .modal-footer
+                %button.btn.btn-primary.panel_button{"data-dismiss": "modal", type: "button"}= t('close')
+        =link_to t('layouts.footer_bar.imprint'), show_imprint_path, class: "margin-right-3" # TODO Zurück Button, wenn eingeloggt
+        %a.margin-right-3{ href: "https://dev.imis.uni-luebeck.de/projects/teaco/tickets/new", target: "_blank" }= raw t('layouts.footer_bar.bugreport')
+        - if @user && !@user.new_record?
+          %a.margin-right-3{ href: "#" }= raw t('layouts.footer_bar.expert_features')
+
+    // Mobil
+    .row.margin-bottom-2.visible-xs
+      .col-xs-6.text-center
+        // Trigger the modal
+        %a{href: "#", "data-target": "#about_teaco_mobile", "data-toggle": "modal", type: "button"}= t('layouts.footer_bar.about')
+        // Modal
+        #about_teaco_mobile.modal.fade{role: "dialog"}
+          .modal-dialog
+            // Modal content
+            .modal-content
+              .modal-header
+                %button.close{"data-dismiss": "modal", type: "button"}
+                  %span.icon-cancel.large_icon
+                %h4.modal-title= t('layouts.footer_bar.about')
+              .modal-body
+                .text-left= t('layouts.footer_bar.about_text')
+              .modal-footer
+                %button.btn.btn-primary.btn-block{"data-dismiss": "modal", type: "button"}= t('close')
+
+      .col-xs-6.text-center
+        %a{ :href => "https://dev.imis.uni-luebeck.de/projects/teaco/tickets/new", :target => "_blank" }= raw t('layouts.footer_bar.bugreport')
+    .row.margin-bottom-1.visible-xs
+      .col-xs-6.text-center
+        =link_to t('layouts.footer_bar.imprint'), show_imprint_path
+        -#%a#ftr_lnk_02.ftr_link{ :href => "/imprint" }= raw t('.imprint')
+        -#%a{ :href => "imprint.haml", class: "margin-right-3" }= raw t('layouts.footer_bar.imprint')
+      .col-xs-6.text-center
+        - if @user && !@user.new_record?
+          %a{ :href => "#" }= raw t('layouts.footer_bar.expert_features')

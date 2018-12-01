@@ -1,0 +1,51 @@
+#CP_hourcont {
+  padding: 0px;
+  position:absolute;
+  border: 1px solid $background;
+  background-color: white;
+  display:none;
+  z-index: 9980;
+}
+
+#CP_minutecont {
+	background-color: white;
+	padding: 0px;
+	position:absolute;
+	width: 50px;
+	border: 1px solid $background;
+	display:none;
+	z-index: 9981;
+    margin-top: 14px;
+}
+
+.floatleft {
+  float:left;
+}
+
+.CP_hour {
+  vertical-align: center;
+  padding:1px;
+  padding-top: 8px;
+  cursor:pointer;
+  width: 100px;
+  height: 34px;
+  background-color: white;
+  color: $tertiary-color;
+  border: 1px solid $background;
+}
+
+.CP_minute {
+  padding-top: 6px;
+  padding-left: 6px;
+  background-color: white;
+  cursor:pointer;
+  width: 50px;
+  height: 34px;
+  color: $tertiary-color;
+  border: 1px solid $background;
+}
+
+.CP_over {
+  background-color: $primary-color;
+  color: white;
+}

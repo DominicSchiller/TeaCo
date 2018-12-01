@@ -1,0 +1,19 @@
+
+= form_tag( authenticate_path, :class => "ajax login_form margin-top-2 margin-bottom-2") do
+  // Desktop
+  .row.form-group.margin-top-2
+    .col-md-3.align-label.label_margin
+      = label_tag :email, t("users.login.email") + ":"
+    .col-md-9
+      = text_field("user", "email", :class => "gain_focus", :size => nil, class: "form-control")
+  .row.form-group
+    .col-md-3.align-label.label_margin
+      = label_tag :password, t("users.login.password") + ":"
+    .col-md-9
+      = password_field("user", "password", :size => nil, class: "form-control", type: "password")
+  .row.margin-right-0
+    .col-xs-12.text-right.padding-right-0.hidden-xs.hidden-sm
+      = submit_tag t("users.login.submit"), class: "btn btn-primary panel_button"
+    .col-xs-12.hidden-md.hidden-lg.padding-right-0
+      = submit_tag t("users.login.submit"), class: "btn btn-primary btn-block"
+

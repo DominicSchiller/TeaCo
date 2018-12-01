@@ -1,0 +1,109 @@
+/*
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  margin: 0px; }
+  body #errors {
+    position: fixed;
+    top: 0px;
+    margin-left: 10%;
+    width: 80%;
+    padding: 10px;
+    background: url("errors.png");
+    border-width: 0px 2px 2px 2px;
+    border-style: solid;
+    border-color: #333333;
+    z-index: 9999;
+    cursor: pointer; }
+    body #errors #error_list {
+      width: 80%;
+      float: left; }
+    body #errors #close_errors {
+      width: 20%;
+      height: 100%;
+      background: white;
+      border: 2px solid #999999;
+      text-align: center;
+      font-weight: bold;
+      float: right; }
+*/
+.invisible {
+  display: none; }
+/*
+p.explain {
+  text-align: center;
+  font-size: 120%;
+  width: 50%; }
+
+table.videos {
+  text-align: center;
+  width: 435px;
+  margin: 10px auto 20px auto;
+  border: 1px solid #dddddd;
+  background: #efefef;
+  padding: 5px; }
+  table.videos td {
+    width: 25%; }
+  table.videos td.img {
+    padding: 5px; }
+    table.videos td.img img {
+      border: 2px solid #bbbbbb; }
+
+h1 {
+  text-align: center; }
+
+h3 {
+  text-align: left;
+  !*background: url(/images/container_bar.png);*!
+  color: white;
+  margin: 0px 30px;
+  padding: 4px 0px 4px 10px; }
+
+.container {
+  background-color: #eeeeee;
+  padding: 10px;
+  margin: 0px 30px 30px 30px;
+  border-bottom: 2px solid #9999cc;
+  border-left: 2px solid #9999cc;
+  border-right: 2px solid #9999cc; }
+  .container table.meeting_list {
+    width: 100%; }
+  .container td.explain {
+    padding-top: 0px; }
+  .container td {
+    padding-left: 10px;
+    padding-top: 7px; }
+    .container td label {
+      font-weight: bold; }
+    .container td img {
+      vertical-align: top; }
+  .container thead {
+    font-size: 120%;
+    font-weight: bold; }
+    .container thead td {
+      border-bottom: 1px solid #9999cc;
+      background-color: #dddddd; }
+  .container img.confirmed {
+    cursor: pointer; }
+
+a {
+  color: #222255;
+  font-weight: bold; }
+
+.new {
+  width: 50%;
+  margin: auto; }
+
+h3.new {
+  padding-left: 13px;
+  padding-right: 12px; }
+
+.center {
+  text-align: center; }
+
+*/
+
+.make_active {
+  cursor: pointer;
+}
+

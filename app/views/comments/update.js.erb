@@ -1,0 +1,13 @@
+/* OLD */
+//page.call "close_form_on_class", "edit_comment"
+//page.call "close_form_on_id", "edit_comment_#{@comment.id}"
+//page.call "close_form_on_class", "delete_comment"
+//page.call "close_form_on_class", "confirmed"
+//page.replace "comment_list", :partial => "comments/list"
+
+
+/* NEW */
+$('#comment_list').html("<%= j render partial: 'comments/list.haml' %>");
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('#comment_form_field').val('');
+$('#edit_form_field').val('');

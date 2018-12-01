@@ -1,0 +1,34 @@
+- days = get_day_hash_for(@meeting.suggestions)
+
+
+
+// Ansicht Desktop - MD & LG
+.row
+  #grid.hidden-xs.hidden-sm
+    #corner
+    / horizontaler Balken mit Tagesbezeichnungen
+    #day_bar_box
+      = render partial: "day_bar", locals: { :days => days }
+    / vertikaler Balken mit Uhrzeiten
+    #time_bar_box
+      #time_bar
+        - (0..23).step(1) do |hour|
+          .time_box{ style: "top: #{hour*hour_height}px; height: #{hour_height/2-1}px" }
+            = "#{hour}"
+          .time_box_half{ style: "top: #{hour*hour_height+(hour_height/2)}px; height: #{hour_height/2-1}px" }
+    / "Fenster", durch das der Benutzer schaut - immer gleich gross
+    #view_window
+      / Bereich, der fuer jeden Tag mit mind. einem Vorschlag eine day-box enthaelt
+      = render :partial => "suggestion_area.haml", :locals => { :days => days }
+
+// Ansicht Mobil - XS & SM
+#collapseNewMeeting.panel-collapse.collapse.hidden-md.hidden-lg
+  .panel-body.padding-top-0
+    .row
+      .col-xs-12
+        %div#newMeeting.home_box{ :style => "margin-right: 0pt;" }
+          =render :layout => false, :template => 'meetings/new.haml'
+
+.row.hidden-md.hidden-lg
+  .col-xs-12#suggestion_area_mobile
+    = render :partial => "suggestion_area_mobile.haml", :locals => { :days => days }

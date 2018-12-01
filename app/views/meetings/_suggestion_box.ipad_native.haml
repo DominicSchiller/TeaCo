@@ -1,0 +1,38 @@
+%dict
+  = '<key>ID</key>'
+  = '<integer>', sugg.id, '</integer>'
+  = '<key>Restricted</key>'
+  - if suggestion_restricted?(sugg)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>Picked</key>'
+  - if sugg.picked
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>DateStart</key>'
+  = '<date>', sugg.date, 'T', sugg.start_as_readable, ':00Z','</date>'
+  = '<key>DateEnd</key>'
+  = '<date>', sugg.date, 'T', sugg.end_as_readable, ':00Z', '</date>'
+  = '<key>DateReadable</key>'
+  = '<string>', I18n.l(sugg.date, :format => :short_with_weekday) + " " + sugg.start_as_readable + " - " + sugg.end_as_readable, '</string>'
+  = '<key>SuggVotePath</key>'
+  = '<string>', user_meeting_suggestion_vote_path(@user, @meeting, sugg, sugg.votes.find_by_voter_id(@user)), '</string>'
+  = '<key>SuggDeletePath</key>'
+  = '<string>', user_meeting_suggestion_path(@user, sugg.meeting, sugg), '</string>'
+  = '<key>Destroyable</key>'
+  - if sugg.destroyable_by?(@user)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>Pickable</key>'
+  - if sugg.pickable_by?(@user)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>OwnVote</key>'
+  = '<string>', sugg.votes.find_by_voter_id(@user).decision, '</string>'
+  = '<key>CreatorID</key>'
+  = '<string>', sugg.creator_id, '</string>'
+      

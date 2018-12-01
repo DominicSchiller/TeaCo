@@ -1,0 +1,14 @@
+<key>KnownAddresses</key>
+<dict>
+- @user.known_addresses.each do |known|
+  - user = User.find_by_alias(known.address)
+  = '<key>', user.id, '</key>'
+  %dict
+    = '<key>UserName</key>'
+    - if user && !user.name.blank?
+      = '<string>', h(CGI.escapeHTML(user.name)), '</string>'
+    - else
+      = '<string></string>'
+    = '<key>UserMail</key>'
+    = '<string>', known.address, '</string>'
+</dict>

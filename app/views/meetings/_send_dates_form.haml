@@ -1,0 +1,25 @@
+.container-fluid
+  .row
+    .col-xs-12
+      = render :partial => "meetings/picked_suggestions_list"
+    .col-xs-12
+      = form_tag send_dates_user_meeting_path(@user, @meeting), :class => "ajax send_dates_form" do
+        .row.margin-bottom-1
+          .col-xs-12
+            = label_tag 'message', t('.message'), class: "control-label"
+            = text_area_tag 'message', "", class: 'gain_focus form-control'
+        .row.margin-bottom-1
+          .col-xs-12
+            .form-group
+              = label_tag 'location', t('.location'), class: "control-label"
+              = text_field_tag 'location', "", class: "form-control"
+        .row.margin-bottom-1
+          .col-xs-12
+            = check_box_tag 'also_comment'
+            = label_tag 'also_comment', t('.also_create_comment')
+        .row.margin-bottom-1
+          .col-xs-12
+            .text-right.hidden-xs.hidden-sm= submit_tag t('.send_dates_submit'), id: 'send_dates_submit', class: "btn btn-primary panel_button", |
+              :disabled => (@meeting.picked_suggestions.empty?)
+            .hidden-md.hidden-lg= submit_tag t('.send_dates_submit'), id: 'send_dates_submit', class: "btn btn-primary btn-block",
+              :disabled => (@meeting.picked_suggestions.empty?)

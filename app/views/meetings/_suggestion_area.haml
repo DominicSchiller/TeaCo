@@ -1,0 +1,21 @@
+%div#suggestion_area
+  - i = 0
+  - days ||= get_day_hash_for(@meeting.suggestions)
+  - freebusy = @meeting.freebusy_day_hash
+  - last_day = nil
+  - days.keys.sort.each do |day|
+    -# Is there a gap between the current and the previous date?
+    - if last_day && day > last_day.tomorrow
+      -# Then insert a "day divider":
+      %div.day_gap{ :rel => "#{i}" }
+        %div.left_gap
+        %div.gap
+        %div.right_gap
+      - i = i+1
+    - else
+      - if last_day
+        %div.day_nogap
+    - last_day = day
+    - suggestions = days[day]
+    - day_freebusy = freebusy[day] || []
+    = render :partial => "meetings/day_box", :locals => { :suggestions => suggestions, :day => day, :freebusy => day_freebusy }

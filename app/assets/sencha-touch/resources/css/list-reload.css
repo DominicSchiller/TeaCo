@@ -1,0 +1,50 @@
+/* styles for pull to refresh */
+
+div.pullrefresh, div.pullrefresh div.msgwrap {
+	background-color: #F7F7F7 !important;
+  	background-image:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#CCC))!important;
+  	background-image: linear-gradient(top, #F7F7F7 0%, #CCC 100%)!important;
+}
+
+div.pullrefresh span.arrow {
+  	height: 30px;
+	width: 16px;
+  	position: absolute;
+  	top: 23px;
+  	left: 17px;
+  	background-image: url('mobile/blackArrow.png');
+  	background-repeat: no-repeat;
+	background-position: center middle;
+  	background-size: 16px 30px;
+  	margin: 0;
+}
+
+div.loadingspacer span.loading {
+  	width: 16px;
+  	height: 30px;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	background-image: url('mobile/loader.gif');
+  	background-repeat: no-repeat;
+  	background-position: 0 7px;
+}
+
+div.pullrefresh span.msg, div.loadingspacer span.msg {
+  	text-align: left;
+  	font-size: 0.9em;
+  	position: absolute;
+  	top: 12px;
+  	left: 46px;
+  	margin: 5px 0; 
+  	font-weight: bold;
+}
+
+div.pullrefresh span.lastupdate {
+  	text-align: left;
+  	font-size: 0.7em;
+  	position: absolute;
+  	top: 25px;
+  	left: 46px;
+  	margin: 15px 0 5px 0;
+}

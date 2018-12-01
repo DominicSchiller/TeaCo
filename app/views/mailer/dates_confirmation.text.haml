@@ -1,0 +1,27 @@
+= raw t('teaco_mailer.dates_confirmation_html.planning_finished', :meeting => @meeting.title)
+= ""
+
+= raw t('teaco_mailer.dates_confirmation_html.picked_dates', :user => user_name_or_email(@sending_user))
+= ""
+
+
+- picked_suggestions = @meeting.picked_suggestions
+- picked_suggestions.each do |sugg|
+  = "- #{ l(sugg.date, :format => :short_with_weekday) }: #{sugg.start_as_readable} - #{sugg.end_as_readable}#{(', ' + @location) unless @location.blank?}"
+
+
+- unless @message.blank?
+  = ""
+  = raw t('teaco_mailer.dates_confirmation_html.associated_message')
+  = ""
+  = '"' + h(@message) + '"'
+  = ""
+
+
+= raw t('teaco_mailer.jump_to_meeting')
+
+- meeting_link = show_meeting_url(:user_key => @user.key, :id => @meeting.id)
+= "#{meeting_link}"
+= ""
+
+= raw t('teaco_mailer.keep_link')

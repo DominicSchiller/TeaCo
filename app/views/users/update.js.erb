@@ -1,0 +1,38 @@
+/*
+I18n.locale = @user.language
+page.call "close_form_on_class", "tipped_top"
+
+# We must enable the button again, BEFORE replacing it!
+# Otherwise (out of some odd reasons) it will still be
+# disabled when the user manually reloads (F5) the page:
+page.call "$('#user_submit').removeAttr", "disabled"
+
+page.insert_html :top, "body", :partial => "shared/errors", :locals => { :info => t('.settings_saved') }
+page.replace "header_bar", :partial => "meetings/header_bar"
+page.replace_html "content", :file => "users/show"
+page.replace "alias_addresses", :partial => "users/alias_addresses"
+page.replace "footer", :file => "layouts/footer_bar"
+page.call "updateVars"
+page.call "showTen"
+*/
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+
+
+<% I18n.locale = @user.language %>
+//close_form_on_class("tipped_top");
+
+// We must enable the button again, BEFORE replacing it!
+// Otherwise (out of some odd reasons) it will still be
+// disabled when the user manually reloads (F5) the page:
+// $('#user_submit').removeAttr("disabled"); // Die ID gibt es nicht -> nicht nötig
+//$("body").append("<%#=  j render partial: "shared/errors", locals: { info: t('users.update.settings_saved') } %>");
+$("#header_bar").replaceWith("<%= j render partial: "meetings/header_bar" %>");
+$("#dashboard").html("<%= j render file: "users/show" %>");
+//$("#content_large").html("<%#= j render partial: "users/show_large" %>");
+//$("#content_small").html("<%#= j render partial: "users/show_small" %>");
+$("#alias_addresses").html("<%= j render partial: "users/alias_addresses" %>");
+$("#footer").html("<%= j render file: "layouts/footer_bar" %>");
+updateVars();
+showTen();
+setEqualHeightAdministration();

@@ -1,0 +1,69 @@
+%div.sugg_box_mobile{ id: "sugg_mobile_#{sugg.id}"}
+  - restricted_sugg = suggestion_restricted?(sugg)
+  .row.margin-bottom-1{ :class => (if sugg.picked then "picked " else "" end) << "dialog" }
+    .col-xs-4.col-sm-4.edit_time.padding-0.margin-left-2{ get_edit_time_attributes(sugg, restricted_sugg), style: "margin-right: -15px;" }
+      = render :partial => "meetings/sugg_times.haml", :locals => { :suggestion => sugg }
+      - if !restricted_sugg
+        #form_title.invisible{ :title => t('tooltips.edit') }
+      - v = sugg.votes.find_by_voter_id(@user)
+    .col-xs-7.col-sm-6.padding-0{style: "margin-left: -30px"}
+      %div.vote_buttons.text-right{ :rel => user_meeting_suggestion_vote_path(@user, @meeting, sugg, v), style: "margin-top: -2px; padding-right: 10px; margin-left: -50px;" }
+        = get_vote_buttons(sugg, v)
+    .col-xs-1.visible-xs.padding-0.text-right.click_me{style: "margin-top: -4px;"}
+      %a.icon_border{ role: "button", "data-toggle": "collapse", href: "#collapse_#{sugg.id}", "aria-expanded": "false", "aria-controls": "collapseExample", style: "margin-top: -10px;" }
+        %i.icon-down-dir.large_icon
+    .col-sm-2.visible-sm.padding-0.text-right.click_me{style: "margin-top: -4px;"}
+      %a.icon_border{ role: "button", "data-toggle": "collapse", href: "#collapse_#{sugg.id}", "aria-expanded": "false", "aria-controls": "collapseExample", style: "margin-top: -10px;" }
+        %i{ class: "icon-down-dir large_icon" }
+
+  .row
+    .col-xs-12
+      .collapse.padding-right-2.padding-left-2{ id: "collapse_#{sugg.id}" }
+        .well.suggestion_expand
+          .row
+            / Auflistung der Stimmen pro Teilnehmer
+            .col-xs-12{ id: "user_sugg_area_#{sugg.id}" }
+              = show_decision_by_users(sugg)
+          .row
+            .col-xs-12{ id: "edit_form_#{sugg.id}", style: "display: none;" }
+              / Form zum Bearbeiten des Terminvorschlags
+              = render :partial => 'suggestions/edit_form', :locals => { :sugg => sugg }
+          .row.margin-top-1
+            .col-xs-6
+              -if sugg.destroyable_by?(@user)
+                -#%a.btn.btn-mobile.btn-block.delete_sugg_button{ role: "button", rel: user_meeting_suggestion_path(@user, sugg.meeting, sugg),
+                -#                  title: t('tooltips.delete_suggestion'), style: "border: 1px solid grey;", remote: true, method: 'delete', data: { confirm: "#{t('tooltips.delete_suggestion')}?" }}
+                -#  =t('comments.comment.delete')
+                =link_to t('comments.comment.delete'), user_meeting_suggestion_path(@user, sugg.meeting, sugg), class: "btn btn-mobile btn-block delete_sugg_button", method: 'delete', data: { confirm: "#{t('tooltips.delete_suggestion')}?", remote: true }
+              -else
+                %a.btn.btn-mobile.btn-block.delete_sugg_button{ role: "button", rel: user_meeting_suggestion_path(@user, sugg.meeting, sugg),
+                                  title: t('tooltips.delete_suggestion'), style: "border: 1px solid grey;", "disabled": true, remote: true }
+                  =t('comments.comment.delete')
+            .col-xs-6
+              -if sugg.pickable_by?(@user)
+                - pickable = "true"
+              -else
+                - pickable = "false"
+
+              -#%a.btn.btn-mobile.btn-block.delete_sugg_button{ role: "button", rel: "user_meeting_suggestion_path(@user, sugg.meeting, sugg)",
+              -#                    title: t('tooltips.delete_suggestion'), style: "border: 1px solid grey;" }
+              -#  =t('activerecord.attributes.suggestion.picked')
+
+
+              -#- pick_button_attributes = get_pick_button_attributes(sugg, " ", "true")
+              -#%a{ role: "button", pick_button_attributes, disabled: "#{!pickable}" }
+              -#  =t('activerecord.attributes.suggestion.picked')
+
+              -#=link_to t('activerecord.attributes.suggestion.picked'), pick_suggestion_path(@user, @meeting, sugg), get_pick_button_attributes(sugg, " ", "true")
+              = link_to "endgültig", user_meeting_suggestion_path(@user, sugg.meeting, sugg), get_pick_button_attributes(sugg, " ", "true")
+              -#- if sugg.pickable_by?(@user)
+              -#  =link_to t('activerecord.attributes.suggestion.picked'), "#", get_pick_button_attributes(sugg, " ", "false")
+
+          .row.margin-top-1
+            .col-xs-12
+              %a.btn.btn-mobile.btn-block{ role: "button", id: "edit_sugg_button_#{sugg.id}", onclick: "showEditForm(#{sugg.id});", style: "border: 1px solid grey;" }
+                =t('comments.comment.edit')
+
+
+  .row.margin-bottom-1.margin-bottom-3.margin-left-2.margin-right-2
+    = render partial: "suggestions/progress_bar", :locals => { sugg: sugg }

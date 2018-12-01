@@ -1,0 +1,11 @@
+%h3= raw t('.message_from_user', :user => user_name_or_email(@author), :meeting => @meeting.title)
+
+%div{ :style => "background: #eeeeee; border: 2px solid #cccccc; padding: 10px; margin: 10px;" }
+  = '"' + h(@message) + '"'
+
+%p= raw t('teaco_mailer.jump_to_meeting')
+
+- meeting_link = show_meeting_url(:user_key => @user.key, :id => @meeting.id)
+= link_to meeting_link, meeting_link
+
+%h3= raw t('teaco_mailer.keep_link')

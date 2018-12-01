@@ -1,0 +1,15 @@
+<key>KnownAddresses</key>
+<array>
+- sort_for_list!(known_addresses)
+- known_addresses = known_addresses.reject{ |known| @meeting.participants.include?(User.find_by_alias(known.address)) }
+- known_addresses.each do |known|
+  - user = User.find_by_alias(known.address)
+  %dict
+    = '<key>UserName</key>'
+    - if user && !user.name.blank?
+      = '<string>', h(CGI.escapeHTML(user.name)), '</string>'
+    - else
+      = '<string></string>'
+    = '<key>UserMail</key>'
+    = '<string>', known.address, '</string>'
+</array>

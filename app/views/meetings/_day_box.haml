@@ -1,0 +1,6 @@
+- margins = get_margins_for_suggestions(suggestions)
+%div.day_box{ :id => "day_#{day}", :style => get_day_box_style(margins) }
+  - freebusy.each do |timespan|
+    = render :partial => "meetings/busy_box.haml", :locals => { :timespan => timespan }
+  - suggestions.each do |suggestion|
+    = render :partial => "meetings/suggestion_box.haml", :locals => { :sugg => suggestion, :skip_outer => false, :left_margin => margins[suggestion] }

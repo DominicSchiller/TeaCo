@@ -1,0 +1,19 @@
+%div.container-fluid#not_found_wrapper
+
+  %div.row#not_found_title
+    .col-xs-12
+      Meeting ou client n'&eacute;tait pas trouv&eacute;
+
+  %div.row#not_found_content
+    .col-xs-12
+      %p Un erreur s'est produit. Il y a quelques raisons possibles:
+      %ul
+        %li Il n'y a pas de client de TeaCo qui poss&egrave;de le key dans l'URL,
+        %li vous n'avez pas le droit de voir le meeting demand&eacute; ou il n'exista pas,
+        %li il y a un erreur dans TeaCo (tr&egrave;s improbable ;-) ).
+
+      %p.warning
+        En cas vous avez perdu votre lien personnel de TeaCo vous pouvez le
+        faire parvenir &agrave; vous par entrant votre adresse e-mail &agrave; la
+        = succeed "." do
+          %a{ :href => root_path } page d'accueil

@@ -1,0 +1,8 @@
+.container-fluid
+  .row
+    .col-md-12
+      .row.margin-top-2
+        = show_decision_by_users(sugg)
+      .row.margin-top-1
+        = render partial: "suggestions/progress_bar", :locals => { sugg: sugg }
+

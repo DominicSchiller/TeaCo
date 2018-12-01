@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+*/
+
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+@import "color";
+@import 'bootstrap-datepicker3';
+@import 'bootstrap-clockpicker.min.css';
+@import 'clockpicker';
+@import 'standalone';
+@import "fontello";
+@import "style";
+@import "meetingView";
+@import "teaco";
+@import "dashboard";
+@import "home";
+@import "dialog";
+@import "comments";
+@import "header";
+@import "jquery.ui.core";
+@import "jquery.ui.theme";
+@import "jquery.ui.resizable";
+@import "jquery.ui.autocomplete";
+@import "clockpick";
+@import "datePicker";
+@import "jquery.qtip2";
+@import "jquery.qtip2-themes";
+@import "jquery.fancybox";

@@ -1,0 +1,44 @@
+/*
+page.replace "table#diplayParticipants", :partial => "invitation_form"
+days = get_day_hash_for(@meeting.suggestions)
+page.replace "suggestion_area", :partial => "meetings/suggestion_area",
+:locals => { :days => days }
+page.replace "comment_list", :partial => "comments/list"
+page.call "reEnableDragScroll"
+page.call "adjustSuggestionAreaWidth"
+page.call "$('.invitation_form #message, .invitation_form #participants').clearField"
+page.delay(1) do
+    page << "if ($('#play_new_meeting_tut').length > 0) {"
+    page.call "$('#tut_next').trigger", "click"
+page << "} else {"
+page.call "shrink"
+page << "}"
+end
+display_errors(page)
+*/
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+
+$("table#diplayParticipants").html("<%= j render partial: "invitaion_form" %>");
+
+<%= days = get_day_hash_for( @meeting.suggestions) %>
+
+$("#suggestion_area").html("<%= j render partial: "meetings/suggestion_area", locals: { days: days }  %>");
+
+$("#comment_list").html("<%= j render partial: "comments/list" %>");
+
+reEnableDragScroll();
+adjustSuggestionAreaWidth();
+
+$('.invitation_form #message, .invitation_form #participants').clearField();
+
+setTimeout(function(){
+    if (('#play_new_meeting_tut').length > 0) {
+        $('#tut_next').trigger("click");
+    }
+    else {
+      shrink();
+    }
+}, 1000);
+
+display_errors(page);

@@ -1,0 +1,6 @@
+-if suggestion.picked?
+  %b.picked_text
+    = html_escape(suggestion.start.strftime("%H:%M") + " - " + suggestion.end.strftime("%H:%M"))
+-else
+  %b
+    = html_escape(suggestion.start.strftime("%H:%M") + " - " + suggestion.end.strftime("%H:%M"))

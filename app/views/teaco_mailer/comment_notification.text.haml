@@ -1,0 +1,13 @@
+= raw t('.new_comment_written', :meeting => @meeting.title, :user => user_name_or_email(@author))
+= ""
+
+= h(@message)
+= ""
+
+= raw t('teaco_mailer.jump_to_meeting')
+
+- meeting_link = show_meeting_url(:user_key => @user.key, :id => @meeting.id)
+= "#{meeting_link}"
+= ""
+
+= raw t('teaco_mailer.keep_link')

@@ -1,0 +1,84 @@
+body div.qtip div.content{
+	padding: 0;
+	margin: 0;
+	height: auto; min-height: auto;
+	width: auto; min-width: auto;
+}
+
+.ui-tooltip-teaco .ui-tooltip-title {
+	color: #FFF;
+	background: #333;
+	font-weight: bold;
+	font-size: 13px;
+	padding: 2px 12px;
+}
+
+.ui-tooltip-teaco .ui-tooltip-titlebar {
+	background-color: #333;
+	border-color:#333;
+}
+
+.ui-tooltip-teaco .ui-tooltip-content {
+	background: #EEE;
+	color: #333;
+	overflow: hidden;
+	text-align: left;
+	padding: 5px 9px;
+	font-size: 13px;
+	line-height: 16px;
+	border-width: 2px;
+	border-color: #333;
+}
+
+.ui-tooltip-teaco-editTime .ui-tooltip-title {
+	color: #FFF;
+	background: #333;
+	font-weight: bold;
+	font-size: 13px;
+	padding: 2px 12px;
+}
+
+.ui-tooltip-teaco-editTime .ui-tooltip-titlebar {
+	background-color: #333;
+	border-color:#333;
+}
+
+.ui-tooltip-teaco-editTime .ui-tooltip-content {
+	background: #F60;
+	color: #333;
+	overflow: visible;
+	text-align: left;
+	padding: 5px 9px;
+	font-size: 13px;
+	line-height: 16px;
+	border-width: 2px;
+	border-color: #333;
+	height: 170px;
+}
+
+.ui-tooltip-teaco_html_tut .ui-tooltip-title {
+	color: #FFF;
+	background: #11BBFF;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 2px 12px;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+ .ui-tooltip-teaco_html_tut .ui-tooltip-content {
+	background: #FFFFDD;
+	color: #333;
+	overflow: hidden;
+	text-align: left;
+	padding: 5px 9px;
+	font-size: 15px;
+	border-width: 4px;
+	line-height: 18px;
+	border-color: #11BBFF;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.ui-tooltip-teaco_html_tut .ui-tooltip-titlebar {
+	background-color: #11BBFF;
+	border-color:#11BBFF;
+}

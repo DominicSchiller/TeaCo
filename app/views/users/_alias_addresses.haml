@@ -1,0 +1,38 @@
+.row.margin-bottom-1.alias_addresses_list
+  .col-xs-12#alias_addresses{ :rel => "/users/#{@user.key}" }
+    - @user.alias_addresses.each do |address|
+      .row.margin-top-2
+        .col-xs-12
+          - if address.confirmed?
+            -#%img{ get_pick_address_attributes(address, @user) }
+            -#=link_to rel: address , class: "hidden-md hidden-lg" do
+            %span{ get_pick_address_attributes(address, @user) }
+          %span="#{address.address} #{unless address.confirmed? then '(' + t('users.alias_addresses.awaits_confirmation') + ')' end}"
+          - if address.address != @user.email
+            =link_to user_alias_address_path(@user, address), method: :delete , title: t('tooltips.delete_alias'), id: "trash",
+                                                              remote: true, data: { confirm: "Bist du sicher?" }   do
+              %span.icon-trash.medium_icon
+    .row.margin-top-2
+      .col-xs-12
+        .row.form-group
+          = form_for [@user, AliasAddress.new], :html => { :class => 'ajax' } do |f|
+            .visible-lg
+              .col-lg-8
+                = f.text_field :address, class: "form-control", id: "email", placeholder: t('users.alias_addresses.alias_address'), :size => nil
+                = f.hidden_field :owner_id, :value => @user.id
+              .col-lg-4.text-right
+                = f.submit t('users.alias_addresses.register_alias'), :disabled => false, class: "btn btn-primary panel_button"
+            .visible-md
+              .col-md-7
+                = f.text_field :address, class: "form-control" ,:id => "email", placeholder: t('users.alias_addresses.alias_address'), :size => nil
+                = f.hidden_field :owner_id, :value => @user.id
+              .col-md-5
+                = f.submit t('users.alias_addresses.register_alias'), :disabled => false, class: "btn btn-primary panel_button"
+            .col-xs-12.hidden-md.hidden-lg
+              .row.margin-0.margin-bottom-1
+                = f.text_field :address, class: "form-control" ,:id => "email", placeholder: t('users.alias_addresses.alias_address'), :size => nil
+                = f.hidden_field :owner_id, :value => @user.id
+              .row.margin-0
+                = f.submit t('users.alias_addresses.register_alias'), :disabled => false, class: "btn btn-primary btn-block"
+
+

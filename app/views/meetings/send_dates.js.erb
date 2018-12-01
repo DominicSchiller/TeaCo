@@ -1,0 +1,9 @@
+/*
+page.call "shrink"
+page.call "close_stale_tooltips"
+page.replace "comment_list", :partial => "comments/list"
+*/
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+shrink();
+close_stale_tooltips();
+$('#comment_list').html("<%= j render partial: "comments/list" %>");

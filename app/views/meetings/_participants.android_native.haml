@@ -1,0 +1,16 @@
+<key>Participants</key>
+<array>
+- @meeting.participants.each do |participant|
+  %dict
+    = "<key>ParticipantName</key>"
+    = "<string>#{CGI.escapeHTML(participant.name)}</string>"
+    = "<key>ParticipantMail</key>"
+    = "<string>#{participant.email}</string>"
+    = "<key>ParticipantID</key>"
+    = "<string>#{participant.id}</string>"
+    = "<key>Initiator</key>"
+    - if @meeting.initiated_by?(participant)
+      = "<true/>"
+    - else
+      = "<false/>"
+</array>

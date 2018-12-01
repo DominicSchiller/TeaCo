@@ -1,0 +1,28 @@
+/*
+# If the creation time was recently,
+# a fresh account was created, not an existing one
+# "reactivated":
+if Time.now - @user.created_at < 2.minutes
+  info = raw t('.account_created')
+else
+  info = raw t('.account_renewed')
+end
+
+page.remove "errors"
+page.insert_html :top, "body", :partial => "shared/errors", :locals => { :info => info }
+*/
+
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+
+// If the creation time was recently,
+// a fresh account was created, not an existing one
+// "reactivated":
+<%# if Time.now - @user.created_at < 2.minutes  %>
+    <%# info = raw t('.account_created') %>
+  <%# else %>
+    <%# info = raw t('.account_renewed') %>
+<%# end %>
+
+//$("#errors").remove();
+//$("body").append("<%#=  j render partial: "shared/errors", locals: { info: info } %>");

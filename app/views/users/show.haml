@@ -1,0 +1,33 @@
+
+%br
+%br
+.container-fluid
+  .row
+    #collapseNewMeeting.panel-collapse.collapse.hidden-md.hidden-lg
+      .panel-body.padding-top-0
+        .row
+          .col-xs-12
+            %div#newMeeting.home_box{ :style => "margin-right: 0pt;" }
+              =render :layout => false, :template => 'meetings/new.haml'
+
+  .row
+    .col-xs-12.mobile_padding
+      %h4.meeting_title_bar#meetings_headline#head_meetings= raw t('.my_meetings')
+
+  .row.cont_meeting
+    = render :partial => "users/meeting_list.haml", :locals => { :meetings => @user.meetings }
+
+%br
+
+//Desktopansicht - Einstellungen etc.
+.container-fluid.hidden-sm.hidden-xs#content_large
+  = render partial: "users/show_large", :locals => { meetings: @user.meetings }
+
+
+//Accordion - Smartphone & Tablet
+.container-fluid.hidden-md.hidden-lg#content_small
+  = render partial: "users/show_small", :locals => { meetings: @user.meetings }
+
+
+
+

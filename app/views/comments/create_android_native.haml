@@ -1,0 +1,22 @@
+<plist version="1.0">
+%dict
+  = "<key>Author</key>"
+  = "<string>#{user_name_or_email_escaped(@comment.author)}</string>"
+  = "<key>Time</key>"
+  = "<string>#{t("ago", :time => time_ago_in_words(@comment.updated_at))}</string>"
+  - if @comment.manipulable_by?(@user)
+    = "<key>Manipulable</key>"
+    = "<true/>"
+  - else
+    = "<key>Manipulable</key>"
+    = "<false/>"
+  = "<key>CommentID</key>"
+  = "<integer>#{@comment.id}</integer>"
+  = "<key>UserID</key>"
+  = "<integer>#{@comment.author_id}</integer>"
+  = "<key>MeetingID</key>"
+  = "<integer>#{@meeting.id}</integer>"
+  
+  = "<key>Comment</key>"
+  = "<string>#{line_break(CGI.escapeHTML(@comment.text))}</string>"
+</plist>

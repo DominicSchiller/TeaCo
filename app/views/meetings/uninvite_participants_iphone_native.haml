@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>SuggBar_Values</key>
+<array>
+- @meeting.suggestions.sort_by{|a| [a.date, a.start, a.end]}.each do |suggestion|
+  %dict
+    = get_vote_bar_for_iphone_native(suggestion)
+</array>
+= render :partial => "known_addresses/list.iphone_native", :locals => { :known_addresses => @user.known_addresses }
+</dict>
+</plist>

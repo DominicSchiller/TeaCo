@@ -1,0 +1,18 @@
+{
+  "name": "teaco",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.0.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.7.1"
+  },
+  "version": "teaco",
+  "description": "teaco",
+  "main": "index.js",
+  "repository": "git@gitlab.com:Matze1503/teaco.git",
+  "author": "Mathias <sleepertomm@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-dev-server": "^2.8.2"
+  }
+}

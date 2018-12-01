@@ -1,0 +1,11 @@
+.row.comments_space
+  .col-xs-12
+    .row
+      .col-xs-12.mobile_padding
+        %h4.meeting_title_bar= raw t('comments.comments_area.comments')
+    .row#comment_cont.margin-bottom-3
+      .col-xs-12.col-md-5.margin-top-1
+        = render :partial => "comments/list.haml"
+      .col-xs-12.col-md-6.col-md-offset-1.margin-top-1#create_form
+        -#%input#comment_form_button.tipped_top{ :type => "submit", :value => t('.write_comment'), :title => t('tooltips.write_comment') }
+        = render :partial => "comments/create_form", :locals => { :comment => Comment.new }

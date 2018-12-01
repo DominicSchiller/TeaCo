@@ -1,0 +1,15 @@
+<key>KnownAddresses</key>
+<array>
+- @user.known_addresses.sort_by{ |k| k.address.downcase }.each do |known|
+  - user = User.find_by_alias(known.address)
+  %dict
+    = '<key>UserID</key>'
+    = '<string>', user.id, '</string>'
+    = '<key>UserName</key>'
+    - if user && !user.name.blank?
+      = '<string>', h(CGI.escapeHTML(user.name)), '</string>'
+    - else
+      = '<string></string>'
+    = '<key>UserMail</key>'
+    = '<string>', known.address, '</string>'
+</array>

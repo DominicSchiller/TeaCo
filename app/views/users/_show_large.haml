@@ -1,0 +1,147 @@
+-# Einstellungen
+.row
+  .col-md-6
+    .row
+      .col-md-12
+        %h4#head_pref.responsive_title= raw t('users.show.settings')
+    .row.user_box.margin-0
+      .col-md-12#config_table#box_pref
+        = form_for @user, :url => "/users/#{@user.key}", method: 'put', :html => { :class => 'ajax settings_form' } do |f|
+          .row
+            .col-md-12.box_row_1
+              .row.margin-top-1
+                .col-md-12
+                  .row.form-group
+                    .col-md-5.col-lg-3.padding-right-0.text-right
+                      = f.label :name, t('users.new.name'), class: "control-label", id: "td_caption_name"
+                      = link_to "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('users.new.name_explain') do
+                        %span.icon-info-circled.large_icon
+                    .col-md-7.col-lg-9
+                      = f.text_field(:name, :size => nil, class: "form-control edit", id: "td_edit_name")
+              .row
+                .col-md-12
+                  .row#tr_password.form-group
+                    .col-md-5.col-lg-3.padding-right-0.text-right
+                      = f.label :password, t('users.new.password'), class: "caption control-label", id: "td_caption_password"
+                      = link_to "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('users.new.password_explain') do
+                        %span.icon-info-circled.large_icon
+                    .col-md-7.col-lg-9
+                      = f.password_field(:password, :size => nil, class: "form-control edit", id: "td_edit_password")
+              .row
+                .col-md-12
+                  .row#tr_freebusy.form-group
+                    .col-md-5.col-lg-3.padding-right-0.text-right
+                      = f.label :freebusy_url, t('.freebusy_url') + ":", id: "td_caption_freebusy", class: "caption control-label"
+                      = link_to "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('users.show.freebusy_url_explain') do
+                        %span.icon-info-circled.large_icon
+                    .col-md-7.col-lg-9
+                      = f.text_field(:freebusy_url, :size => nil, class: "form-control edit", id: "td_edit_freebusy")
+                      = @user.freebusy_data if @user.freebusy_warning?
+              .row
+                .col-md-12
+                  .row#tr_language.form-group
+                    .col-md-5.col-lg-3.text-right
+                      #td_caption_language= f.label :language, t('users.new.language') + ":", class: "control-label caption label_margin"
+                    .col-md-7.col-lg-9
+                      #td_edit_language.edit
+                        = insert_language_selector(@user.language)
+              //.row
+              //  .col-md-12
+              //    .row#tr_language_desc.form-group
+              //      .col-md-3.text-right
+              //        #td_empty_language.caption
+              //      .col-md-9
+              //        #td_desc_language.desc
+              .row
+                .col-md-12
+                  .row#tr_tutorial.form-group
+                    .col-md-5.col-lg-3.text-right
+                      #td_caption_tutorial.caption= f.label :watched_vote_tutorial, t('users.new.tutorial') + ":", class: "control-label"
+                    .col-md-7.col-lg-9
+                      //#td_edit_tutorial.edit
+                      .col-md-6.col-lg-5
+                        %label.checkbox.margin-left-1.margin-top-0.margin-bottom-0
+                          = f.check_box(:watched_vote_tutorial, { :checked => !@user.watched_vote_tutorial, class: "checkbox"}, 0, 1)
+                          = raw t('users.new.vote_tutorial')
+                      .col-md-6.col-lg-5
+                        %label.checkbox.margin-top-0.margin-bottom-0
+                          = f.check_box(:watched_new_meeting_tutorial, { :checked => !@user.watched_new_meeting_tutorial, class: "checkbox" }, 0, 1)
+                          = raw t('users.new.new_meeting_tutorial')
+              //.row
+              //  .col-md-12
+              //    .row#tr_tutorial_desc.form-group
+              //      #td_empty_tutorial.caption
+              //      #td_desc_tutorial.desc
+          .row
+            .text-right.margin-bottom-1{ style: "margin-bottom: 10px; margin-right: 15px;" }
+              = f.submit t('users.show.save_changes'), class:"btn btn-primary panel_button"
+              -#= f.hidden_field :key, :value => @user.key
+
+
+  .col-md-6
+    -# Adressbuch
+    .row
+      .col-md-12
+        %h4#head_delete_mail.responsive_title= raw t('users.show.address_book')
+    .row.user_box.margin-0
+      .col-md-12
+        .row
+          .col-md-12.box_row_1
+            %div#box_delete_mail.margin-top-1.margin-left-2
+              = render :partial => "users/known_addresses.haml", :locals => { :known_addresses => @user.known_addresses }
+        // TODO Das sollte eine Bestätigung sein -> Wieder einbinden
+        -#.row.invisible.delete_form
+        -#  %p= raw t('users.known_addresses.confirm_delete_known_addresses_text')
+        -#  %input.confirm_delete{ :type => "submit", :value => t('users.show.delete'), :rel => "/users/#{@user.key}/delete_known_addresses" }
+        -#  %input.cancel_delete{ :type => "submit", :value => t('users.show.cancel') }
+        .row
+          .col-md-12.text-right
+            -#%input.margin-bottom-1{ get_delete_known_addresses_button_attributes("large") }
+            %input.margin-bottom-1{ :type => "submit", :value => t('users.show.delete'), :rel => "/users/#{@user.key}/delete_known_addresses",
+                                  title: t('users.show.delete'), class: "btn btn-secondary panel_button confirm_delete margin-bottom-1",
+                                  disabled: true, id: "delete_known_addresses_submit" }
+%br
+
+.row#second_row#alias_addresses_box
+  -# Eigene E-Mail Adressen
+  .col-md-6
+    .row
+      .col-md-12
+        %h4#head_mail.responsive_title= raw t('users.show.activate_aliases')
+    .row.user_box.margin-0
+      .col-md-12#box_mail.margin-top-1.box_row_2{ style: "margin-bottom: -10px;" }
+        .row
+          .col-xs-12
+            %p#mail_info= raw t('users.show.alias_explain')
+        = render :partial => "/users/alias_addresses.haml"
+
+  -# Account löschen
+  .col-md-6
+    .row
+      .col-md-12
+        %h4#head_delete_acc.responsive_title= raw t('users.show.delete_account')
+    .row.user_box.margin-0
+      .col-md-12#box_delete_acc.box_row_2
+        .row.margin-top-1
+          .col-md-12
+            %p#delete_info{ :style => "margin-top: 0pt;" }= raw t('users.show.deletion_info')
+        .row
+          .col-md-12.text-right
+            -#%a.margin-bottom-1#delete_account_link{ :href => "#", type: "button", class:"btn btn-secondary panel_button" }= raw t('users.show.delete_account')
+            = form_for @user, :url => "/users/#{@user.key}", :html => { :class => 'ajax', :method => :delete } do |f|
+              %input.confirmed_right.margin-bottom-1{ :type => "submit", :rel => "/users/#{@user.key}", :value => t('users.show.delete_account'), class: "btn btn-secondary panel_button" }
+
+            // TODO
+            //%div#delete_account_form.invisible
+            //  = form_for @user, :url => "/users/#{@user.key}", :html => { :class => 'ajax', :method => :delete } do |f|
+            //    %input.confirmed_right{ :type => "submit", :rel => "/users/#{@user.key}", :value => t('users.show.delete_irreversibly') }
+
+.container
+  .row
+    %div#confirmation_form.invisible
+      %form.ajax
+        %p= raw t('users.show.confirmation_text')
+        %input.confirm{ :type => "submit", :value => t('users.show.confirm') }
+        %input.cancel{ :type => "submit", :value => t('users.show.cancel') }
+
+

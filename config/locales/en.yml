@@ -1,0 +1,551 @@
+en:
+
+  "maybe": "maybe"
+  "yes": "yes"
+  "no": "no"
+  "?": "?"
+
+  intro:
+    time_scheduling: Time scheduling.
+    fast_and_easy: Fast and easy.
+    explain_teaco: "Scheduling a meeting - with TeaCo it's a piece of cake.<br/>Make suggestions, invite participants, let them vote.<br/>Done!"
+    pro1: You can schedule meetings with several participants
+    pro2: You will have an easy start
+    pro3: "You don't need to remember any passwords"
+    pro4: You can use TeaCo even on your mobile device
+    new_account: Create a new account
+    diashow: TeaCo in a slideshow
+    teaco_mobile: TeaCo Mobile.
+    everywhere_you_need_it: Everywhere you need it.
+    explain_mobile: "TeaCo is for mobile usage, too.<br />Use it with your mobile browser or download the iPhone app.<br>TeaCo is available all-around."
+    no_password: No password!
+    personal_link: Only your personal Link.
+    explain_password: "You don't need to remember any passwords. You reach TeaCo by the personal link from our e-mail. You better bookmark it.<br/>If you like to have a password anyway, just save it in your settings."
+
+  confirmation_text: This action cannot be undone. Are you sure?
+  confirm: OK
+  cancel: Cancel
+  not_mine_warning: "You did not create this suggestion. Are you sure you want to change it?"
+  reset_votes_warning: "There are other users who have already voted on this suggestion!\nAll the votes for this suggestion should be resetted,
+for your participants may not be available at the new date.\n\nClick OK to reset the votes."
+  inform_users: "You have resetted the votes for a suggestion. <br/>
+    Please inform your participants via a comment to vote about this suggestion again!"
+
+  notices:
+    comment_created: Comment added
+    comment_destroyed: Comment deleted
+    comment_updated: Comment updated
+    alias_address_created: Email saved
+    alias_address_deleted: Email deleted
+    known_address_deleted: Email deleted
+    meeting_created: Meeting created
+    meeting_updated: Meeting updated
+    meeting_destroyed: Meeting deleted
+    meeting_cloned: Meeting cloned
+    meeting_leaved: Meeting leaved
+    participant_invited: Participants invited
+    participant_uninvited: Participants uninvited
+    date_sent: Date sent
+    message_sent: Message sent
+    suggestion_created: Suggestion added
+    suggestion_updated: Suggestion updated
+    suggestion_deleted: Suggestion deleted
+    suggestion_picked: Suggestion picked
+    user_created: Account created
+    user_deleted: Account deleted
+    user_updated: Account updated
+    logged_in: Welcome! You are now logged in
+
+  alerts:
+    error: Sorry. Something went wrong
+    suggestion_not_created: Suggestion could not be created
+    suggestion_not_updated: Suggestion could not be updated
+    user_not_created: Account could not be created
+    user_not_updated: Account could not be updated
+    login_failed: Invalid login data
+
+  layouts:
+    users:
+      welcome: Welcome to TeaCo
+    header_bar:
+      new_meeting: New Meeting
+      new_meeting_short: New
+      login: Log in
+      help: Help
+      current_user: "Welcome, %{user}!"
+    footer_bar:
+      about: About TeaCo
+      about_text: "<div>TeaCo is a lightweight Tool, which helps little and even bigger groups with making appointments for any reason. Extending ImiCaToo, developed at the IMIS, TeaCo is a system, which stands out due to improved usability and lightweightness.\n
+        With TeaCo you need neither a username nor a password for:\n
+        <ul style='list-style-type:circle; margin:17px;'>\n
+        <li>creating new meetings and inviting participants</li>\n
+        <li>creating new suggestion and voting for it</li>\n
+        <li>writing comments to any meeting</li>\n
+        </ul>\n
+        </div>"
+      imprint: Imprint
+      bugreport: Report a bug
+      expert_features: Features for experts
+    imprint:
+      imprint: Imprint
+      credits: Credits
+      inOrder: (in order of appearance)
+      publisher: Publisher
+
+  users:
+    show:
+      my_meetings: My meetings
+      last_update: Last update
+      delete: delete
+      leave: leave
+      settings: Account settings
+      freebusy_url: Free/Busy-URL
+      freebusy_url_explain: Provide your online published Free/Busy file in iCalendar format here and TeaCo will show other participants when you are not available at certain days or time spans.
+      save_changes: Save changes
+      activate_aliases: E-mail addresses
+      alias_explain: You can provide more of your own e-mail addresses here. That way you have central access from within this account to the meetings you are invited to via any of these addresses. In case there already is a TeaCo account to a given address, all of its meetings will be merged into this account.
+      declare_different_address: If you'd like to change this address you can activate other e-mail addresses further below.
+      delete_account: "Delete TeaCo account"
+      deletion_info: "Click on the link below to delete your TeaCo account.<br />
+        <span style='font-weight:bold'>Please notice:</span> Deleting your account will also delete any data that you created - this includes:
+        <ul style='list-style:square inside;'>
+          <li>your e-mail address,</li>
+          <li>your name,</li>
+          <li>all suggestions you created,</li>
+          <li>all information on how you voted in your meetings,</li>
+          <li>all comments you wrote,</li>
+          <li>all meetings you initiated.</li>
+        </ul>
+        So if necessary be sure to inform all participants of the meetings you initiated before you delete your account!"
+      delete_irreversibly: "Delete my TeaCo account irreversibly!"
+      delete_account: "Delete Account"
+    alias_addresses:
+      alias_address: "Address to activate"
+      register_alias: "Activate address"
+      registered_aliases: "Already activated addresses:"
+      awaits_confirmation: "awaits confirmation"
+    known_addresses:
+      confirm_delete_known_addresses_text: Are you sure you want to delete all selected e-mail addresses?
+    new:
+      create_new_account: Create A New Account
+      email: "E-mail address:"
+      email_explain: The personal access link for your TeaCo account will be sent to this e-mail address, as well as invitations and messages by other TeaCo users.
+      name: "Name (optional):"
+      name_explain: You can provide your name, so it will be displayed instead of your e-mail-address to other TeaCo users.
+      password: "Password (opt.):"
+      password_explain: "If you specify a password, you can log in with your e-mail-address and password."
+      language: Language
+      create_submit: Create account
+      resend_link: If you already have a TeaCo account you can retrieve your personal TeaCo-link again by entering your e-mail address.
+      tutorial: Activate tutorial
+      vote_tutorial: Vote
+      new_meeting_tutorial: New meeting
+    update:
+      settings_saved: "Settings successfully saved!"
+    create:
+      account_created: "<h2>Account successfully created!</h2>An e-mail with your personal access link was sent to your address. Please check your mailbox!"
+      account_renewed: "<h2>Access e-mail delivered!</h2>You already own a TeaCo account. Your access information was sent to your e-mail-address!"
+    meeting_list:
+      clone: clone
+      clone_meeting: Clone meeting
+      voted: voted
+      showTenMeetings: show 10 meetings
+      showAllMeetings: show all meetings
+    login:
+      email: E-Mail
+      password: Password
+      submit: Log in
+    register:
+      email: E-Mail
+
+  meetings:
+    title: Title
+    select_a_meeting_long: Please select a meeting
+    select_a_meeting_short: Meetings
+    restricted_meeting: Restricted meeting
+    new:
+      submit_new_meeting: Create meeting
+    invitation_form:
+      invited_user_addresses: "E-mail-addresses of users to be invited"
+      invitation_message: "Invitation text"
+      also_create_comment: "Also post invitation text as a comment"
+      invitation_submit: "Send invitations!"
+      uninvite_button: Uninvite selected
+      uninvite_button_short: Uninvite
+      send_message_button: Send message to selected
+      send_message_button_short: Send message
+      participants: Participants of this meeting
+    picked_suggestions_list:
+      please_pick_suggestions: "First pick at least one suggestion as final by clicking on the appropriate Button."
+      remove_from_picked_list: Un-pick this suggestion
+    send_dates_form:
+      message: "Message:"
+      location: "Location (optional):"
+      also_create_comment: "Also post message as comment"
+      send_dates_submit: "Send dates!"
+    send_message_form:
+      message: "Message:"
+      send_message_submit: "Send message!"
+    open_suggestions:
+      open_suggestions: Open suggestions
+    detail_panel:
+      confirm_uninvitation_text: Are you sure you want to uninvite all selected participants?
+      new_suggestion: New suggestion
+      participants: Participants of this meeting
+      invite_participants_button: Invite new participants
+      uninvite_confirm: Uninvite!
+      uninvite_cancel: Cancel
+      uninvite_button: Uninvite selected
+      uninvite_button_short: Uninvite
+      send_message_button: Send message to selected
+      send_message_button_short: Send message
+      finish_planning: Finish planning
+      send_dates_button: Send appointment dates
+      check_final_dates: Send appointment dates
+      open_suggestions: Unvoted suggestions
+
+  suggestions:
+    created: New suggestion created!
+    edit_form:
+      start: Start
+      duration: Duration
+      end: End
+      add: Create
+      update: Update
+      from: from
+      to: to
+
+  comments:
+    comment:
+      edit: edit
+      delete: delete
+      comment_deleted: "<i>Comment deleted</i>"
+    comments_area:
+      comments: Comments
+      write_comment: Leave a comment
+      write_comment_short: post one
+    edit_form:
+      comment_text: "Comment text:"
+      also_mail: Also inform all participants via E-mail
+      send_comment: Submit comment
+    list:
+      no_comments_yet: "No comments yet."
+
+  alias_addresses:
+    create:
+      confirm_alias_sent: A mail with an activation-link was sent to the given e-mail address. Please follow the instructions in the message to activate your new address.
+    confirm:
+      address_activated_title: "Address successfully activated!"
+      address_activated: "The address %{address} was unlocked to use in your account. Visit TeaCo now and have a try!"
+    destroy:
+      confirm_alias_deleted: "The chosen e-mail-adress was successfully deleted."
+
+  known_addresses:
+    list:
+      known_addresses: "Known addresses (click to pick)"
+      known_addresses_short: "Known addresses"
+
+  votes:
+    index:
+      edit_time: Change times
+
+  tooltips:
+    vote_yes: 'Vote for "yes"'
+    vote_maybe: 'Vote for "maybe"'
+    vote_no: 'Vote for "no"'
+    edit: Edit
+    restricted_meeting_tooltip: In a restricted Meeting each participant may only manipulate or delete his own suggestions.
+    restricted_meeting_explain: This is a restricted meeting:<br />Each participant may only manipulate or delete his own suggestions.
+    restricted_suggestion_explain: You cannot manipulate this suggestion:<br /> This is a restricted meeting and you did not create this suggestion.
+    delete_suggestion: Delete suggestion
+    pick_suggestion: Pick suggestion as final
+    unpick_suggestion: Unpick suggestion
+    meeting_selector: Jump to another meeting
+    change_title: Change title
+    edit_time: Click here to update date and time of this suggestion.
+    create_new_meeting: Create a new meeting and invite people to it.
+    is_initiator: "%{user} is the initiator of this meeting"
+    write_comment: Leave a text comment
+    click_to_close: Click to close
+    delete_comment: Delete comment
+    edit_comment: Edit comment
+    you_are_initiator: You are the initiator of this meeting
+    suggestion_out_of_view: "One or more suggestions are not visible at the moment.<br />Click here to jump there."
+    busy_users_title: "Unavailable users"
+    busy_users: "The following users are busy at the displayed timespans (according to their Free/Busy-lists):"
+    delete_alias: "Delete address"
+    make_master_address: "Declare as main e-mail address"
+    is_master_address: "This is your main e-mail address."
+    initiator_cannot_be_uninvited: A meeting's initiator cannot be uninvited.
+    vote_results: Voting results
+    previous_suggestion: Previous suggestion
+    next_suggestion: Next suggestion
+    delete_meeting: "Delete this meeting"
+    leave_meeting: "Leave this meeting"
+    login: "For redirecting to your profile, log in using your e-mail and password."
+    number_of_participants: Number of participants of a meeting
+    add_participant: Add participant
+
+  teaco_mailer:
+    keep_link: "Don't give this link to anyone else, neither forward this mail or reply to it - others could gain access to your TeaCo account that way!"
+    jump_to_meeting: You can access the respective meeting with the following link.
+    account_confirmation:
+      welcome_user: "Hello %{user}, welcome to TeaCo."
+      myteaco_link: "Your personal MyTeaCo-Link:"
+    comment_notification:
+      subject: "TeaCo: New comment at %{meeting}"
+      new_comment_written: "%{user} has written a new comment in the meeting '%{meeting}':"
+    dates_confirmation_html:
+      subject: "TeaCo: Final dates for %{meeting}"
+      planning_finished: The planning of the meeting '%{meeting}' was finished.
+      picked_dates: "%{user} has declared the following dates as final:"
+      associated_message: "The following message was attached:"
+    invitation:
+      subject: "TeaCo: Invitation to %{meeting}"
+      invited: You have been invited.
+      user_invited_you: "%{user} invited you to plan the meeting"
+    user_message:
+      subject: "TeaCo: Message concerning %{meeting}"
+      message_from_user: "%{user} has sent you a message for the TeaCo-meeting '%{meeting}':"
+    alias_confirmation:
+      subject: "TeaCo: Activate e-mail address"
+      alias_confirmation: Activation of e-mail address to use in TeaCo
+      attempt_to_activate: This e-mail allows you to use the address %{address} in yout TeaCo account.
+      follow_activation_link: To do that, you have to unlock the address first. Click on the link below to activate your new address.
+      ignore_if_spam: If you did not try to activate this address, please ignore this message.
+
+  errors:
+    no_valid_url: "No valid URL."
+    file_not_found: "File could not be found."
+    file_too_large: "The given file's size is too large and was therefore rejected."
+    server_unavailable: "Could not connect to the given server."
+    no_freebusy_found: "No valid Free/Busy data was found in the given file."
+    common_error: "An error occured: %{error}"
+    unique_alias: "is an already registered e-mail address at TeaCo and can therefore not be activated."
+    not_found: "TeaCo :: Not found"
+    confirmation_failed: "TeaCo :: Activiation failed"
+    invalid_login: "The address or the password you entered are invalid."
+
+  push:
+    invitation_message: "Invitation from %{name} for the planning of \"%{title}\""
+    user_message: "%{name} writes relating to \"%{title}\": \"%{message}\""
+    final_dates_single: "Final appointment for \"%{title}\": %{dates}"
+    final_dates_multi: "Final appointments for \"%{title}\": %{dates}"
+    location: "\nLocation: %{location}"
+    comment_message: "%{name} writes in \"%{title}\": \"%{message}\""
+
+  ago: "%{time} ago"
+  close: close
+  invited_users: "The following users have been invited:"
+  final_dates: "The following dates have been sent:"
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      short_with_weekday: "%a, %b %e"
+      long: "%B %d, %Y"
+      with_weekday: "%a, %b %e %Y"
+
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    order:
+    - :year
+    - :month
+    - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      long_ordinal: "%A %d %B %Y %H:%M:%S %Z"
+      only_second: "%S"
+      time: "%H:%M"
+    am: "am"
+    pm: "pm"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:  "less than 1 second"
+        many: "less than %{count} seconds"
+      x_seconds:
+        one:  "1 second"
+        many: "%{count} seconds"
+      less_than_x_minutes:
+        one:  "less than a minute"
+        many: "less than %{count} minutes"
+      x_minutes:
+        one:  "1 minute"
+        many: "%{count} minutes"
+      about_x_hours:
+        one:  "about 1 hour"
+        many: "about %{count} hours"
+      x_days:
+        one:  "1 day"
+        many: "%{count} days"
+      about_x_months:
+        one:  "about 1 month"
+        many: "about %{count} months"
+      x_months:
+        one:  "1 month"
+        many: "%{count} months"
+      about_x_years:
+        one:  "about 1 year"
+        many: "about %{count} years"
+      over_x_years:
+        one:  "over 1 year"
+        many: "over %{count} years"
+
+    prompts:
+      second: "Seconds"
+      minute: "Minutes"
+      hour: "Hours"
+      day: "Day"
+      month: "Month"
+      year: "Year"
+
+    number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: "."
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: ","
+      # Number of decimals, behind the separator (1 with a precision of 2 gives: 1.00)
+      precision: 3
+
+    currency:
+      format:
+        format: "%u%n"
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+
+
+  activerecord:
+    errors:
+      email_invalid: " is not valid."
+      email_already_registered: " is already registered by you."
+      suggestion:
+        duration_too_short: "There must be at least 30 minutes between start and end time."
+        start_before_end: "Start time must begin before end time."
+        date_not_in_past: "The date of the suggestion must not be in the past."
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      messages:
+        is_already_invited: "is already attending this meeting and was therefore not invited again."
+        no_valid_email: "is no valid e-mail adress and was therefore not invited."
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is %{count} characters)"
+        too_short: "is too short (minimum is %{count} characters)"
+        wrong_length: "is the wrong length (should be %{count} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        odd: "must be odd"
+        even: "must be even"
+
+    models:
+      comment: Comment
+      meeting: Meeting
+      suggestion: Suggestion
+      user: User
+      vote: Vote
+
+    attributes:
+      alias_address:
+        address: E-mail address
+      comment:
+        text: Text
+        author: Author
+      meeting:
+        title: Title
+        initiator: Initiator
+        restricted: restricted
+      suggestion:
+        date: Date
+        start: Start time
+        end: End time
+        creator: Creator
+        picked: picked
+      user:
+        name: Name
+        email: E-mail address
+        key: Key
+        language: Language
+        freebusy_url: Free/Busy URL
+        freebusy_data: Free/Busy data
+      vote:
+        decision: Vote
+        voter: Voter
+

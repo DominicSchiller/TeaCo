@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+%dict
+  - comment = @meeting.comments.reverse.first
+  = '<key>Author</key>'
+  = '<string>', user_name_or_email_escaped(comment.author), '</string>'
+  = '<key>Time</key>'
+  = '<string>', comment.created_at, '</string>'
+  - if comment.manipulable_by?(@user)
+    = '<key>Manipulable</key>'
+    = '<true/>'
+    = '<key>CommentID</key>'
+    = '<string>', comment.id, '</string>'
+    = '<key>UserID</key>'
+    = '<string>', @user.id, '</string>'
+    = '<key>MeetingID</key>'
+    = '<string>', @meeting.id, '</string>'
+  - else
+    = '<key>Manipulable</key>'
+    = '<false/>'
+  - if comment.text != Comment::COMMENT_DELETED then
+    = '<key>Comment</key>'
+    = '<string>', line_break(CGI.escapeHTML(comment.text)), '</string>'
+</plist>

@@ -1,0 +1,6 @@
+%h1= raw t('.address_activated_title')
+
+%h3.center.new= raw t('.address_activated_title')
+
+%div.center.container.new
+  %p= raw t('.address_activated', :address => @alias_address.address, :user => user_name_or_email(@alias_address.owner))

@@ -1,0 +1,103 @@
+%br
+%br
+%br
+.flash_notices
+
+.container-fluid
+  .row
+    / Carousel: Image Slider - Desktop
+    .hidden-xs.hidden-sm#carousel-example-generic.carousel.slide{ "data-ride":"carousel" }
+      / Indicators
+      %ol.carousel-indicators
+        -#%li{ "data-target":"#carousel-example-generic", "data-slide-to":"0", class:"active" }
+        -#%li{ "data-target":"#carousel-example-generic", "data-slide-to":"1" }
+        -#%li{ "data-target":"#carousel-example-generic", "data-slide-to":"2" }
+
+      / Wrapper for slides
+      .carousel-inner{ "role":"listbox" }
+        .item.active
+          = image_tag( "slider/desktop/meetingansicht_#{I18n.locale}.png", alt:"meetingansicht", class:"hidden-xs hidden-sm" )
+          -#.carousel-caption
+          -#  %h4.white_text{ style: "font-size: 50px;" }= "Teaco"
+        .item
+          = image_tag( "slider/desktop/meetingübersicht_#{I18n.locale}.png", alt:"meetingübersicht" )
+
+      / Controls
+      -#%a.left.carousel-control{ href:"#carousel-example-generic", "role":"button", "data-slide":"prev" }
+      -#  %span.glyphicon.glyphicon-chevron-left{ "aria-hidden":"true" }
+      -#  %span.sr-only= "Previous"
+      -#%a.right.carousel-control{ href:"#carousel-example-generic", "role":"button", "data-slide":"next" }
+      -#  %span.glyphicon.glyphicon-chevron-right{ "aria-hidden":"true" }
+      -#  %span.sr-only= "Next"
+
+    / Carousel: Image Slider - Tablet
+    .visible-sm#carousel-example-generic.carousel.slide{ "data-ride":"carousel" }
+      / Wrapper for slides
+      .carousel-inner{ "role":"listbox" }
+        .item.active
+          = image_tag( "slider/tablet/meetingansicht_sm_#{I18n.locale}.png", alt:"meetingansicht" )
+        .item
+          = image_tag( "slider/tablet/meetingübersicht_sm_#{I18n.locale}.png", alt:"meetingübersicht" )
+
+
+    / Carousel: Image Slider - Smartphone
+    .visible-xs#carousel-example-generic.carousel.slide{ "data-ride":"carousel" }
+      / Wrapper for slides
+      .carousel-inner{ "role":"listbox" }
+        .item.active
+          = image_tag( "slider/smartphone/meetingansicht_xs.png", alt:"meer" )
+        .item
+          = image_tag( "slider/smartphone/meetingansicht_xs_#{I18n.locale}.png", alt:"wasser" )
+        .item
+          = image_tag( "slider/smartphone/meetingansicht_xs.png", alt:"wald" )
+        .item
+          = image_tag( "slider/smartphone/meetingansicht_xs_#{I18n.locale}.png", alt:"wald" )
+
+.container-fluid.hidden-xs.hidden-sm
+  .row
+    // Form: Login
+    .col-md-6.hidden-xs.hidden-sm
+      .row
+        .col-xs-12.col-md-12.mobile_padding
+          %h4.meeting_title_bar= raw t('layouts.header_bar.login')
+      .row.cont_meeting.create_login
+        .col-xs-12.col-md-12
+          = render :file => "users/login"
+    // Form: Register
+    .col-md-6.hidden-xs.hidden-sm
+      .row
+        .col-xs-12.col-md-12.mobile_padding
+          %h4.meeting_title_bar= raw t('intro.new_account')
+      .row.cont_meeting.create_login
+        .col-xs-12.col-md-12
+          = render "register"
+
+
+.panel-group.accordion.margin-top-2.hidden-md.hidden-lg#accordion{ "role":"tablist", "aria-multiselectable":"true" }
+  -# Login
+  .panel.panel-default.margin-bottom-1
+    .panel-heading#headingLogin{ "role":"tab", "data-toggle":"collapse", href:"#collapseLogin", "data-parent":"#accordion" }
+      .panel-title
+        %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseLogin" }
+          = t('layouts.header_bar.login')
+          %i.icon-down-dir.medium_icon.pull-right
+    #collapseLogin.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingLogin" }
+      .panel-body
+        .row
+          .col-xs-12
+            = render :file => "users/login"
+  -# Register
+  .panel.panel-default.margin-bottom-1
+    .panel-heading#headingRegister{ "role":"tab", "data-toggle":"collapse", href:"#collapseRegister", "data-parent":"#accordion" }
+      .panel-title
+        %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseRegister" }
+          = t('intro.new_account')
+          %i.icon-down-dir.medium_icon.pull-right
+    #collapseRegister.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingRegister" }
+      .panel-body
+        .row
+          .col-xs-12
+            = render "register"
+
+%br
+%br

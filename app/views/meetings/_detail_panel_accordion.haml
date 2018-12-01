@@ -1,0 +1,44 @@
+-# ACCORDION
+.row.hidden-md.hidden-lg
+  .panel-group.accordion#accordion{ "role":"tablist", "aria-multiselectable":"true" }
+    // Neuer Terminvorschlag
+    .panel.panel-default.margin-bottom-1
+      .panel-heading#headingSuggestion{ "role":"tab", "data-toggle":"collapse", href:"#collapseSuggestion", "data-parent":"#accordion" }
+        .panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseSuggestion" }
+            = t("meetings.detail_panel.new_suggestion")
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseSuggestion.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingSuggestion" }
+        .panel-body
+          .row
+            .col-xs-12
+              %div#new_suggestion.home_box.text-center
+                = render :partial => 'suggestions/edit_form_mobile', :locals => { sugg: Suggestion.new, large: "false" }
+
+    // Teilnehmer verwalten
+    .panel.panel-default.margin-bottom-
+      .panel-heading#headingInvite{ "role":"tab", "data-toggle":"collapse", href:"#collapseInvite", "data-parent":"#accordion" }
+        %h4.panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseInvite" }
+            = t("meetings.buttons.manage_participants")
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseInvite.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingInvite" }
+        .panel-body
+          .row
+            .col-sm-12
+              %div#invite.home_box{ :style => "margin-right: 0pt;" }
+                = render :partial => "invitation_form"
+
+    // Planung abschließen
+    .panel.panel-default.margin-bottom-1
+      .panel-heading#headingFinish{ "role":"tab", "data-toggle":"collapse", href:"#collapseFinish", "data-parent":"#accordion" }
+        %h4.panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseFinish" }
+            = t("meetings.buttons.finish_planing")
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseFinish.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingFinish" }
+        .panel-body
+          .row
+            .col-sm-12
+              %div#finish.home_box{ :style => "margin-right: 0pt;" }
+                = render :partial => "send_dates_form"

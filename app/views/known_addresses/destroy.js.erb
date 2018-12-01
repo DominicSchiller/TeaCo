@@ -1,0 +1,6 @@
+//page.call "close_form_on_class", "delete_ka_button"
+//page.replace_html "address_list_title", :partial => "known_addresses/list", :locals => { :known_addresses => @user.known_addresses }
+
+close_form_on_class("delete_ka_button");
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('#address_list_title').replaceWith("<%= j partial: 'known_addresses/list', locals: { known_addresses: @user.known_addresses } %>");

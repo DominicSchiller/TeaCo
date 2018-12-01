@@ -1,0 +1,39 @@
+<key>AliasAddressesOwnerID</key>
+= '<string>', @user.id, '</string>'
+<key>AliasAddressesConfirmed</key>
+<array>
+- @user.alias_addresses.each do |address|
+  - if address.address == @user.email
+    %dict
+      = '<key>Address</key>'
+      = '<string>', address.address, '</string>'
+      = '<key>IsMain</key>'
+      = '<true/>'
+      = '<key>Confirmed</key>'
+      = '<true/>'
+  - else
+    - if address.confirmed?
+      %dict
+        = '<key>Address</key>'
+        = '<string>', address.address, '</string>'
+        = '<key>AddressPath</key>'
+        = '<string>', user_alias_address_path(@user, address), '</string>'
+        = '<key>IsMain</key>'
+        = '<false/>'
+        = '<key>Confirmed</key>'
+        = '<true/>'
+</array>
+<key>AliasAddressesNotConfirmed</key>
+<array>
+- @user.alias_addresses.each do |address|
+  - if !address.confirmed?
+    %dict
+      = '<key>Address</key>'
+      = '<string>', address.address, '</string>'
+      = '<key>AddressPath</key>'
+      = '<string>', user_alias_address_path(@user, address), '</string>'
+      = '<key>IsMain</key>'
+      = '<false/>'
+      = '<key>Confirmed</key>'
+      = '<false/>'
+</array>

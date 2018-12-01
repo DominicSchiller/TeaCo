@@ -1,0 +1,12 @@
+= raw t('.alias_confirmation')
+= ""
+
+= raw t('.attempt_to_activate', :address => @email)
+= ""
+= raw t('.follow_activation_link')
+= ""
+- activation_url = confirm_alias_url(:confirmation_hash => @confirmation_hash)
+= activation_url
+= ""
+= ""
+= raw t('.ignore_if_spam')

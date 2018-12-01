@@ -1,0 +1,389 @@
+@charset "UTF-8";
+/* CSS Document */
+
+div#suggestion_view {
+	/*float:left;*/
+	margin:0;
+	padding:0;
+	overflow: hidden;
+}
+
+/*
+div#meeting_titlebar {
+	height:50px;
+	background-image:url('meeting_title_bg.jpg');
+	background-repeat:repeat-x;
+	float:left;
+	margin:10px;
+	line-height:50px;
+	font-size:25px;
+	padding:0px 10px;
+	color:$tertiary-color;
+}
+*/
+
+#edit_title {
+	cursor: pointer;
+	display:block;
+	float:left;
+    @media(max-width: 991px) {
+      height:50px;
+      line-height:50px;
+    }
+    @media(min-width: 992px) {
+      height:30px;
+      line-height:30px;
+    }
+}
+
+#edit_title form input {
+	height:30px!important;
+	font-size:22px;
+	line-height:30px;
+	padding:0 5px;
+	margin: 0 0 15px 0 ;
+	border: 1px solid $primary-color;
+	display:block;
+	float:left;
+	color: $tertiary-color;
+	background-color: white;
+	width:auto;
+}
+
+#edit_title form button {
+	height:20px!important;
+	font-size:11px;
+	line-height: 20px;
+	padding:0 5px;
+    margin: 5px 0 15px 5px;
+    display:block;
+	float:left;
+	color: $tertiary-color;
+	width:auto;
+    background-color: white;
+    border: 1px solid $tertiary-color;
+}
+
+#edit_title:hover {
+	/*outline: 2px solid orange;*/
+  color: $primary-color;
+}
+
+div#details_panel {
+	float:left;
+	margin:10px 10px 10px 0;
+	height:620px;
+	width:40px;
+}
+
+div.expandable {
+	float:left;
+	margin:0 0 10px 0;
+	background-color:#F60;
+	height:200px;
+	width:40px;
+	cursor:pointer;
+}
+
+div#exp_finishPlanning {
+	margin-bottom:0;
+}
+
+div#grid {
+	height:550px;
+	float:left;
+	margin:0 -15px 10px 10px;
+}
+
+div.cont_exp {
+	position:absolute;
+	right:50px;
+	background-color:#F60;
+	padding:10px;
+	/*border:10px solid $tertiary-color;*/
+	display:none;
+	z-index:2000;
+}
+
+div.cont_connect {
+	height:200px;
+	width:10px;
+	position:absolute;
+	right:50px;
+	background-color:#F60;
+	display:none;
+	z-index:2001;
+}
+
+div#cont_newSuggestion {
+	top:40px;
+	height:180px;
+}
+
+div#cont_participants {
+	top:250px;
+}
+
+div#cont_finishPlanning {
+	top:460px;
+}
+
+div#cont_connect_01 { top:50px; }
+div#cont_connect_02 { top:260px; }
+div#cont_connect_03 { top:470px; }
+
+
+div#open_sugg_area {
+	width:160px;
+	height:30px;
+	line-height:30px;
+	color:$tertiary-color;
+	font-size:11px;
+	text-align:center;
+	position:absolute;
+	top: 40px;
+	right:80px;
+	z-index:1500;
+	overflow:hidden;
+}
+
+span.unvoted_head {
+	width:160px;
+	margin:0;
+	padding:0;
+	height:30px;
+	text-align:center;
+	display:block;
+	float:left;
+	background-image:url('unvoted_suggestions_head.png');
+	background-repeat:repeat;
+}
+
+span.unvoted_link {
+	width:80px;
+	height:28px;
+	line-height:28px;
+	margin:0;
+	padding:2px 0 0 0;
+	text-align:center;
+	display:block;
+	float:left;
+	color:$tertiary-color;
+	background-image:url('unvoted_suggestion_single.png');
+	background-repeat:no-repeat;
+}
+
+table#diplayNewSuggestion {
+	border-collapse: collapse;
+}
+
+td#sugg_start_field,
+td#sugg_duration_field,
+td#sugg_end_field,
+td#sugg_start_label,
+td#sugg_duration_label,
+td#sugg_end_label,
+td#sugg_submit_button {
+	vertical-align:middle;
+	text-align:right;
+	//padding:5px;
+	color: white;
+}
+
+td#sugg_start_label,
+td#sugg_duration_label,
+td#sugg_end_label{
+	font-weight:bold;
+}
+
+td#sugg_start_field {
+	background-image:url('dur_top.jpg');
+	background-repeat:no-repeat;
+	background-position:top;
+	
+}
+
+td#sugg_duration_field {
+	background-image:url('dur_middle.jpg');
+	background-repeat:no-repeat;
+	background-position:top;
+}
+
+td#sugg_end_field {
+	background-image:url('dur_bottom.jpg');
+	background-repeat:no-repeat;
+	background-position:bottom;
+}
+
+table#diplayNewSuggestion #suggestion_start, table#diplayNewSuggestion #duration, table#diplayNewSuggestion #suggestion_end {
+  width: 35px;
+  padding: 2px;
+  text-align:center;
+}
+
+table#diplayNewSuggestion #duration {
+  color: #888888;
+}
+
+td#sugg_calender {
+	padding-right:10px;
+}
+
+table#diplayParticipants {
+	border-collapse: collapse;
+}
+
+table#diplayParticipants td {
+	vertical-align:top;
+}
+
+div.participants_expand_headline {
+	margin-bottom:5px;
+	color: $tertiary-color;
+	width:100%;
+	font-weight:bold;
+}
+
+table#diplayParticipants td#td_text textarea {
+	margin:0 10px 10px 0;
+	width:300px;
+}
+
+table#diplayParticipants td#td_text label {
+	color: $tertiary-color;
+}
+
+table#diplayParticipants td#td_text div#sendInvitation {
+	margin:10px 10px 0 0;
+}
+
+table#diplayParticipants td#td_participants label {
+	color: $tertiary-color!important;
+	opacity:1!important;
+}
+
+table#diplayParticipants td#td_participants input.participants_item {
+	margin:10px 5px 0 0;
+}
+
+table#diplayParticipants td#td_participants input#participant_00 {
+	margin:0 5px 0 0;
+}
+/*
+#invitation_form {
+  float: left;
+}
+*/
+table#current_participants {
+	border-collapse: collapse;
+	//width:300px;
+}
+
+table#current_participants tr#participant_line td#check, table#current_participants tr#participant_line td#initiator {
+	width: 30px;
+	text-align: center;
+}
+
+table#current_participants tr#participant_line td {
+	vertical-align:top;
+	//width:300px;
+	padding: 0 5px;
+	vertical-align:middle;
+}
+
+table#diplayParticipants input#uninvite_submit, table#diplayParticipants input#uninvite_submit_disabled, table#diplayParticipants input#send_message_button {
+	margin: 10px 10px 0px 10px;
+	width: 130px;
+	float: left;
+}
+
+table#current_participants tr#participant_line {
+	background: white;
+	height:30px;
+	line-height:30px;
+}
+
+table#current_participants tr#participant_line img {
+	float: left;
+}
+
+div#participants_box {
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+div#participants_buttons {
+	float:left;
+}
+
+/* Div mit bekannten Adressen */
+div.address_list {
+  padding: 5px;
+  background: white;
+  /*width: 300px;
+  height: 300px;*/
+  height: auto;
+  max-height: 300px;
+  overflow: auto;
+  margin-right:10px;
+  /*border: 2px solid $tertiary-color;*/
+}
+
+div.address_list ul {
+  padding-left: 0px;
+  margin: 0px 5px;
+  list-style-type: none;
+}
+
+div.address_list ul li{
+  list-style: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+div.address_list ul li span:hover {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+span.unvoted_link {
+	cursor: pointer;
+}
+
+#picked_suggestions {
+	/*width: 300px;*/
+	margin-bottom:10px;
+}
+
+#finish {
+  @media(min-width: 992px) {
+    width: 400px;
+  }
+}
+
+form.send_dates_form textarea#message {
+	/*width:296px;*/
+	margin-bottom: 10px;
+}
+
+form.send_dates_form input#location {
+	/*width:300px;*/
+	margin-bottom: 10px;
+}
+
+form.send_dates_form input#send_dates_submit {
+	margin-top: 10px;
+}
+
+img.tipped_right {
+	float:left;
+	margin:10px 5px 10px 0;
+}
+
+i.editableTitle {
+	float:left;
+	margin:5px;
+	cursor:pointer;
+}

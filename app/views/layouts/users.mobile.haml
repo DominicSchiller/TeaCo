@@ -1,0 +1,29 @@
+%html
+  %head
+    %title
+      = if @user && !@user.new_record? then "#{user_name_or_email @user}" else t('.welcome') end
+    %meta{ 'http-equiv' => "Content-Type", 'content' => "text/html; charset=UTF-8" }
+    %meta{ 'name' => 'apple-mobile-web-app-capable', 'content' => 'yes' } 
+    -#%link{ 'rel' => 'apple-touch-icon', 'href' => 'apple-touch-icon.png' }
+     
+    = stylesheet_link_tag "../sencha-touch/resources/css/sencha-touch-teaco"
+    = javascript_include_tag "../sencha-touch/sencha-touch"
+
+    = stylesheet_link_tag "../sencha-touch/resources/css/list-reload"
+    = javascript_include_tag "../sencha-touch/Ext.ux.touch.ListPullRefresh"
+    
+    = stylesheet_link_tag "mobile/meetingPanel", "mobile/suggestionPanel"
+
+    - if @user && !@user.new_record?
+      = javascript_include_tag "mobile/lang_#{@user.language}"
+      = javascript_tag " var USER_ID = #{@user.id};"
+    - else
+      = javascript_include_tag "mobile/lang_#{I18n.locale}"
+      
+    = javascript_include_tag "mobile/application", "mobile/handler"
+    = javascript_include_tag "mobile/loginPanel", "mobile/meetingPanel", "mobile/settingsPanel", "mobile/commentsPanel", "mobile/suggestionItem", "mobile/participantsPanel", "mobile/invitePanel", "mobile/messagePanel", "mobile/suggestionPanel"
+    = javascript_include_tag "mobile/loadingMasks"
+     
+    = javascript_tag " var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+
+  %body#body{ 'style' => "-webkit-text-size-adjust:none;" }

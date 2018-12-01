@@ -1,0 +1,16 @@
+%div#not_found_wrapper
+
+  %div#not_found_title Activation pas possible
+
+  %div#not_found_content
+    %p Il n'&eacute;tait pas possible d'activer l'adresse. Il y a quelques raisons possibles:
+    %ul
+      %li Il n'y a pas d'adresse &agrave; activer avec cette URL,
+      %li l'adresse est d&eacute;j&agrave; activ&eacute;e,
+      %li il y a un erreur dans TeaCo (tr&egrave;s improbable ;-) ).
+
+    %p.warning
+      En cas vous avez perdu votre lien personnel de TeaCo vous pouvez le
+      faire parvenir &agrave; vous par entrant votre adresse e-mail &agrave; la
+      = succeed "." do
+        %a{ :href => root_path } page d'accueil

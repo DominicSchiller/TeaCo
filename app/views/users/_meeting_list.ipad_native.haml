@@ -1,0 +1,49 @@
+- voted = ''
+- not_yet_voted = ''
+- meetings.sort_by{ |m| m.updated_at }.reverse_each do |meeting|
+  - meeting_info = meeting_info_for(@user, meeting)
+  - restricted = meeting.restricted ? '<true/>' : '<false/>'
+  - owner = meeting.initiator == @user ? '<true/>' : '<false/>'
+  - dict = '<dict>'
+  - dict = dict + '<key>Meeting_Title</key><string>' + CGI.escapeHTML(meeting.title) + '</string>'
+  - dict = dict + '<key>Meeting_Value</key><string>' + meeting.id.to_s() + '</string>'
+  - dict = dict + '<key>Meeting_Owner</key>' + owner
+  - dict = dict + '<key>Restricted</key>' + restricted
+  - dict = dict + '<key>Last_Update</key><string>' + time_ago_in_words(meeting.updated_at) + '</string>'
+  - dict = dict + '<key>Last_Update_Plain</key><string>' + meeting.updated_at.to_s() + '</string>'
+  - dict = dict + '<key>Clone_URL</key><string>' + new_user_meeting_path(@user, {:clone => meeting.id}) + '</string>'
+  - dict = dict + '<key>Delete_URL</key><string>' + insert_delete_or_leave_link_native(@user, meeting) + '</string>'
+  - dict = dict + '<key>VotePercentage</key><string>' + meeting_info[1].to_s() + '</string>'
+  - dict = dict + '<key>FinalCount</key><string>' + meeting_info[2].to_s() + '</string>'
+  
+  - dict = dict + '<key>Participants</key>'
+  - dict = dict + '<array>'
+  - meeting.participants.each do |participant|
+    - dict = dict + '<dict>'
+    - dict = dict + '<key>ParticipantName</key>'
+    - dict = dict + '<string>' + CGI.escapeHTML(participant.name) + '</string>'
+    - dict = dict + '<key>ParticipantMail</key>'
+    - dict = dict + '<string>' + participant.email + '</string>'
+    - dict = dict + '<key>ParticipantID</key>'
+    - dict = dict + '<string>' + participant.id.to_s() + '</string>'
+    - dict = dict + '<key>Initiator</key>'
+    - if meeting.initiated_by?(participant)
+      - dict = dict + '<true/>'
+    - else
+      - dict = dict + '<false/>'
+    - dict = dict + '</dict>'
+  - dict = dict + '</array>'
+  - dict = dict + '</dict>'
+  
+  - if !meeting_info[0]
+    - not_yet_voted = not_yet_voted + dict
+  - else
+    - voted = voted + dict
+<key>NotYetVoted</key>
+<array>
+= not_yet_voted
+</array>
+<key>Voted</key>
+<array>
+= voted
+</array>

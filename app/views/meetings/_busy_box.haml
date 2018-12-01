@@ -1,0 +1,3 @@
+%div.busy_box{ :style => calc_busy_box_style(timespan), :title => t('tooltips.busy_users_title') }
+  %div.invisible.tooltip{ :style => "width: 250px" }
+    = get_busy_box_tooltip(timespan)

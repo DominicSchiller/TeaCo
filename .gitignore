@@ -1,0 +1,96 @@
+#----------------------------------------------------------------------------
+# Ignore these files when commiting to a git repository.
+#
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+#
+# The original version of this file is found here:
+# https://github.com/RailsApps/rails3-application-templates/raw/master/files/gitignore.txt
+#
+# Corrections? Improvements? Create a GitHub issue: 
+# http://github.com/RailsApps/rails3-application-templates/issues
+#----------------------------------------------------------------------------
+
+
+.Gemfile
+.byebug_history
+.ruby-version
+/*/doc/
+/*/test/tmp/
+
+# Ignore bundler config.
+/.bundle
+/vendor/bundle/
+
+# Ignore the default SQLite database
+/db/*.sqlite
+/db/*.sqlite-journal
+
+# Ignore all logfiles and tempfiles
+/log/*
+!/log/.keep
+/tmp/
+
+# various artifacts
+**.war
+*.rbc
+*.sassc
+.rspec
+.redcar/
+.sass-cache
+/config/config.yml
+/config/database.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/spec/requests
+/spec/routing
+/spec/views
+/specifications
+rerun.txt
+pickle-email-*.html
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+*.old
+*.jar
+xerial*.*
+
+/dist/
+/doc/
+/guides/output/
+debug.log
+node_modules/
+package-lock.json
+pkg/
+
+/yarn-error.log
+/yarn.lock

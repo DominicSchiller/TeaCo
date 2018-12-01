@@ -1,0 +1,13 @@
+- picked_suggestions = @meeting.picked_suggestions
+
+- if picked_suggestions.empty?
+  %p#picked_suggestions
+    %span= raw t('.please_pick_suggestions')
+    %span= image_tag("pick", style: "vertical-align: top; height: 16px;" )
+- else
+  %table#picked_suggestions
+    - picked_suggestions.each do |sugg|
+      %tr
+        %td
+          = image_tag "pick_active.png", :class => "pick_button send_dates tipped_left width_25", :title => t('.remove_from_picked_list'), :rel => user_meeting_suggestion_path(@user, sugg.meeting, sugg)
+        %td= "#{ l(sugg.date, :format => :short_with_weekday) }: #{sugg.start_as_readable} - #{sugg.end_as_readable}"

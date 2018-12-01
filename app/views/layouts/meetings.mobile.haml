@@ -1,0 +1,23 @@
+%html
+  %head
+    %title
+      = @page_title || "#{@meeting.title} :: TeaCo"
+    %meta{ 'http-equiv' => "Content-Type", 'content' => "text/html; charset=UTF-8" }
+      
+    = stylesheet_link_tag "../sencha-touch/resources/css/sencha-touch-teaco"
+    = javascript_include_tag "../sencha-touch/sencha-touch"
+    
+    = stylesheet_link_tag "../sencha-touch/resources/css/list-reload"
+    = javascript_include_tag "../sencha-touch/Ext.ux.touch.ListPullRefresh"
+    
+    = stylesheet_link_tag "mobile/meetingPanel", "mobile/suggestionPanel"
+    
+    = javascript_include_tag "mobile/loadingMasks", "mobile/lang_#{@user.language}"
+    = javascript_include_tag "mobile/application", "mobile/handler"
+    = javascript_include_tag "mobile/loginPanel", "mobile/meetingPanel", "mobile/settingsPanel", "mobile/commentsPanel", "mobile/suggestionItem", "mobile/participantsPanel", "mobile/invitePanel", "mobile/messagePanel", "mobile/suggestionPanel"
+    
+    = javascript_tag " var USER_ID = #{@user.id};"
+    
+    = javascript_tag " var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+
+  %body#body{ 'style' => "-webkit-text-size-adjust:none;" }

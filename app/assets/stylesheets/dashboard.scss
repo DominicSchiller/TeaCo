@@ -1,0 +1,178 @@
+/*@charset "UTF-8";
+
+div#head_meetings {
+	height:40px;
+	margin:10px 10px 10px 10px;
+	padding:0 10px;
+	line-height:40px;
+	float:left;
+	color:#FFF;
+	font-size:14px;
+	background-image:url('headline_bg.jpg');
+	background-repeat:repeat-x;
+}
+
+div#cont_meetings,
+div#cont_delete {
+	margin:0 10px 10px 10px;
+	padding:10px;
+	float:left;
+	color:#333;
+	font-size:14px;
+	background-color:#EEE;
+}
+
+div#cont_delete {
+	font-size:13px;
+}
+*/
+
+table#meeting_list {
+	width: 100%;
+	float: left;
+	border-collapse: collapse;
+}
+
+table#meeting_list tr.odd {
+	//background-color:#DBDBDB;
+  //background-color: $light-grey;
+  background-color: $light-grey;
+}
+
+table#meeting_list td {
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	padding: 5px 5px 5px 5px;
+}
+
+
+table#meeting_list td#restricted, table#meeting_list td#initiator {
+	width: 30px;
+	text-align: center;
+}
+
+table#meeting_list td#participants {
+	text-align:right;
+	padding-right:50px;
+	font-weight: bold;
+}
+
+table#meeting_list td#participants img {
+	float: right;
+}
+
+table#meeting_list td#name {
+	font-weight: bold;
+}
+
+table#meeting_list td#actions {
+  @media(max-width: 1200px){
+    text-align: center;
+  }
+}
+
+/*
+
+div#meetings_showAll {
+	height:50px;
+	line-height:50px;
+	width:100%;
+	float:left;
+	text-align:right;
+	background-color:#DBDBDB;
+}
+
+a#meetings_showAll_link {
+	display:block;
+	padding-right:20px;
+	color:#F60;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+table#config_table {
+	width:100%;
+	border-collapse:collapse;
+}
+
+table#config_table td.caption {
+	width:150px;
+	font-weight:bold;	
+}
+
+table#config_table td.desc {
+	padding:5px 0 10px 0;
+}
+
+table#config_table input,
+table#config_table select {
+	width:200px;
+}
+
+FreeBusy-Input doppelt so groß:
+table#config_table input#user_freebusy_url {
+	width:90%;
+	max-width:400px;
+}
+
+td#td_desc_language {
+	font-weight:bold;
+}
+
+.alias_addresses_list#alias_addresses {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.alias_addresses_list#alias_addresses td {
+	vertical-align:middle;
+	padding: 5px 0px 5px 5px;
+}
+*/
+
+.alias_addresses_list#alias_addresses td#icon {
+	text-align: center;
+	width: 30px;
+	padding-left: 0px;
+}
+
+/*
+.alias_addresses_list#alias_addresses td img#trash {
+	text-align: center;
+	padding: 0 5px;
+	line-height:40px;
+	cursor:pointer;
+}
+
+.alias_addresses_list#alias_addresses td input#email {
+	padding: 2px;
+	width: 250px;
+}
+
+div#head_delete {
+	height:40px;
+	margin:0 10px 10px 10px;
+	padding:0 10px;
+	line-height:40px;
+	float:left;
+	color:#FFF;
+	font-size:14px;
+	background-image:url('headline_bg.jpg');
+	background-repeat:repeat-x;
+}
+
+ul.ka_list {
+	margin:0;
+	padding:0;
+}
+
+ul.ka_list li {
+	margin:0 0 5px 0;
+}
+
+ul.ka_list li input {
+	margin-right:5px;
+}
+*/

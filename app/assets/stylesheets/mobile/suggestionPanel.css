@@ -1,0 +1,253 @@
+
+div.votebar {
+	width:100%;
+	border:1px solid #999;
+	float:left;
+	background:url("vote_white.jpg") repeat-x;
+}
+
+div.votebar div {
+	height:10px;
+	float:left;
+}
+
+div.red {
+	background:url("vote_red.jpg") repeat-x;
+}
+
+div.yellow {
+	background:url("vote_yellow.jpg") repeat-x;
+}
+
+div.green {
+	background:url("vote_green.jpg") repeat-x;
+}
+
+div.white {
+	background:url("vote_white.jpg") repeat-x;
+}
+
+div.suggestionInfoPanel {
+	font-size:15px;
+}
+
+.x-button.btnSuggestion.x-button-normal {
+	height: 35px;
+	width: 35px;
+	background-color:transparent!important;
+	background-size:35px 35px;
+	border:none!important;
+}
+
+.x-button.btnPickSuggestion-unpicked.x-button-normal {
+	background-image: url("mobile/unpicked.png")!important;
+}
+
+.x-button.btnPickSuggestion-picked.x-button-normal {
+	background-image: url("mobile/picked.png")!important;
+}
+
+.x-button.btnPickSuggestion-unpicked.restricted.x-button-normal {
+	background-image: url("mobile/unpicked_restricted.png")!important;
+}
+
+.x-button.btnPickSuggestion-picked.restricted.x-button-normal {
+	background-image: url("mobile/picked_restricted.png")!important;
+}
+
+.x-button.btnEditSuggestion.x-button-normal {
+	background-image: url("mobile/settings.png")!important;
+	margin-left: 4px;
+}
+
+.x-button.btnVoteSuggestion-red-unvoted.x-button-normal {
+	background-image: url("mobile/unvoted_red.png")!important;
+}
+
+.x-button.btnVoteSuggestion-red-voted.x-button-normal {
+	background-image: url("mobile/voted_red.png")!important;
+}
+
+.x-button.btnVoteSuggestion-yellow-unvoted.x-button-normal {
+	background-image: url("mobile/unvoted_yellow.png")!important;
+}
+
+.x-button.btnVoteSuggestion-yellow-voted.x-button-normal {
+	background-image: url("mobile/voted_yellow.png")!important;
+}
+
+.x-button.btnVoteSuggestion-green-unvoted.x-button-normal {
+	background-image: url("mobile/unvoted_green.png")!important;
+}
+
+.x-button.btnVoteSuggestion-green-voted.x-button-normal {
+	background-image: url("mobile/voted_green.png")!important;
+}
+
+.transparentPanel {
+	color:#FFF;
+}
+
+.transparentPanel div {
+	background-color:transparent!important;
+}
+
+.suggEditTimeAndDate {
+	margin-bottom:10px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.participantSlot {
+	width:100%;
+	margin:4px 0!important;
+}
+
+.participantSlot div.part_name {
+	width:48%;
+	margin-right:4%;
+	text-align:right;
+	float:left;
+	overflow:hidden;
+}
+
+.participantSlot div.part_vote {
+	width:48%;
+	text-align:left;
+	float:left;
+}
+
+.participantSlot .red {
+	color:#900;
+}
+
+.participantSlot .yellow {
+	color:#FC0;
+}
+
+.participantSlot .green {
+	color:#0C0;
+}
+
+div.pListName {
+	float: left;
+	height: 30px;
+	width:100%;
+	line-height: 30px;
+	overflow:hidden;
+	padding-left:45px;
+}
+
+.x-button.pListBtn.x-button-small {
+	height: 30px;
+	width: 30px;
+	background-color:transparent!important;
+	background-size:30px 30px;
+	border:none!important;
+	position:absolute;
+	left:10px;
+	top:10px;
+	background-image: url("mobile/uninvited.png")!important;
+}
+
+.invited .x-button.pListBtn.x-button-small {
+	background-image: url("mobile/invited.png")!important;
+}
+
+.x-button.pListBtn.me.x-button-small {
+	background-image: url("mobile/mevited.png")!important;
+}
+
+.x-button.pListBtn.initiator.x-button-small {
+	background-image: url("mobile/uninvited_initiator.png")!important;
+}
+
+.invited .x-button.pListBtn.initiator.x-button-small {
+	background-image: url("mobile/invited_initiator.png")!important;
+}
+
+.x-button.pListBtn.initiator.me.x-button-small {
+	background-image: url("mobile/mevited_initiator.png")!important;
+}
+
+/* Styles für Kommentare ab hier */
+div.autor {
+	width:100%;
+	font-weight:bold;
+	font-size:19px;
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	text-align:justify;
+}
+
+.x-button.editComment.x-button-plain,
+.x-button.deleteComment.x-button-plain {
+	height: 25px;
+	width: 25px;
+	background-color:transparent!important;
+	background-size:25px 25px;
+	border:none!important;
+	margin:0 0 0 5px!important;
+	padding:0!important;
+}
+
+.x-button.editComment.x-button-plain {
+	background-image: url("mobile/edit_comment.png")!important;
+}
+
+.x-button.deleteComment.x-button-plain {
+	background-image: url("mobile/delete_comment.png")!important;
+}
+
+div.body {
+	margin-top:5px;
+	font-size:17px;
+}
+
+div.body em, div.body strong {
+	font-weight:bold;
+	font-style:italic;
+}
+
+div.body ul {
+	list-style-position:inside;
+	padding-left:30px;
+}
+
+div.body ul li {
+	list-style-type:circle;
+}
+
+/* ab hier startseite */
+
+div.slide-panel {
+	margin-top:-10px;
+}
+
+div.slide-panel div {
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#F90), to(#F60));
+	background-image: linear-gradient(top, #F90 0%, #F60 100%);
+	margin:0 -20px;
+	padding:10px;
+	color:#FFF;
+}
+
+div.slide-panel div h1 {
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+	width:100%;
+}
+
+div.slide-panel div h2 {
+	font-size:30px;
+	text-align:center;
+	width:100%;
+}
+
+div.slide-panel div p {
+	font-size:17px;
+	text-align:center;
+	width:100%;
+}

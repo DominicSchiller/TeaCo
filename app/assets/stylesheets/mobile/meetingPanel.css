@@ -1,0 +1,105 @@
+/*
+div.meetingListItemTop {
+    float: left;
+    height: 22px;
+    width: 100%;
+    line-height: 22px;
+    overflow: hidden;
+}
+
+div.meetingListItemBottom {
+    float: left;
+    color: #999;
+    font-size: 13px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.t-button-arrow_right {
+    height: 30px !important;
+    width: 30px !important;
+    position: absolute !important;
+    right: 15px;
+    top: 15px;
+    background: url('mobile/arrow_right.png') no-repeat !important;
+    background-size: 30px 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.t-button-delete {
+    height: 30px !important;
+    width: 90px !important;
+    position: absolute !important;
+    right: 15px;
+    top: 15px;
+    display: none !important;
+    text-align: center !important;
+}
+
+.t-button-leave {
+    height: 30px !important;
+    width: 90px !important;
+    position: absolute !important;
+    right: 15px;
+    top: 15px;
+    display: none !important;
+    text-align: center !important;
+}
+
+.t-button-clone {
+    height: 30px !important;
+    width: 30px !important;
+    position: absolute !important;
+    right: 15px;
+    top: 15px;
+    display: none !important;
+    text-align: center !important;
+    background-image: url('mobile/clone.png') !important;
+    background-size: 30px 30px;
+}
+
+.t-button-title {
+    height: 30px !important;
+    width: 30px !important;
+    position: absolute !important;
+    right: 55px;
+    top: 15px;
+    display: none !important;
+    text-align: center !important;
+    background-image: url('mobile/title.png') !important;
+    background-size: 30px 30px;
+}
+
+.show-delete-button .t-button-delete,
+.show-delete-button .t-button-leave,
+.show-edit-buttons .t-button-clone,
+.show-edit-buttons .t-button-title {
+    display: block !important;
+}
+
+!* override x-list-disclosure for vertical centering *!
+#meetingList div.x-list-disclosure {
+    margin: 4px 0 !important;
+    height: 31px;
+}
+
+img.restricted {
+    float: left;
+    height: 14px;
+    margin: 4px 3px 4px 0;
+    display: none;
+}
+
+img.initiator {
+    float: left;
+    height: 14px;
+    margin: 4px 3px 4px 0;
+    display: none;
+}
+
+img.true {
+    display: block !important;
+}*/

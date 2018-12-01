@@ -1,0 +1,11 @@
+<plist version="1.0">
+<dict>
+<key>SuggBar_Values</key>
+<array>
+- @meeting.suggestions.sort_by{|a| [a.date, a.start, a.end]}.each do |suggestion|
+  %dict
+    = get_vote_bar_for_android_native(suggestion)
+</array>
+= render :partial => "known_addresses/list.android_native", :locals => { :known_addresses => @user.known_addresses }
+</dict>
+</plist>

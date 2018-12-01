@@ -1,0 +1,46 @@
+=render partial: "detail_panel_modals"
+
+.row.detail_panel_box{ style:"margin-top: 60px;" }
+  .col-xs-12.col-md-4.hidden-xs.hidden-sm{style: "margin-top: 10px; margin-bottom: -5px;"}
+    #meeting_titlebar
+      .col-xs-12
+        - if @meeting.restricted
+          %span.icon-lock.large_icon.meeting_restricted_icon{ title: t('tooltips.restricted_meeting_explain'), class: "tipped_right" }
+        %h4.meeting_title.margin-left-1{ get_meeting_title_attributes(@meeting, @user) }<="#{h(@meeting.title)}"
+        - if @meeting.updatable_by?(@user)
+          %i.icon-edit.large_icon{ class: "editableTitle" }
+
+  .col-xs-12.hidden-md.hidden-lg.text-center.margin-top-1{style: "margin-bottom: -10px;"}
+    #meeting_titlebar
+      .col-xs-12
+        %span{style: "display: inline-block;"}
+          - if @meeting.restricted
+            %span.icon-lock.large_icon.meeting_restricted_icon{ title: t('tooltips.restricted_meeting_explain'), class: "tipped_right" }
+          %h4.meeting_title.margin-left-1{ get_meeting_title_attributes(@meeting, @user) }<="#{h(@meeting.title)}"
+          - if @meeting.updatable_by?(@user)
+            %i.icon-edit.large_icon{ class: "editableTitle" }
+
+  .col-md-8
+    -# BUTTONS
+    .row.hidden-xs.hidden-sm.margin-top-1.text-right.margin-right-2
+      %span
+        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.detail_panel.new_suggestion")
+        -#%div#new_suggestion.dropdown-menu.dropdown-menu-center
+        -#  .container{ style: "width: 500px;" }
+        -#    .row
+        -#      .col-md-12
+        -#        = render :partial => 'suggestions/edit_form', :locals => { sugg: Suggestion.new, large: "true" }
+        %a.btn.btn-primary.button_width{ href: "#", "data-target": "#edit_form_modal", "data-toggle": "modal",
+                            type: "button" }= t("meetings.detail_panel.new_suggestion")
+      %span
+        %a.btn.btn-primary.button_width{ href: "#", "data-target": "#invitation_form_modal", "data-toggle": "modal",
+                            type: "button" }= t("meetings.buttons.manage_participants")
+        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.buttons.manage_participants")
+        -#%div#invite.dropdown-menu.dropdown-menu-left
+        -#  = render :partial => "invitation_form"
+      %span
+        %a.btn.btn-primary.button_width{ href: "#", "data-target": "#send_dates_form_modal", "data-toggle": "modal",
+                            type: "button" }= t("meetings.buttons.finish_planing")
+        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.buttons.finish_planing")
+        -#%div#finish.dropdown-menu.dropdown-menu-right
+        -#  = render :partial => "send_dates_form"

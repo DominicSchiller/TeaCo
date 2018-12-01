@@ -1,0 +1,202 @@
+- restricted_sugg = suggestion_restricted?(sugg)
+- show_vote_bar = false
+
+- conditional_div(!skip_outer, { :id => "sugg_#{sugg.id}", :class => get_sugg_box_class(sugg, restricted_sugg), :style => calc_sugg_box_style(sugg, left_margin), :rel => user_meeting_suggestion_path(@user, sugg.meeting, sugg) }) do
+  %div{ :class => (if sugg.picked then "picked " else "" end) << "dialog box_shadow" }
+    %div.content
+      %div.t
+        -# Große Terminvorschlagsboxen
+      - if get_duration_minutes(sugg) >= 120
+        %div.content_inner
+          - if sugg.pickable_by?(@user)
+            -img_src = get_pick_button_source(sugg)
+            -img_attributes = get_pick_button_attributes(sugg, "big", "false")
+            = image_tag( img_src, img_attributes )
+          - else
+            = image_tag("lock.png", title: t('tooltips.restricted_suggestion_explain'), class: "pick_button tipped_top" )
+
+          %span.edit_time{ get_edit_time_attributes(sugg, restricted_sugg) }
+            = link_to "#", "data-target": "#edit_suggestion_modal_#{sugg.id}", "data-html": "true", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help'), class: "edit_suggestion"   do
+              = render :partial => "meetings/sugg_times", :locals => { :suggestion => sugg }
+              -if sugg.picked?
+                %span.icon-edit.medium_icon.picked_text
+              -else
+                %span.icon-edit.medium_icon
+            - if !restricted_sugg
+              %div#form_title.invisible{ :title => t('tooltips.edit') }
+          - v = sugg.votes.find_by_voter_id(@user)
+
+          - if sugg.destroyable_by?(@user)
+            =link_to user_meeting_suggestion_path(@user, sugg.meeting, sugg), method: 'delete', data: { confirm: "#{t('users.known_addresses.confirm_delete_known_addresses_text')}" },
+                            title: t('tooltips.delete_suggestion'), class: "sugg_delete_btn" do
+              %span.icon-trash-empty.medium_icon
+          %div.vote_buttons_xl{ :rel => user_meeting_suggestion_vote_path(@user, @meeting, sugg, v) }
+            = image_tag get_button_source(:no, v), :rel => "no", :title => t('tooltips.vote_no'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+            = image_tag get_button_source(:maybe, v), :rel => "maybe", :title => t('tooltips.vote_maybe'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+            = image_tag get_button_source(:yes, v), :rel => "yes", :title => t('tooltips.vote_yes'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+
+          = link_to "#", class: "info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "top" , "data-content": show_decision_by_users(sugg), "data-container": "body" do
+            %div.vote_bar.large.big_box{ :rel => user_meeting_suggestion_votes_path(@user, @meeting, sugg), :title => t('tooltips.vote_results') }
+              = get_vote_bar_for(sugg)
+
+
+
+        -# Termin dauert 1-2 Stunden
+      - elsif get_duration_minutes(sugg) < 120 && get_duration_minutes(sugg) >= 90
+        %div.content_inner
+          - if sugg.pickable_by?(@user)
+            %div.pick_button.tipped_top
+              -img_src = get_pick_button_source(sugg)
+              -img_attributes = get_pick_button_attributes(sugg, "big", "false")
+              =image_tag(img_src, img_attributes)
+          - else
+            %div.pick_button.tipped_top
+              =image_tag("lock.png", title: t('tooltips.restricted_suggestion_explain'))
+          %div{ style: "float:left;" }
+
+          %span.edit_time
+            = link_to "#", "data-target": "#edit_suggestion_modal_#{sugg.id}", "data-html": "true", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help'), class: "edit_suggestion"   do
+              = render :partial => "meetings/sugg_times", :locals => { :suggestion => sugg }
+              -if sugg.picked?
+                %span.icon-edit.medium_icon.picked_text
+              -else
+                %span.icon-edit.medium_icon
+            - if !restricted_sugg
+              %div#form_title.invisible{ :title => t('tooltips.edit') }
+
+          - v = sugg.votes.find_by_voter_id(@user)
+
+          - if sugg.destroyable_by?(@user)
+            =link_to user_meeting_suggestion_path(@user, sugg.meeting, sugg), method: 'delete', data: { confirm: "#{t('users.known_addresses.confirm_delete_known_addresses_text')}" },
+                            title: t('tooltips.delete_suggestion'), class: "sugg_delete_btn" do
+              %span.icon-trash-empty.medium_icon
+
+          %div.vote_buttons_lg.pointer{ :rel => user_meeting_suggestion_vote_path(@user, @meeting, sugg, v) }
+            = image_tag get_button_source(:no, v), :rel => "no", :title => t('tooltips.vote_no'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+            = image_tag get_button_source(:maybe, v), :rel => "maybe", :title => t('tooltips.vote_maybe'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+            = image_tag get_button_source(:yes, v), :rel => "yes", :title => t('tooltips.vote_yes'), :class => "vote_button tipped_top button_width_30 pointer", remote: true
+
+          = link_to "#", class: "info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "top" , "data-content": show_decision_by_users(sugg), "data-container": "body" do
+            %div.vote_bar.large.big_box{ :rel => user_meeting_suggestion_votes_path(@user, @meeting, sugg), :title => t('tooltips.vote_results') }
+              = get_vote_bar_for(sugg)
+
+        -# Terminvorschlag größer 60 Minuten, kleiner 90 Minuten
+      - elsif get_duration_minutes(sugg) < 90 && get_duration_minutes(sugg) > 60
+        - show_vote_bar = true
+        %div.content_inner.replace
+        - v = sugg.votes.find_by_voter_id(@user)
+        - if sugg.pickable_by?(@user)
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            -img_src = get_pick_button_source(sugg)
+            -img_attributes = get_pick_button_attributes(sugg, "small", "false")
+            =image_tag(img_src, img_attributes)
+        - else
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            =image_tag("lock.png", title: t('tooltips.restricted_suggestion_explain'))
+        %div.pointer{ rel: user_meeting_suggestion_vote_path(@user, @meeting, sugg, v), class: "vote_buttons_md" }
+          = image_tag get_button_source(:no, v), :rel => "no", :title => t('tooltips.vote_no'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:maybe, v), :rel => "maybe", :title => t('tooltips.vote_maybe'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:yes, v), :rel => "yes", :title => t('tooltips.vote_yes'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+
+        = link_to "#", "data-target": "#edit_suggestion_modal_#{sugg.id}", "data-html": "true", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help'), class: "edit_suggestion"   do
+          %span.icon-edit.medium_icon
+
+        = link_to "#", class: "vote_results_btn info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "bottom" ,
+                      "data-content": "#{render partial: 'meetings/suggestion_box_info',
+                              locals: { sugg: sugg, show_vote_bar: show_vote_bar}}", "data-container": "body" do
+          %span.icon-info.medium_icon
+
+        - if sugg.destroyable_by?(@user)
+          -# Delete Suggestion
+          =link_to user_meeting_suggestion_path(@user, sugg.meeting, sugg), method: 'delete', data: { confirm: "#{t('tooltips.delete_suggestion')}?" },
+                            title: t('tooltips.delete_suggestion'), class: "delete_sugg_button small_size", style: "margin-left: -8px;" do
+            %span.icon-trash-empty.medium_icon
+        = link_to "#", class: "info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "top" , "data-content": show_decision_by_users(sugg), "data-container": "body" do
+          %div.vote_bar.large.big_box{ :rel => user_meeting_suggestion_votes_path(@user, @meeting, sugg), :title => t('tooltips.vote_results') }
+            = get_vote_bar_for(sugg)
+
+
+        -# Kleine Terminvorschlagsboxen = 60 Minuten
+      - elsif get_duration_minutes(sugg) == 60
+        - show_vote_bar = true
+        %div.content_inner.replace
+        - v = sugg.votes.find_by_voter_id(@user)
+        - if sugg.pickable_by?(@user)
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            -img_src = get_pick_button_source(sugg)
+            -img_attributes = get_pick_button_attributes(sugg, "small", "false")
+            =image_tag(img_src, img_attributes)
+        - else
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            =image_tag("lock.png", title: t('tooltips.restricted_suggestion_explain'))
+        %div.pointer{ :rel => user_meeting_suggestion_vote_path(@user, @meeting, sugg, v), class: "vote_buttons_sm" }
+          = image_tag get_button_source(:no, v), :rel => "no", :title => t('tooltips.vote_no'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:maybe, v), :rel => "maybe", :title => t('tooltips.vote_maybe'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:yes, v), :rel => "yes", :title => t('tooltips.vote_yes'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+
+        = link_to "#", "data-target": "#edit_suggestion_modal_#{sugg.id}", "data-html": "true", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help'), class: "edit_suggestion"   do
+          %span.icon-edit.medium_icon
+
+        = link_to "#", class: "vote_results_btn info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "bottom" ,
+                      "data-content": "#{render partial: 'meetings/suggestion_box_info',
+                              locals: { sugg: sugg, show_vote_bar: show_vote_bar}}", "data-container": "body" do
+          %span.icon-info.medium_icon
+
+        - if sugg.destroyable_by?(@user)
+          -# Delete Suggestion
+          =link_to user_meeting_suggestion_path(@user, sugg.meeting, sugg), method: 'delete', data: { confirm: "#{t('tooltips.delete_suggestion')}?" },
+                            title: t('tooltips.delete_suggestion'), class: "delete_sugg_button small_size", style: "margin-left: -8px;" do
+            %span.icon-trash-empty.medium_icon
+        = link_to "#", class: "info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "top" , "data-content": show_decision_by_users(sugg), "data-container": "body" do
+          %div.vote_bar.small_box{ :rel => user_meeting_suggestion_votes_path(@user, @meeting, sugg), :title => t('tooltips.vote_results') }
+            = get_vote_bar_for(sugg)
+
+
+        -# Kleine Terminvorschlagsboxen <= 45 Minuten
+      - else
+        - show_vote_bar = true
+        %div.content_inner.replace
+        - v = sugg.votes.find_by_voter_id(@user)
+        - if sugg.pickable_by?(@user)
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            -img_src = get_pick_button_source(sugg)
+            -img_attributes = get_pick_button_attributes(sugg, "small", "false")
+            =image_tag(img_src, img_attributes)
+        - else
+          %div.pick_button.tipped_top{ style: "float: left; margin-left: 2px;" }
+            =image_tag("lock.png", title: t('tooltips.restricted_suggestion_explain'))
+        %div.pointer{ :rel => user_meeting_suggestion_vote_path(@user, @meeting, sugg, v), class: "vote_buttons_sm" }
+          = image_tag get_button_source(:no, v), :rel => "no", :title => t('tooltips.vote_no'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:maybe, v), :rel => "maybe", :title => t('tooltips.vote_maybe'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+          = image_tag get_button_source(:yes, v), :rel => "yes", :title => t('tooltips.vote_yes'), :class => "vote_button tipped_top button_width_25 pointer", remote: true
+
+        = link_to "#", "data-target": "#edit_suggestion_modal_#{sugg.id}", "data-html": "true", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help'), class: "edit_suggestion"   do
+          %span.icon-edit.medium_icon
+
+        = link_to "#", class: "vote_results_btn info_popover hidden-xs hidden-sm" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "bottom" ,
+                      "data-content": "#{render partial: 'meetings/suggestion_box_info',
+                              locals: { sugg: sugg, show_vote_bar: show_vote_bar}}", "data-container": "body" do
+          %span.icon-info.medium_icon
+
+        - if sugg.destroyable_by?(@user)
+          -# Delete Suggestion
+          =link_to user_meeting_suggestion_path(@user, sugg.meeting, sugg), method: 'delete', data: { confirm: "#{t('tooltips.delete_suggestion')}?" },
+                            title: t('tooltips.delete_suggestion'), class: "delete_sugg_button small_size", style: "margin-left: -8px;" do
+            %span.icon-trash-empty.medium_icon
+    %div.b
+      %div
+
+
+
+
+-# Modal zum Bearbeiten von Terminvorschlägen
+.modal.fade{role: "dialog", id: "edit_suggestion_modal_#{sugg.id}"}
+  .modal-dialog
+    -# Modal content
+    .modal-content{ style: "min-height: 310px;"}
+      .modal-header
+        %button.close{"data-dismiss": "modal", type: "button"}
+          %span.icon-cancel.large_icon
+        %h4.modal-title= t("suggestions.edit_form.edit_suggestion")
+      .modal-body
+        .text-left=render partial: 'suggestions/edit_form', locals: { sugg: sugg, large: "true" }

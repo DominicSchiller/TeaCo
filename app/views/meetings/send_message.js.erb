@@ -1,0 +1,13 @@
+/*
+page.call "$('.submit_button_replacer').remove"
+page.call "$('#send_message_submit').enable"
+page.call "close_form_on_id", "send_message_button"
+page.call "$('.message_form #message').clearField"
+page.call "close_stale_tooltips"
+*/
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('.submit_button_replacer').remove();
+$('#send_message_submit').enable();
+close_form_on_id("send_message_button");
+$('.message_form #message').clearField();
+close_stale_tooltips();

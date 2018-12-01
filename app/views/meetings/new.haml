@@ -1,0 +1,26 @@
+.container.new_meeting_box
+  .row
+    .col-xs-12
+      -# default_title = !clone.blank? ? clone.title || "" : ""
+      - default_title = params[:clone] ? Meeting.find_by_id(params[:clone]).title || "" : ""
+      = form_for [@user, Meeting.new], :html => { class: 'ajax new_meeting_form' } do |f|
+        .row.space_bottom
+          .form-group
+            = f.label :title, t("meetings.title") + ":", class: "control-label"
+            = f.text_field :title, value: default_title, :class => "gain_focus form-control", maxlength: 60, size: nil
+        .row.margin-top-2.hidden-md.hidden-lg
+          =t("tooltips.restricted_meeting_tooltip")
+        .row
+          %label.checkbox
+            %span.checkbox.margin-left-2= f.check_box :restricted, class: "checkbox_margin", style: "margin-top: 9px;"
+            %span.margin-left-1= label_tag :restricted, t("meetings.restricted_meeting") + "?"
+            = link_to "#", class: "info_popover hidden-xs inline" ,"data-html": "true", "data-placement": "left", "data-trigger": "focus" ,"data-toggle": "popover" , "data-content": t("tooltips.restricted_meeting_tooltip") do
+              %span.icon-info-circled.large_icon
+        = f.hidden_field :initiator_id, value: @user.id
+        - if params[:clone]
+          = f.hidden_field :clone, value: params[:clone].to_s
+        .row
+          .visible-md.visible-lg.visible-sm.text-right
+            = submit_tag t("meetings.new.submit_new_meeting"), class: "btn btn-primary"
+          .visible-xs
+            = submit_tag t("meetings.new.submit_new_meeting"), class: "btn btn-primary btn-block"

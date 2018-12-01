@@ -1,0 +1,9 @@
+//page.insert_html :top, "body", :partial => "shared/errors", :locals => { :info => t('.confirm_alias_sent') }
+//page.replace "alias_addresses", :partial => "users/alias_addresses"
+
+//$("body").append("<%#=  j render partial: "shared/errors", locals: { info: t('.confirm_alias_sent') } %>");
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('#alias_addresses').html("<%= j render partial: 'users/alias_addresses.haml' %>");
+setEqualHeightAdministration();
+
+<%#= TODO Boxgröße anpassen, wenn mehrere neue Adressen hinzugefügt wurden %>

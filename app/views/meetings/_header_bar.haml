@@ -1,0 +1,70 @@
+-# Modal
+#help_mobile.modal.fade{role: "dialog"}
+  .modal-dialog
+    -# Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss": "modal", type: "button"}
+          %span.icon-cancel.large_icon
+        %h4.modal-title= raw t('layouts.header_bar.help')
+      .modal-body
+        .text-left=render :layout => false, template: "help/faq_#{I18n.locale}.haml"
+      .modal-footer.hidden-lg.hidden-md
+        %button.btn.btn-primary.btn-block{href: "#", "data-dismiss": "modal", type: "button"}= t('close')
+      .modal-footer.hidden-xs.hidden-sm
+        %button.btn.btn-primary.panel_button{href: "#","data-dismiss": "modal", type: "button"}= t('close')
+
+
+%nav.navbar.navbar-default.navbar-fixed-top.header_bar.teaco_background{:role => "navigation", id: "header_bar"}
+  .container-fluid.navbar-inner
+    .navbar-header
+      - if @user && !@user.new_record?
+        %button.navbar-toggle{ "data-target": "#bs_navbar", "data-toggle": "collapse", type: "button", style: "padding-top: 2px;" }
+          %span.icon-menu.extra_large_icon
+      - else
+        %button.navbar-toggle{ "data-target": "#help_mobile", "data-toggle": "modal", type: "button", "aria-expanded":"false", style: "padding-top: 2px;", title: t('layouts.header_bar.help') }
+          %span.icon-help.extra_large_icon
+
+      .nav.navbar-nav.nav-center.header_bar_height.only_small.pull-right
+        - if @user && !@user.new_record?
+          %li.margin-right-2.header_new_meeting.header_bar_margin
+            .panel.panel-default.no_border.no_shadow
+              .no_border#headingNewMeeting{ "data-toggle":"collapse", href:"#collapseNewMeeting" }
+                .panel-title.only_small
+                  = link_to new_user_meeting_path(@user), "aria-expanded":"false", "aria-controls":"collapseNewMeeting" , class: "header_bar_button", title: t('tooltips.create_new_meeting')  do
+                    %span.icon-plus.extra_large_icon
+
+      - if @user && !@user.new_record?
+        = link_to image_tag("logo.png", id: "hdr_logo", class: "header_bar_logo"), show_administration_path(:user_key => @user.key), class: 'navbar-brand padding-bottom-1'
+      - else
+        = link_to image_tag("logo.png", id: "hdr_logo", class: "header_bar_logo"), root_path, class: 'navbar-brand padding-bottom-1'
+    #bs_navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.nav-center
+        - if @user && !@user.new_record?
+          %li.hidden-xs
+            .text-right.margin-right-1
+              %a.dropdown-toggle{ "data-toggle":"dropdown", rel: new_user_meeting_path(@user) ,href: "#", class: "header_bar_button btn btn-primary panel_button", :title => t('tooltips.create_new_meeting')}= t('layouts.header_bar.new_meeting')
+              %div.dropdown-menu.dropdown-menu-left
+                =render :layout => false, :template => 'meetings/new.haml'
+          %li.header_bar_item
+            = insert_meeting_selector
+          -#%li
+          -#  %a.header_bar_link.only_large{ href: "#", "data-target": "#help_mobile", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help') }= raw t('layouts.header_bar.help')
+      %ul.nav.navbar-nav.navbar-right.navbar_options
+        - if @user && !@user.new_record?
+          %li
+            %a.header_bar_link{ href: "#", "data-target": "#help_mobile", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help') }= raw t('layouts.header_bar.help')
+          %li
+            %a.header_bar_link#hdr_lnk_03{ :href => root_path}= "Logout"
+        - else
+          %li
+            %a.header_bar_link.only_large{ href: "#", "data-target": "#help_mobile", "data-toggle": "modal", type: "button", title: t('layouts.header_bar.help') }= raw t('layouts.header_bar.help')
+        -#  %li
+        -#    %a.header_bar_link#hdr_lnk_03{ :title => t('tooltips.login'), :href => root_path }= raw t('layouts.header_bar.login')
+
+.flash_notices
+
+
+
+
+

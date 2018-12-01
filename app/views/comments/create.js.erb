@@ -1,0 +1,8 @@
+/*page.replace "comment_list", :partial => "comments/list"*
+/ page.call "$('#comment_text').val", ""
+*/
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('#comment_form_field').val('');
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+$('#comment_list').html("<%= j render partial: 'comments/list' %>");
+

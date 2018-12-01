@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Suggestion</key>
+%dict
+  = '<key>Restricted</key>'
+  - if suggestion_restricted?(@suggestion)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>Picked</key>'
+  - if @suggestion.picked
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>DateStart</key>'
+  = '<date>', @suggestion.date, 'T', @suggestion.start_as_readable, ':00Z', '</date>'
+  = '<key>DateEnd</key>'
+  = '<date>', @suggestion.date, 'T', @suggestion.end_as_readable, ':00Z', '</date>'
+  = '<key>DateReadable</key>'
+  = '<string>', I18n.l(@suggestion.date, :format => :short_with_weekday) + " " + @suggestion.start_as_readable + " - " + @suggestion.end_as_readable, '</string>'
+  = '<key>SuggVotePath</key>'
+  = '<string>', user_meeting_suggestion_vote_path(@user, @meeting, @suggestion, @suggestion.votes.find_by_voter_id(@user)), '</string>'
+  = '<key>SuggDeletePath</key>'
+  = '<string>', user_meeting_suggestion_path(@user, @suggestion.meeting, @suggestion), '</string>'
+  = '<key>Destroyable</key>'
+  - if @suggestion.destroyable_by?(@user)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>Pickable</key>'
+  - if @suggestion.pickable_by?(@user)
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>OwnVote</key>'
+  = '<string>', @suggestion.votes.find_by_voter_id(@user).decision, '</string>'
+  = '<key>CreatorID</key>'
+  = '<string>', @suggestion.creator_id, '</string>'
+  = '<key>ArrayPosition</key>'
+  = '<integer>', get_array_position(@suggestion, @meeting), '</integer>'
+  = '<key>SuggestionCount</key>'
+  = '<integer>', get_suggestion_count(@meeting), '</integer>'
+<key>SuggBarValues</key>
+%dict
+  = get_vote_bar_for_iphone_native(@suggestion)
+</dict>
+</plist>

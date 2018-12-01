@@ -1,0 +1,6 @@
+-#- open_suggs = get_open_suggestions
+-#- unless open_suggs.empty?
+-#   %div#open_sugg_area{ :onmouseover => "showUnvoted()", :onmouseout => "hideUnvoted()"}
+-#   %span#unvoted_00.unvoted_head= raw t('.open_suggestions')
+-#   - open_suggs.each do |sugg|
+-#   %span.unvoted_link{ :ref => sugg.id }= I18n.l(sugg.date, :format => :short)

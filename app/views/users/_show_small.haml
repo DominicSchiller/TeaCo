@@ -1,0 +1,126 @@
+.row
+  .panel-group#accordion{ "role":"tablist", "aria-multiselectable":"true" }
+    -# Einstellungen
+    .panel.panel-default
+      .panel-heading#headingSettings{ "role":"tab", "data-toggle":"collapse", href:"#collapseSettings", "data-parent":"#accordion" }
+        .panel-title
+          %a.collapsed{ "role":"button",  "aria-expanded":"false", "aria-controls":"collapseSettings" }
+            = raw t('users.show.settings')
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseSettings.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingSettings" }
+        .panel-body
+          .row
+            .col-xs-12.col-md-11
+              %div#box_pref
+                = form_for @user, :url => "/users/#{@user.key}", :method => 'put', :html => { :class => 'ajax' } do |f|
+                  #tr_name.form-group
+                    %span#td_caption_name.caption= f.label :name, t('users.new.name'), class: "control-label"
+                    %span{ class: "visible-md-inline visible-lg-inline" }
+                      %span= link_to image_tag('icons/info.png', :width => "20px"), "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('users.new.name_explain')
+                    #td_edit_name.edit= f.text_field(:name, :size => nil, class: "form-control")
+                  #tr_name_desc.form-group.hidden-md.hidden-lg
+                    #td_empty_name.caption
+                    .info_text#td_desc_name.desc= raw t('users.new.name_explain')
+
+                  #tr_password.form-group
+                    %span#td_caption_password.caption= f.label :password, t('users.new.password')
+                    %span{ class: "visible-md-inline visible-lg-inline" }
+                      %span= link_to image_tag('icons/info.png', :width => "20px"), "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('users.new.password_explain')
+                    #td_edit_password.edit= f.password_field(:password, :size => nil, class: "form-control")
+                  #tr_password_desc.form-group.hidden-md.hidden-lg
+                    #td_empty_password.caption
+                    .info_text#td_desc_password.desc= raw t('users.new.password_explain')
+
+                  #tr_freebusy.form-group
+                    %span#td_caption_freebusy.caption= f.label :freebusy_url, t('users.show.freebusy_url') + ":"
+                    %span{ class: "visible-md-inline visible-lg-inline" }
+                      %span= link_to image_tag('icons/info.png', :width => "20px"), "#", class: "info_popover" ,"data-html": "true", "data-trigger": "focus" ,"data-toggle": "popover" , "data-placement": "right" , "data-content": t('.freebusy_url_explain')
+                    #td_edit_freebusy.edit
+                      = f.text_field(:freebusy_url, :size => nil, class: "form-control")
+                      = @user.freebusy_data if @user.freebusy_warning?
+                  #tr_freebusy_desc.form-group.hidden-md.hidden-lg
+                    #td_empty_freebusy.caption
+                    .info_text#td_desc_freebusy.desc= raw t('users.show.freebusy_url_explain')
+
+                  #tr_language.form-group
+                    #td_caption_language.caption= f.label :language, t('users.new.language') + ":"
+                    #td_edit_language.edit
+                      = insert_language_selector(@user.language)
+                  #tr_language_desc.form-group
+                    #td_empty_language.caption
+                    #td_desc_language.desc
+
+                  #tr_tutorial.form-group
+                    #td_caption_tutorial.caption= f.label :watched_vote_tutorial, t('users.new.tutorial') + ":"
+                    #td_edit_tutorial.edit
+                      %label.checkbox-inline
+                        %span= f.check_box(:watched_vote_tutorial, { :checked => !@user.watched_vote_tutorial, :style => "width: 30px", class: "checkbox"}, 0, 1)
+                        %span.margin-left-1= raw t('users.new.vote_tutorial')
+                      %label.checkbox-inline.text-right
+                        %span= f.check_box(:watched_new_meeting_tutorial, { :checked => !@user.watched_new_meeting_tutorial, :style => "width: 30px; margin-left: 40px;", class: "checkbox" }, 0, 1)
+                        %span.margin-left-7= raw t('users.new.new_meeting_tutorial')
+                  #tr_tutorial_desc.form-group
+                    #td_empty_tutorial.caption
+                    #td_desc_tutorial.desc
+
+                  = f.submit t('users.show.save_changes'), class:"btn btn-primary btn-block margin-top-3"
+                  = f.hidden_field :key, :value => @user.key
+
+
+    -# Adressbuch
+    .panel.panel-default
+      .panel-heading#headingKnownAddresses{ "role":"tab", "data-toggle":"collapse", href:"#collapseKnownAddresses", "data-parent":"#accordion" }
+        .panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseKnownAddresses" }
+            = raw t('users.show.address_book')
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseKnownAddresses.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingKnownAddresses" }
+        .panel-body
+          .row
+            .col-xs-12
+              %div#box_delete_mail.home_box{ :style => "margin-right: 0pt;" }
+                = render :partial => "known_addresses.haml", :locals => { :known_addresses => @user.known_addresses }
+          .row
+            .col-xs-12
+              -#%input.margin-top-3{ get_delete_known_addresses_button_attributes("small") }
+              %input.margin-top-3{ :type => "submit", :value => t('users.show.delete'), :rel => "/users/#{@user.key}/delete_known_addresses",
+                                  title: t('users.show.delete'), class: "btn btn-secondary btn-block confirm_delete",
+                                  disabled: true, id: "delete_known_addresses_submit" }
+
+
+    -# Eigene E-Mail-Adressen
+    .panel.panel-default
+      .panel-heading#headingAddresses{ "role":"tab", "data-toggle":"collapse", href:"#collapseAddresses", "data-parent":"#accordion" }
+        .panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseAddresses"}
+            = raw t('users.show.activate_aliases')
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseAddresses.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingAddresses" }
+        .panel-body
+          .row
+            .col-xs-12
+              %div#box_mail.home_box
+                %p#mail_info.info_text= raw t('users.show.alias_explain')
+                = render :partial => "users/alias_addresses.haml"
+
+
+    -#Account löschen
+    .panel.panel-default
+      .panel-heading#headingDeleteAccount{ "role":"tab", "data-toggle":"collapse", href:"#collapseDeleteAccount", "data-parent":"#accordion" }
+        .panel-title
+          %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseDeleteAccount" }
+            = raw t('users.show.delete_account')
+            %i.icon-down-dir.medium_icon.pull-right
+      #collapseDeleteAccount.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingDeleteAccount"}
+        .panel-body
+          .row
+            .col-xs-12
+              %div#box_delete_acc.home_box
+                %p#delete_info{ :style => "margin-top: 0pt;" }= raw t('users.show.deletion_info')
+                %br
+                %br
+                %a#delete_account_link.hidden-xs.hidden-sm{ :href => "#", type: "button", class:"btn btn-secondary" }= raw t('users.show.delete_account')
+                %a#delete_account_link.hidden-md.hidden-lg{ :href => "#", type: "button", class:"btn btn-secondary btn-block" }= raw t('users.show.delete_account')
+                %div#delete_account_form.invisible
+                  = form_for @user, :url => "/users/#{@user.key}", :html => { :class => 'ajax', :method => :delete } do |f|
+                    %input.confirmed_right{ :type => "submit", :rel => "/users/#{@user.key}", :value => t('users.show.delete_irreversibly') }

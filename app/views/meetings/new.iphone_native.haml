@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Meeting</key>
+<array>
+%dict
+  = '<key>Meeting_Title</key>'
+  = '<string>', CGI.escapeHTML(@meeting.title), '</string>'
+  = '<key>Meeting_Value</key>'
+  = '<string>', @meeting.id, '</string>'
+  = '<key>Meeting_Owner</key>'
+  = '<true/>'
+  = '<key>Restricted</key>'
+  - if @meeting.restricted
+    = '<true/>'
+  - else
+    = '<false/>'
+  = '<key>Last_Update</key>'
+  = '<string>', time_ago_in_words(@meeting.updated_at), '</string>'
+  = '<key>Clone_URL</key>'
+  = '<string>', new_user_meeting_path(@user, {:clone => @meeting.id}), '</string>'
+  = '<key>Delete_URL</key>'
+  = '<string>', insert_delete_or_leave_link_native(@user, @meeting), '</string>'
+</array>
+= render :partial => "known_addresses/list.iphone_native", :locals => { :known_addresses => @user.known_addresses }
+</dict>
+</plist>

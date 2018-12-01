@@ -1,0 +1,14 @@
+<plist version="1.0">
+<dict>
+<key>User_Votes</key>
+<array>
+- votes_sorted = @votes.sort { |a,b| user_name_or_email(a.voter) <=> user_name_or_email(b.voter) }
+- votes_sorted.each do |vote|
+  %dict
+    = "<key>Decision</key>"
+    = "<string>#{vote.decision}</string>"
+    = "<key>Voter</key>"
+    = "<string>#{user_name_or_email_escaped(vote.voter)}</string>"
+</array>
+</dict>
+</plist>

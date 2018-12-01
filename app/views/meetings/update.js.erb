@@ -1,0 +1,30 @@
+/*
+page.call "close_form_on_id", "edit_title"
+@meeting.reload
+new_title = h(@meeting.title)
+page.replace_html "edit_title", new_title
+page.replace "meeting_selector", insert_meeting_selector
+
+page << "$(\"select#meeting_selector\").change(function() {
+var jumpToID = $(this).val();
+if (jumpToID != \"none\") {
+location.href = jumpToID;
+}
+}
+);"
+*/
+
+
+<% @meeting.reload %>
+// new_title = h(<%#= @meeting.title %>);
+//$('#edit_title').html('<%#= @meeting.title %>');
+$('#detail_panel').html('<%= j render partial: "meetings/detail_panel" %>');
+$("#meeting_selector").html("<%= j insert_meeting_selector %>");
+$("select#meeting_selector").change(function() {
+  var jumpToID = $(this).val();
+  if (jumpToID != "none") {
+  location.href = jumpToID;
+  }
+});
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');

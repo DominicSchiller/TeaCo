@@ -1,0 +1,38 @@
+.detail_panel_modals
+  // Edit_Form
+  #edit_form_modal.modal.fade{role: "dialog" }
+    .modal-dialog
+      // Modal content
+      .modal-content{ style: "min-height: 310px;"}
+        .modal-header
+          %button.close{"data-dismiss": "modal", type: "button"}
+            %span.icon-cancel.large_icon
+          %h4.modal-title= t("meetings.detail_panel.new_suggestion")
+        .modal-body
+          .text-left= render :partial => 'suggestions/edit_form', :locals => { sugg: Suggestion.new, large: "true" }
+
+
+  // Invitation Form
+  #invitation_form_modal.modal.fade{role: "dialog"}
+    .modal-dialog.invitation_modal
+      // Modal content
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss": "modal", type: "button"}
+            %span.icon-cancel.large_icon
+          %h4.modal-title= t("meetings.buttons.manage_participants")
+        .modal-body
+          .text-left= render :partial => "invitation_form"
+
+
+  // Send Dates Form
+  #send_dates_form_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      // Modal content
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss": "modal", type: "button"}
+            %span.icon-cancel.large_icon
+          %h4.modal-title= t("meetings.buttons.finish_planing")
+        .modal-body
+          .text-left= render :partial => "send_dates_form"

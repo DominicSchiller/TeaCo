@@ -1,0 +1,14 @@
+.container-fluid
+  .row
+    -if flash[:notice]
+      .col.welcome_box_notice.text-center{ style:"margin-top:53px; margin-bottom: -53px;" }
+        .welcome_text= flash[:notice]
+
+    -if flash[:alert]
+      .col.welcome_box_alert.text-center{ style:"margin-top:53px; margin-bottom: -53px;" }
+        .welcome_text= flash[:alert]
+
+:javascript
+  setTimeout(function() {
+    $('.flash_notices').fadeOut('medium');
+  }, 5000);

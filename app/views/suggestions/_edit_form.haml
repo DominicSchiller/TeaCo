@@ -1,0 +1,31 @@
+.container-fluid
+  .row#diplayNewSuggestion.sugg_times
+    = form_for [@user, @meeting, sugg], html: { class: 'ajax', style: "text-align: center" } do |f|
+      .col-xs-12.col-sm-6.col-md-6#modal_margin
+        %div.text-center#datepicker
+      .col-xs-12.col-sm-6.col-md-6
+        .row#sugg_table_row_2
+          .col-xs-12
+            %div.clockpicker.form-group
+              #sugg_start_label= f.label t('.start'), class: "control-label"
+              #sugg_start_field= f.text_field :start, type:"text", class:"sugg_start form-control",
+                                value: get_default_start_time(sugg), size: nil, "autocomplete":"off"
+        .row#sugg_table_row_3
+          .col-lg-12.hidden-xs.hidden-sm.hidden-md
+            .form-group
+              #sugg_duration_label= f.label t('.duration'), class: "control-label"
+              #sugg_duration_field.duration_cell= text_field_tag :duration, {}, class: 'sugg_duration form-control',
+                                                value: get_default_duration(sugg), size: nil, "autocomplete":"off"
+        .row#sugg_table_row_14
+          .col-xs-12
+            %div.clockpicker.form-group
+              #sugg_end_label= f.label t('.end'), class: "control-label"
+              #sugg_end_field= f.text_field :end, type:"text", class:"sugg_end form-control",
+                                value: get_default_end_time(sugg), size: nil, "autocomplete":"off"
+        .row.text-left
+          .col-xs-12
+            .form-group
+              = f.hidden_field :date, { class: "date_field", id: "date_field_id", data: { value: get_default_date(sugg) } }
+              = f.hidden_field :meeting_id, 'value' => @meeting.id
+              = f.hidden_field :creator_id, 'value' => @user.id
+              .hidden-xs.hidden-sm#sugg_submit_button= f.submit get_edit_submit_button_text(sugg), id: 'suggestion_submit', class: "btn btn-primary btn-block"#, "data-dismiss":"modal"

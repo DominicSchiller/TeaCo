@@ -1,0 +1,15 @@
+<plist version="1.0">
+<dict>
+<key>Auth_Token</key>
+= "<string>#{form_authenticity_token}</string>"
+<key>EMail</key>
+= "<string>#{@user.email}</string>"
+<key>UserID</key>
+= "<integer>#{@user.id}</integer>"
+<key>Name</key>
+= "<string>#{CGI.escapeHTML(@user.name)}</string>"
+<key>FreeBusy_URL</key>
+= "<string>#{@user.freebusy_url}</string>"
+= render :file => "users/show.android_native"
+</dict>
+</plist>

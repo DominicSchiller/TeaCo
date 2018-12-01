@@ -1,0 +1,85 @@
+//#not_found_wrapper
+
+.container-fluid
+  .row.margin-top-4
+    .col-xs-12
+      %h4.meeting_title= raw t('layouts.imprint.imprint')
+
+  .row
+    .col-md-6
+      -# Adressbuch
+      .row
+        .col-md-12
+          %h4#head_publisher.responsive_title=t('layouts.imprint.publisher')
+      .row.imprint_boxes.user_box.margin-0
+        .col-md-12
+          .row
+            .col-md-12
+              %div#publisher_box.margin-top-1.margin-left-2
+                %p{ :style => ""}
+                  Institut für Multimediale und Interaktive Systeme
+                  %br
+                  Universität zu Lübeck
+                  %br
+                  Ratzeburger Allee 160
+                  %br
+                  D-23562 Lübeck
+                  %br
+                  Tel.: +49 451-500 5101
+                  %br
+                  Fax: +49 451-500 5106
+    .col-md-6
+      -# Adressbuch
+      .row
+        .col-md-12
+          %h4#head_credits.responsive_title=t('layouts.imprint.credits') + ' '
+      .row.imprint_boxes.user_box.margin-0
+        .col-md-12
+          .row
+            .col-md-12.box_row_1
+              %div#credits_box.margin-top-1.margin-left-2
+                =t('layouts.imprint.inOrder', style: "font-style:italic;" )
+                %ul
+                  %li
+                    Martin Christof Kindsmüller
+                  %li
+                    Jan Krüger
+                  %li
+                    André Lohrenz
+                  %li
+                    Amelie Roenspieß
+                  %li
+                    Nils Schröder
+                  %li
+                    Jan-Philipp Kalus
+                  %li
+                    Christoph Wittstock
+
+
+  .row
+    .panel-group#accordion{ "role":"tablist", "aria-multiselectable":"true" }
+    -# Einstellungen
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading#headingDisclaimer{ "role":"tab", "data-toggle":"collapse", href:"#collapseDisclaimer", "data-parent":"#accordion", style: "padding-top: 6px; padding-bottom: 5px;" }
+          .panel-title
+            %a.collapsed{ "role":"button", "aria-expanded":"false", "aria-controls":"collapseAddresses", style: "font-size: 20px;"}
+              = "Disclaimer"
+              %i.icon-down-dir.medium_icon.pull-right
+        #collapseDisclaimer.panel-collapse.collapse{ "role":"tabpanel", "aria-labelledby":"headingDisclaimer" }
+          .panel-body
+            .row
+              .col-xs-12
+                %div#credits_box.home_box
+                  %p{ :style => "text-align:justify;"}
+                    Dieses Impressum gilt für die Informationsangebote des Instituts für Multimediale und Interaktive Systeme (IMIS) der Universität zu Lübeck im WWW, die über die URL
+                    %a{ :href => "http://www.imis.uni-luebeck.de", :target => "_blank" }= "http://www.imis.uni-luebeck.de"
+                    erreichbar sind.
+                  %p{ :style => "text-align:justify;"}
+                    Die Texte und Fotos auf den Seiten, die auf dieses Impressum verweisen, sind urheberrechtlich geschützt. Das Kopieren dieser Dateien und ihre evtl. Veränderung sind daher ohne Genehmigung des Urhebers (soweit nicht anders gekennzeichnet ist dies die Universität zu Lübeck) nicht gestattet. Unberührt davon bleibt das “Kopieren” der Dateien auf den eigenen Rechner, um sich die WWW-Seiten auf einem Browser anzuschauen. Ausgenommen sind ebenfalls die Pressemitteilungen. Sie sind dem Inhalt nach von jedermann frei und ohne besondere Genehmigung weiterverwendbar.
+                  %p{ :style => "text-align:justify;"}
+                    Die Zusammenstellung der Informationen auf dieser Website wurde mit größtmöglicher Sorgfalt vorgenommen. Dennoch kann keinerlei Gewähr für Aktualität, Richtigkeit, Vollständigkeit und Qualität der bereitgestellten Daten übernommen werden. Haftungsansprüche gegen die Universität zu Lübeck oder die Autoren bzw. Verantwortlichen dieser Website für Schäden materieller oder immaterieller Art, die auf eventuell fehlerhaften oder unvollständigen Daten beruhen, sind, soweit nicht Vorsatz oder grobe Fahrlässigkeit vorliegt, ausgeschlossen.
+                  %p{ :style => "text-align:justify;"}
+                  Das Vorgesagte gilt auch für Informationen auf Websites, auf die mittels eines Hyperlinks verwiesen wird. Der Inhalt dieser Websites liegt vollständig außerhalb des Verantwortungsbereiches der Universität zu Lübeck. Die Websites waren jedoch zur Zeit der Verlinkung frei von illegalen Inhalten. Auf die Gestaltung der gelinkten Websites kann nicht Einfluss genommen werden; die Rechte an diesen Seiten sowie die Verantwortlichkeit für deren Inhalt liegen ausschließlich beim Drittanbieter. Die Universität zu Lübeck distanziert sich von jeglichem angebotenen Inhalt, wenn sich der Inhalt eines Links dahingehend ändert, dass Informationen übermittelt werden, die nicht mehr mit Angeboten der Universität zu Lübeck in Verbindung zu bringen sind. Dies gilt insbesondere für Inhalte, deren Verbreitung nach deutschem und ausländischem Recht verboten ist und deren Beihilfe zur Verbreitung strafrechtlich verfolgt wird. Für Schäden, die aus fehlerhaften oder unvollständigen Inhalten auf den mittels Link verwiesenen Websites resultieren, haften die Universität zu Lübeck und die Autoren bzw. Verantwortlichen dieser Website nicht.
+                  %p{ :style => "text-align:justify;"}
+                    Alle aus dieser Website entstehenden Rechtsstreitigkeiten unterliegen ausschließlich deutschem Recht.

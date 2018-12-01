@@ -1,0 +1,11 @@
+= raw t('.welcome_user', :user => @user.email)
+= ""
+
+= raw t('.myteaco_link')
+
+
+- admin_url = show_administration_url(:user_key => @user.key)
+= "#{admin_url}"
+= ""
+
+= raw t('teaco_mailer.keep_link')

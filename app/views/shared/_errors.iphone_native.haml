@@ -1,0 +1,12 @@
+<key>Errors</key>
+<array>
+- if errors
+  - errors.each do |error|
+    %dict
+      = '<key>Error</key>'
+      = '<string>', error, '</string>'
+- else
+  %dict
+    = '<key>Info</key>'
+    = '<string>', info, '</string>'
+</array>

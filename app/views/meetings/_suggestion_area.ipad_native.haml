@@ -1,0 +1,11 @@
+<key>Suggestion_Area</key>
+<array>
+- @meeting.suggestions.sort_by{|a| [a.date, a.start, a.end]}.each do |suggestion|
+  = render :partial => "meetings/suggestion_box.ipad_native", :locals => { :sugg => suggestion }
+</array>
+<key>SuggBar_Values</key>
+<array>
+- @meeting.suggestions.sort_by{|a| [a.date, a.start, a.end]}.each do |suggestion|
+  %dict
+    = get_vote_bar_for_iphone_native(suggestion)
+</array>

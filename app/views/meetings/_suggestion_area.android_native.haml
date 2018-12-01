@@ -1,0 +1,5 @@
+<key>Suggestion_Area</key>
+<array>
+- @meeting.suggestions.sort_by{|a| [a.date, a.start, a.end]}.each do |suggestion|
+  = render :partial => "meetings/suggestion_box.android_native", :locals => { :sugg => suggestion }
+</array>

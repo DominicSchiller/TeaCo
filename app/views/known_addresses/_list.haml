@@ -1,0 +1,19 @@
+//TODO Pointer bei Hover, Aufzählungspunkte entfernen
+%h4.participants_expand_headline= raw t('users.show.address_book')
+
+- sort_for_list!(known_addresses)
+-# Only show the addresses of those who are not yet invited:
+- known_addresses = known_addresses.reject{ |known| @meeting.participants.include?(User.find_by_alias(known.address)) }
+
+%div.address_list
+  %ul
+    - known_addresses.each do |known|
+      %li.pick_address{ :rel => known.address }
+        - user = User.find_by_alias(known.address)
+        = link_to user_known_address_path(@user, known)+"?meeting_id=#{@meeting.id}", class: "delete_ka_button confirmed tipped_top", title: t('tooltips.delete_alias') do
+          %i.icon-trash.medium-icon
+        %span.tipped_top{ :title => t('tooltips.add_participant') }
+          - if user && !user.name.blank?
+            = h(user.name) + " [" + known.address + "]"
+          - else
+            = known.address

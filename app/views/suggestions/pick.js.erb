@@ -1,0 +1,16 @@
+/* Wenn Button geklickt, um Vorschlag als endgültig zu markieren, dann ändere
+Mobil: den Pick-Button (ausgefüllt) sowie die Schriftfarbe der Uhrzeit
+Desktop: den Pick-Button (ausgefüllt) sowie die Border-Color der Suggestion-Box zu Blau
+
+sowie umgekehrt, wenn der Pick-Button wieder geklickt wird
+ *  */
+
+$(".flash_notices").html('<%= j render partial: "shared/flash_notices" %>');
+<% case @picked_status
+  when :picked %>
+
+
+  <% when :not_picked %>
+
+
+<% end %>

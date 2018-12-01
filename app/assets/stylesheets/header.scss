@@ -1,0 +1,43 @@
+/*
+@charset "UTF-8";
+!* CSS Document *!
+
+div#header_bar {
+	background-image:url('header_bg.jpg');
+	background-repeat:repeat-x;
+	height:40px;
+	line-height:40px;
+	margin:0 10px;
+	float:left;
+}
+
+div#header_bar img#hdr_logo {
+	float:left;
+	width:130px;
+	height:40px;
+	margin:0;
+}
+
+div#header_bar div#hdr_form {
+	float:left;
+	margin:0;
+	height:40px;
+	text-align: center;
+	color: #FFF;
+}
+
+div#header_bar select#meeting_selector {
+	margin:0 15px 0 5px;
+}
+
+div#header_bar a.hdr_link {
+	display:block;
+	padding:0 15px;
+	font-size:14px;
+	color:#FFF;
+	float:left;
+}
+
+div#header_bar span.user {
+	height:40px;
+}*/

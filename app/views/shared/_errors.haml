@@ -1,0 +1,14 @@
+-#- if errors
+-#  %div#errors
+-#    %div{ :style => "float: left; margin-right: 20px;" }
+-#      = image_tag "warning_icon.png"
+-#    %div#error_list
+-#      %ul
+-#        - errors.each do |error|
+-#          %li= error
+-#- else
+-#  %div#errors{ :title => t('tooltips.click_to_close') }
+-#    %div{ :style => "float: left; margin-right: 20px;" }
+-#      = image_tag "info_icon.png"
+-#    %div#error_list
+-#      %p= info
