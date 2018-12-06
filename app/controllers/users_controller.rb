@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    print("Hello World")
+  end
+
   def create
     @user = User.create(user_params)
 

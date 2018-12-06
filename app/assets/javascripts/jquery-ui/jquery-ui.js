@@ -7692,7 +7692,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 });
 
 /*
- * Resizable Extensions
+ * Resizable t
  */
 
 $.ui.plugin.add("resizable", "animate", {

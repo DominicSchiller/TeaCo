@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # Route Definitions for REST API
+  namespace 'api' do
+    resources :users, param: :key do
+      get '/', to: "users#show"
+    end
+  end
+
+  # Route Definitions for the TeaCo Web App
   resources :known_addresses
 
   root 'users#new'

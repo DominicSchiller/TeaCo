@@ -99,6 +99,9 @@ GEM
     crass (1.0.4)
     data-confirm-modal (1.6.2)
       railties (>= 3.0)
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
@@ -196,6 +199,8 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     ri_cal (0.8.8)
+    ruby-debug-ide (0.7.0.beta6)
+      rake (>= 0.8.1)
     rubyzip (1.2.2)
     sass (3.7.2)
       sass-listen (~> 4.0.0)
@@ -258,6 +263,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   data-confirm-modal (~> 1.5)
+  debase
   fontello_rails_converter
   haml (~> 5.0, >= 5.0.1)
   jbuilder (~> 2.5)
@@ -270,6 +276,7 @@ DEPENDENCIES
   rails-i18n (~> 5.0.0)
   responders (~> 2.4)
   ri_cal
+  ruby-debug-ide (= 0.7.0.beta6)
   sass-rails (~> 5.0)
   selenium-webdriver
   tilt (~> 2.0, >= 2.0.7)
