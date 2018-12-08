@@ -18,6 +18,7 @@
 //= require jquery.effects.core
 //= require moment
 //= require teaco
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-clockpicker
 //= require data-confirm-modal

@@ -70,7 +70,7 @@ gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 
 # = = = = = = = = = = Bootstrap = = = = = = = = = =
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'data-confirm-modal', '~> 1.5'
+gem 'data-confirm-modal', '~> 1.6', '>= 1.6.2'
 
 # = = = = = = = = = = Bootstrap Datepicker = = = = = = = = = =
 gem 'momentjs-rails', '>= 2.9.0'
