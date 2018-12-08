@@ -11,7 +11,7 @@ module Api
     ##
     # Fetches all meetings associated with a specific user recorded in TeaCo.
     def index
-      user = UsersController.get_user(params)
+      user = load_user(params)
       meetings = user.meetings
       self.send_json_with_includes(meetings, [:participants, :initiator, :suggestions])
     end
