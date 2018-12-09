@@ -69,11 +69,12 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 
 # = = = = = = = = = = Bootstrap = = = = = = = = = =
+gem 'bootstrap3-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'data-confirm-modal', '~> 1.6', '>= 1.6.2'
 
 # = = = = = = = = = = Bootstrap Datepicker = = = = = = = = = =
-gem 'momentjs-rails', '>= 2.9.0'
+gem 'momentjs-rails', '~> 2.20', '>= 2.20.1'
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 
 # = = = = = = = = = = JQuery = = = = = = = = = =
