@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   # Route Definitions for REST API
   namespace 'api' do
+
+    resource :register_in_app, param: :key do
+      get '/:key', to: "register_in_app#redirect"
+    end
+
     resources :users, param: :key do
       get '/', to: "users#show"
 
