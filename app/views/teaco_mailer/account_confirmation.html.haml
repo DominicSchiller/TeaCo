@@ -1,6 +1,6 @@
 %h3= raw t('layouts.users.welcome')
 
-%p= raw t('.welcome_user', :user => @user.email)
+%p= raw t('.welcome_user', :user => @user.name.length > 0 ? @user.name : @user.email)
 %br/
 %p
   = raw t('.myteaco_link')

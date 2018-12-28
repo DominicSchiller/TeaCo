@@ -26,6 +26,9 @@ class APIResponseHandler < ApplicationController
   # Send raw data including the data from additional property relations as
   # HTTP response encoded in JSON
   def send_json_with_includes(data, includes)
+
+
+
     render :json => data.to_json(:include => includes)
   end
 end
