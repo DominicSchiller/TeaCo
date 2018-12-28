@@ -50,7 +50,7 @@ module Api
 
         if (req_meeting_type == nil || req_meeting_type == "all") ||
             (req_meeting_type == "closed" &&  meeting["isClosed"] == true) ||
-            (req_meeting_type == "open" &&  meeting["isClosed"] == false) ||
+            (req_meeting_type == "open" &&  meeting["isClosed"] == false)
           meeting.delete("participants")
           meeting.delete("suggestions")
           meeting["progress"] = {}
