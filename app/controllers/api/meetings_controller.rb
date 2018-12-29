@@ -11,60 +11,33 @@ module Api
     ##
     # Fetches all meetings associated with a specific user recorded in TeaCo.
     def index
-      user = load_user(params)
-      meetings = user.meetings
-
       req_meeting_type = params["type"]
-
-      json = JSON.parse(meetings.to_json(:include => {
-          :participants => {:only => [:id]},
-          :suggestions => {
-              :only => [:id, :picked], :include => [:votes => {:only => [:id, :decision]}]}}))
-
-      filtered_meetings = []
-
-      json.each do |meeting|
-        meeting["isClosed"] = false
-        meeting["numberOfParticipants"] = meeting["participants"].count
-        meeting["numberOfSuggestions"] = meeting["suggestions"].count
-
-        pending_count = 0
-        started_count = 0
-        completed_count = 0
-        # meeting["participants"] = Array.new(meeting["participants"].count) { Hash.new }
-        meeting["suggestions"].each do |suggestion|
-          meeting["isClosed"] = suggestion["picked"]
-          voted_counter = 0
-          suggestion["votes"].each do |vote|
-            voted_counter += vote["decision"] != "?" ? 1: 0
-          end
-          case voted_counter
-          when 0
-            pending_count += 1
-          when meeting["numberOfParticipants"]
-            completed_count += 1
-          else
-            started_count += 1
-          end
-        end
-
-        if (req_meeting_type == nil || req_meeting_type == "all") ||
-            (req_meeting_type == "closed" &&  meeting["isClosed"] == true) ||
-            (req_meeting_type == "open" &&  meeting["isClosed"] == false)
-          meeting.delete("participants")
-          meeting.delete("suggestions")
-          meeting["progress"] = {}
-          meeting["progress"]["pending"] = pending_count / meeting["numberOfSuggestions"]
-          meeting["progress"]["started"] = started_count / meeting["numberOfSuggestions"]
-          meeting["progress"]["completed"] = completed_count / meeting["numberOfSuggestions"]
-          filtered_meetings.push(meeting)
-        end
+      user = load_user(params)
+      if req_meeting_type == nil || req_meeting_type == "all"
+        meetings = user.meetings
+      else
+        meetings = user.meetings.select{ |meeting| meeting.is_closed == (req_meeting_type == "closed") }
       end
-
-      # self.send_json_with_includes(meetings, [:participants, :initiator, :suggestions])s
-      # self.send_json(json)
-      self.send_json(filtered_meetings)
+      self.send_json(self.convert_to_json(meetings: meetings))
     end
 
+    ##
+    # Convert a list of meetings to a JSON array
+    def convert_to_json(meetings: Meeting[])
+      json_meetings = []
+      meetings.each do |meeting|
+        json_meeting = JSON.parse(meeting.to_json(:include => {
+            # :participants => {:only => [:id]},
+            # :suggestions => {
+            #     :only => [:id], :include => [:votes => {:only => [:id, :decision]}]}
+        }))
+        json_meeting["numberOfParticipants"] = meeting.participants.count
+        json_meeting["numberOfSuggestions"] = meeting.suggestions.count
+        json_meeting["progress"] = JSON.parse(meeting.meeting_progress.to_json)
+        json_meetings.push(json_meeting)
+      end
+      json_meetings
+    end
+    
   end
 end
