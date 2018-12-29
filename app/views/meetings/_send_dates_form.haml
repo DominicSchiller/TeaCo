@@ -1,7 +1,3 @@
-:javascript
-  $('#send_dates_submit').on("click", function() {
-    $('#send_dates_form_modal').modal('hide');
-  });
 .container-fluid
   .row
     .col-xs-12
@@ -23,7 +19,12 @@
             = label_tag 'also_comment', t('.also_create_comment')
         .row.margin-bottom-1
           .col-xs-12
-            .text-right.hidden-xs.hidden-sm= submit_tag t('.send_dates_submit'), id: 'send_dates_submit', class: "btn btn-primary panel_button", |
+            .text-right.hidden-xs.hidden-sm= submit_tag t('.send_dates_submit'), id: 'send_dates_submit', class: "btn btn-primary panel_button",
               :disabled => (@meeting.picked_suggestions.empty?)
             .hidden-md.hidden-lg= submit_tag t('.send_dates_submit'), id: 'send_dates_submit', class: "btn btn-primary btn-block",
               :disabled => (@meeting.picked_suggestions.empty?)
+
+  :javascript
+    $('#send_dates_submit').on("click", function() {
+      $('#send_dates_form_modal').modal('hide');
+    });

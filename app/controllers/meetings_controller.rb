@@ -46,6 +46,8 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting ||= Meeting.new
+    @meeting = Meeting.create(meeting_params)
+    @meeting.is_closed = false
     render :layout => false, :template => 'meetings/new.haml'
   end
 
@@ -159,6 +161,7 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.create(meeting_params)
+    @meeting.is_closed = false
     if @meeting.present? && @meeting.valid?
       flash[:notice] = t("notices.meeting_created")
       respond_to do |format|
@@ -456,6 +459,7 @@ class MeetingsController < ApplicationController
   def send_dates
     load_object # Load the user and the meeting
 
+    @meeting.is_closed = true
     if request.request_method == :get
       render :partial => "meetings/send_dates_form"
       return
@@ -498,7 +502,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       flash[:notice] = t("notices.date_sent")
-      format.html
+      format.html { redirect_to user_meeting_path(@user, @meeting) }
       format.js
       # format.mobile
       # format.iphone_native { render :file => "meetings/send_dates_iphone_native.haml" }

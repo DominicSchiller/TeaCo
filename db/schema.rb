@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20130810193901) do
     t.datetime "updated_at", null: false
     t.integer "initiator_id", null: false
     t.boolean "restricted", default: false, null: false
+    t.boolean "is_closed"
   end
 
   create_table "meetings_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
