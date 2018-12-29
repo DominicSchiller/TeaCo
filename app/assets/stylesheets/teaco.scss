@@ -648,7 +648,8 @@ span:focus {
 }
 
 .button_width {
-  width: 170px;
+  //width: 170px;
+  width: auto !important;
 }
 
 .panel-default > .panel-heading .panel-title {
@@ -1014,7 +1015,8 @@ body {
 
 .panel_button {
   @media (min-width: 992px) {
-    width: 175px;
+    //width: 175px;
+    width: auto !important;
   }
 }
 
