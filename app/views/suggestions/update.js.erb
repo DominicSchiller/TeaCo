@@ -122,6 +122,7 @@ page.call "addJumpToSuggArrows"
     $("#suggestion_area_mobile").html("<%= j render partial: "meetings/suggestion_area_mobile.haml", locals: { days: days } %>");
     $("#detail_panel").html("<%= escape_javascript(render partial: "meetings/detail_panel.haml") %>")
     $("#send_dates_form_modal .modal-body").html("<%= escape_javascript(render partial: "meetings/send_dates_form") %>")
+    $("#send_cancellation_form_modal .modal-body").html("<%= escape_javascript(render partial: "meetings/send_cancellation_form") %>")
 
     <%#= TODO - wirft Fehler %>
 //    $("#open_sugg_area").html("<%#= j render partial: "meetings/open_suggestions.haml" %>");

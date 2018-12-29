@@ -183,6 +183,10 @@ for your participants may not be available at the new date.\n\nClick OK to reset
       location: "Location (optional):"
       also_create_comment: "Also post message as comment"
       send_dates_submit: "Send dates!"
+    send_cancellation_form:
+      message: "Message:"
+      also_create_comment: "Also post message as comment"
+      send_dates_submit_cancel: "Cancel planning"
     send_message_form:
       message: "Message:"
       send_message_submit: "Send message!"
@@ -203,6 +207,10 @@ for your participants may not be available at the new date.\n\nClick OK to reset
       send_dates_button: Send appointment dates
       check_final_dates: Send appointment dates
       open_suggestions: Unvoted suggestions
+    buttons:
+      manage_participants: "Manage Participants"
+      finish_planing: "Finish planning"
+      cancel_planning: "Cancel planning"
 
   suggestions:
     created: New suggestion created!

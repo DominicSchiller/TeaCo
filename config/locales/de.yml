@@ -202,6 +202,10 @@ de:
       location: "Ort (optional):"
       also_create_comment: "Nachricht auch als Kommentar eintragen"
       send_dates_submit: "Termindaten versenden!"
+    send_cancellation_form:
+      message: "Nachricht:"
+      also_create_comment: "Nachricht auch als Kommentar eintragen"
+      send_dates_submit_cancel: "Terminplanung abbrechen"
     send_message_form:
       message: "Nachricht:"
       send_message_submit: "Nachricht senden!"
@@ -225,6 +229,7 @@ de:
     buttons:
       manage_participants: "Teilnehmer verwalten"
       finish_planing: "Planung abschließen"
+      cancel_planning: "Planung abbrechen"
 
   suggestions:
     created: Neuer Terminvorschlag wurde erzeugt!

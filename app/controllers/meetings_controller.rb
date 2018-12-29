@@ -48,6 +48,8 @@ class MeetingsController < ApplicationController
     @meeting ||= Meeting.new
     @meeting = Meeting.create(meeting_params)
     @meeting.is_closed = false
+    @meeting.is_cancelled = false
+    @meeting.save!
     render :layout => false, :template => 'meetings/new.haml'
   end
 
@@ -162,6 +164,8 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.create(meeting_params)
     @meeting.is_closed = false
+    @meeting.is_cancelled = false
+    @meeting.save!
     if @meeting.present? && @meeting.valid?
       flash[:notice] = t("notices.meeting_created")
       respond_to do |format|
@@ -460,6 +464,9 @@ class MeetingsController < ApplicationController
     load_object # Load the user and the meeting
 
     @meeting.is_closed = true
+    @meeting.is_cancelled = false
+    @meeting.save!
+
     if request.request_method == :get
       render :partial => "meetings/send_dates_form"
       return
@@ -509,6 +516,25 @@ class MeetingsController < ApplicationController
       # format.android_native { render :file => "meetings/send_dates_android_native.haml" }
     end
 
+  end
+
+  # send_cancellation responds POST requests, so behaviour
+  # - POST: cancels meeting planning and delivers an email to
+  #         all participants to inform about the cancellation.
+  def send_cancellation
+    # TODO: add sending mail and push notification
+    load_object
+    @meeting.is_closed = true
+    @meeting.is_cancelled = true
+    @meeting.location = ""
+    @meeting.save!
+
+    respond_to do |format|
+      format.html {
+        redirect_to show_meeting_url(@user.key, @meeting)
+      }
+      format.js
+    end
   end
 
   # Removes the current user from the meeting. (Accepts this only as a DELETE

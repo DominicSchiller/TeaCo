@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20130810193901) do
     t.integer "initiator_id", null: false
     t.boolean "restricted", default: false, null: false
     t.boolean "is_closed"
+    t.boolean "is_cancelled"
   end
 
   create_table "meetings_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

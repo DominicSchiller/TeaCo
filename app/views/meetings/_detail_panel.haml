@@ -1,5 +1,3 @@
-=render partial: "detail_panel_modals"
-
 .row.detail_panel_box{ style:"margin-top: 60px;" }
   .col-xs-12.col-md-4.hidden-xs.hidden-sm{style: "margin-top: 10px; margin-bottom: -5px;"}
     #meeting_titlebar
@@ -24,23 +22,14 @@
     -# BUTTONS
     .row.hidden-xs.hidden-sm.margin-top-1.text-right.margin-right-2
       %span
-        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.detail_panel.new_suggestion")
-        -#%div#new_suggestion.dropdown-menu.dropdown-menu-center
-        -#  .container{ style: "width: 500px;" }
-        -#    .row
-        -#      .col-md-12
-        -#        = render :partial => 'suggestions/edit_form', :locals => { sugg: Suggestion.new, large: "true" }
         %a.btn.btn-primary.button_width{ href: "#", "data-target": "#edit_form_modal", "data-toggle": "modal",
                             type: "button" }= t("meetings.detail_panel.new_suggestion")
       %span
         %a.btn.btn-primary.button_width{ href: "#", "data-target": "#invitation_form_modal", "data-toggle": "modal",
                             type: "button" }= t("meetings.buttons.manage_participants")
-        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.buttons.manage_participants")
-        -#%div#invite.dropdown-menu.dropdown-menu-left
-        -#  = render :partial => "invitation_form"
       %span
         %a.btn.btn-primary.button_width{ href: "#", "data-target": "#send_dates_form_modal", "data-toggle": "modal",
-                            type: "button" }= t("meetings.buttons.finish_planing")
-        -#%a.btn.btn-primary.dropdown-toggle{ "data-toggle":"dropdown", href: "#", class: "button_width"}= t("meetings.buttons.finish_planing")
-        -#%div#finish.dropdown-menu.dropdown-menu-right
-        -#  = render :partial => "send_dates_form"
+                            type: "button", "style": @meeting.picked_suggestions.empty? ? "display: none" : "" }= t("meetings.buttons.finish_planing")
+      %span
+        %a.btn.btn-primary.button_width{ href: "#", "data-target": "#send_cancellation_form_modal", "data-toggle": "modal",
+                            type: "button", "style": !@meeting.picked_suggestions.empty? ? "display: none" : "" }= t("meetings.buttons.cancel_planning")

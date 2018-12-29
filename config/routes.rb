@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         post :send_message
         get :send_dates
         post :send_dates
+        post :send_cancellation
         delete :leave
       end
     end
