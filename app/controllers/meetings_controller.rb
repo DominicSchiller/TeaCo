@@ -49,6 +49,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.create(meeting_params)
     @meeting.is_closed = false
     @meeting.is_cancelled = false
+    @meeting.location = ""
     @meeting.save!
     render :layout => false, :template => 'meetings/new.haml'
   end
@@ -165,7 +166,9 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.create(meeting_params)
     @meeting.is_closed = false
     @meeting.is_cancelled = false
+    @meeting.location = ""
     @meeting.save!
+
     if @meeting.present? && @meeting.valid?
       flash[:notice] = t("notices.meeting_created")
       respond_to do |format|
@@ -465,6 +468,7 @@ class MeetingsController < ApplicationController
 
     @meeting.is_closed = true
     @meeting.is_cancelled = false
+    @meeting.location = params[:location]
     @meeting.save!
 
     if request.request_method == :get

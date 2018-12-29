@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810193901) do
+ActiveRecord::Schema.define(version: 20181229171928) do
 
   create_table "alias_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "address", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20130810193901) do
     t.boolean "restricted", default: false, null: false
     t.boolean "is_closed"
     t.boolean "is_cancelled"
+    t.string "location"
   end
 
   create_table "meetings_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
