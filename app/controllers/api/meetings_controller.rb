@@ -31,6 +31,12 @@ module Api
             # :suggestions => {
             #     :only => [:id], :include => [:votes => {:only => [:id, :decision]}]}
         }))
+
+        if meeting.is_closed && !meeting.is_cancelled
+          picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
+          json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
+        end
+
         json_meeting["numberOfParticipants"] = meeting.participants.count
         json_meeting["numberOfSuggestions"] = meeting.suggestions.count
         json_meeting["progress"] = JSON.parse(meeting.meeting_progress.to_json)
