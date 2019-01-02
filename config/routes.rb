@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
       resources :meetings, param: :id do
         get '/', to: "meetings#show"
+
+        resources :suggestions, param: :id do
+          get '/', to: "suggestions#show"
+        end
       end
     end
   end

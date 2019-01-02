@@ -24,8 +24,7 @@ module Api
     ##
     # Fetches one specific meeting defined by it's unique ID
     def show
-      id = params["meeting_id"]
-      meeting = Meeting.find_by_id(id)
+      meeting = load_meeting(params)
       self.send_json(
               meeting.to_json(:include => {
                   :participants => {:only => [:id, :name, :email]},

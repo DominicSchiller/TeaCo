@@ -17,6 +17,18 @@ class APIResponseHandler < ApplicationController
   end
 
   ##
+  # Load one specific meeting defined by it's unique ID
+  def load_meeting(params)
+    id = params["meeting_id"]
+    return Meeting.find_by_id(id)
+  end
+
+  def load_suggestion(params)
+    id = params["suggestion_id"]
+    return Suggestion.find_by_id(id)
+  end
+
+  ##
   # Send raw data as HTTP response encoded in JSON
   def send_json(data)
     render :json => data, status: :ok
