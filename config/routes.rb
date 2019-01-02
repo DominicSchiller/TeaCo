@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :users, param: :key do
       get '/', to: "users#show"
 
-      resources :meetings
+      resources :meetings, param: :id do
+        get '/', to: "meetings#show"
+      end
     end
   end
 

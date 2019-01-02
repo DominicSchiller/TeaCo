@@ -18,12 +18,25 @@ module Api
       else
         meetings = user.meetings.select{ |meeting| meeting.is_closed == (req_meeting_type == "closed") }
       end
-      self.send_json(self.convert_to_json(meetings: meetings))
+      self.send_json(self.convert_to_custom_json(meetings: meetings))
     end
 
     ##
-    # Convert a list of meetings to a JSON array
-    def convert_to_json(meetings: Meeting[])
+    # Fetches one specific meeting defined by it's unique ID
+    def show
+      id = params["meeting_id"]
+      meeting = Meeting.find_by_id(id)
+      self.send_json(
+              meeting.to_json(:include => {
+                  :participants => {:only => [:id, :name, :email]},
+                  :suggestions => {:include => [:votes]}
+              })
+      )
+    end
+
+    ##
+    # Convert a list of meetings to a JSON array with customized properties
+    def convert_to_custom_json(meetings: Meeting[])
       json_meetings = []
       meetings.each do |meeting|
         json_meeting = JSON.parse(meeting.to_json(:include => {
