@@ -23,10 +23,10 @@ Rails.application.routes.draw do
           end
         end
       end
-    end
 
-    resource :votes do
-      put '/', to: "votes#update"
+      resource :votes do
+        put '/', to: "votes#update"
+      end
     end
   end
 
