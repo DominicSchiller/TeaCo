@@ -21,5 +21,19 @@ module Api
       send_json(vote)
     end
 
+    ##
+    # Updates a specific vote record with given data
+    def update
+      update_data = params["vote"]
+      vote = Vote.find_by_id(update_data["id"])
+
+      if vote == nil
+        send_error
+      else
+        vote.decision = update_data["decision"]
+        vote.save!
+        send_ok
+      end
+    end
   end
 end
