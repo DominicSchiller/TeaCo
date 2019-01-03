@@ -34,13 +34,18 @@ class APIResponseHandler < ApplicationController
     render :json => data, status: :ok
   end
 
+  def send_ok
+    render :json => {  }, status: :ok
+  end
+
+  def send_error
+    render :json => {}, :status => 422
+  end
+
   ##
   # Send raw data including the data from additional property relations as
   # HTTP response encoded in JSON
   def send_json_with_includes(data, includes)
-
-
-
     render :json => data.to_json(:include => includes)
   end
 end

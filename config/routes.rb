@@ -15,9 +15,15 @@ Rails.application.routes.draw do
 
         resources :suggestions, param: :id do
           get '/', to: "suggestions#show"
+
+          resource :votes, param: :vote_id do
+            get '/', to: "votes#index"
+            get '/:vote_id', to: "votes#show"
+          end
         end
       end
     end
+
   end
 
   # Route Definitions for the TeaCo Web App
