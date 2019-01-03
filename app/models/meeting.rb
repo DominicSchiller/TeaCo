@@ -167,7 +167,7 @@ class Meeting < ApplicationRecord
     started_count = 0
     completed_count = 0
     self.suggestions.each do |suggestion|
-      case suggestion.votes.select{ |vote| vote.decision != Vote::DONTKNOW }
+      case suggestion.votes.select{ |vote| vote.decision != Vote::DONTKNOW }.length
       when 0
         pending_count += 1
       when self.participants.count
