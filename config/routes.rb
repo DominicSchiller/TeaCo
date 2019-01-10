@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :meetings, param: :id do
         get '/', to: "meetings#show"
         post '/', to: 'meetings#create'
+        delete '/', to: 'meetings#delete'
 
         resources :suggestions, param: :id do
           get '/', to: "suggestions#show"

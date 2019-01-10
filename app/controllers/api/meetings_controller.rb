@@ -63,6 +63,23 @@ module Api
         self.send_error
       end
     end
+
+    ##
+    # Delete a specific meeting given by it's id.
+    def delete
+      user = self.load_user(params)
+      meeting = self.load_meeting(params)
+
+      if user != nil and meeting != nil
+        participants = meeting.participants
+        meeting.participants.delete(participants)
+        meeting.delete
+        self.send_ok
+      else
+        self.send_error
+      end
+    end
+
     ##
     # Convert a list of meetings to a JSON array with customized properties
     def convert_to_custom_json(meetings: Meeting[])
