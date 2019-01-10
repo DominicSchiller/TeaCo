@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :suggestions, param: :id do
           get '/', to: "suggestions#show"
           post '/', to: "suggestions#create"
+          delete '/', to: "suggestions#delete"
 
           resource :votes, param: :vote_id do
             get '/', to: "votes#index"

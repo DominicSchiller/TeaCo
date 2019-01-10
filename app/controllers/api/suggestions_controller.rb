@@ -60,5 +60,19 @@ module Api
         self.send_error
       end
     end
+
+    ##
+    # Delete a specific suggestion
+    def delete
+      suggestion = load_suggestion(params)
+      if suggestion != nil
+        deleted_suggestion = suggestion.delete
+        deleted_suggestion.votes.delete_all
+        self.send_ok
+      else
+        self.send_error
+      end
+    end
+
   end
 end
