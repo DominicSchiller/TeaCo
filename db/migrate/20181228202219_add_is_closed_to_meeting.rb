@@ -1,6 +1,6 @@
 class AddIsClosedToMeeting < ActiveRecord::Migration[5.1]
   def change
-    add_column :meetings, :is_closed, :boolean
+    add_column :meetings, :is_closed, :boolean, :default => false, :null => false
     Meeting.all.each do |meeting|
       is_closed = false
       meeting.suggestions.each do |suggestion|

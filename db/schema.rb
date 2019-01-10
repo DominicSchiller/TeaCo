@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20181229171928) do
     t.datetime "updated_at", null: false
     t.integer "initiator_id", null: false
     t.boolean "restricted", default: false, null: false
-    t.boolean "is_closed"
-    t.boolean "is_cancelled"
-    t.string "location"
+    t.boolean "is_closed", default: false, null: false
+    t.boolean "is_cancelled", default: false, null: false
+    t.string "location", default: "", null: false
   end
 
   create_table "meetings_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

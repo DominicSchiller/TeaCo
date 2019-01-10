@@ -26,13 +26,43 @@ module Api
     def show
       meeting = load_meeting(params)
       self.send_json(
-              meeting.to_json(:include => {
-                  :participants => {:only => [:id, :name, :email]},
-                  :suggestions => {:include => [:votes]}
-              })
+        meeting.to_json(:include => {
+            :participants => {:only => [:id, :name, :email]},
+            :suggestions => {:include => [:votes]}
+        })
       )
     end
 
+    ##
+    # Create a new meeting.
+    # Note: Requires at least a title property as parameter and
+    # optionally a pre-defined list of participant objects.
+    def create
+      creator = self.load_user(params)
+      participants_list = params["participants"]
+
+      if creator != nil
+        new_meeting = Meeting.create
+        new_meeting.initiator_id = creator.id
+        new_meeting.title = params["meeting"]["title"]
+        new_meeting.participants << creator
+        new_meeting.save!
+
+        if participants_list != nil
+          participants_list.each do |participant_params|
+            user = User.find(participant_params["id"])
+            if participant_params != nil
+              new_meeting.participants << user
+            end
+          end
+          new_meeting.save!
+        end
+
+        self.send_json(new_meeting)
+      else
+        self.send_error
+      end
+    end
     ##
     # Convert a list of meetings to a JSON array with customized properties
     def convert_to_custom_json(meetings: Meeting[])
