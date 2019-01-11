@@ -111,7 +111,12 @@ module Api
       if user != nil and meeting != nil and participant_ids.length > 0
         participant_ids.each do |participant_id|
           unless meeting.participants.exists?(participant_id)
-            meeting.participants << User.find(participant_id)
+            new_participant = User.find(participant_id)
+            meeting.participants << new_participant
+            # add default vote for the new added participant to each suggestion
+            meeting.suggestions.each do |suggestion|
+              suggestion.votes << Vote.new(:voter => new_participant, :decision => "?")
+            end
           end
         end
         self.send_ok
@@ -130,6 +135,13 @@ module Api
       if user != nil and meeting != nil and participant_ids.length > 0
         participant_ids.each do |participant_id|
           if meeting.participants.exists?(participant_id)
+            # remove all the participant's votes from each suggestion
+            meeting.suggestions.each do |suggestion|
+              vote = Vote.where(:voter_id => participant_id, :suggestion_id => suggestion.id)
+              if vote != nil
+                suggestion.votes.delete(vote)
+              end
+            end
             meeting.participants.delete(User.find(participant_id))
           end
         end
