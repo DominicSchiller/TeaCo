@@ -102,6 +102,44 @@ module Api
     end
 
     ##
+    # Add one or multiple participants to a specific meeting.
+    def add_participant
+      user = self.load_user(params)
+      meeting = self.load_meeting(params)
+      participant_ids = params["participant_ids"]
+
+      if user != nil and meeting != nil and participant_ids.length > 0
+        participant_ids.each do |participant_id|
+          unless meeting.participants.exists?(participant_id)
+            meeting.participants << User.find(participant_id)
+          end
+        end
+        self.send_ok
+      else
+        self.send_error
+      end
+    end
+
+    ##
+    # Remove one or multiple participants from a specific meeting.
+    def remove_participant
+      user = self.load_user(params)
+      meeting = self.load_meeting(params)
+      participant_ids = params["participant_ids"]
+
+      if user != nil and meeting != nil and participant_ids.length > 0
+        participant_ids.each do |participant_id|
+          if meeting.participants.exists?(participant_id)
+            meeting.participants.delete(User.find(participant_id))
+          end
+        end
+        self.send_ok
+      else
+        self.send_error
+      end
+    end
+
+    ##
     # Convert a list of meetings to a JSON array with customized properties
     def convert_to_custom_json(meetings: Meeting[])
       json_meetings = []
