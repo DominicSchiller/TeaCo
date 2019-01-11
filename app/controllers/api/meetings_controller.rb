@@ -65,6 +65,27 @@ module Api
     end
 
     ##
+    # Update a meeting's information.
+    def update
+      user = self.load_user(params)
+      meeting = self.load_meeting(params)
+       if user != nil and meeting != nil
+         title = params["meeting"]["title"]
+         if title != nil
+           meeting.title = title
+         end
+         result = meeting.save!
+          if result
+            self.send_ok
+          else
+            self.send_error
+          end
+       else
+         self.send_error
+       end
+    end
+
+    ##
     # Delete a specific meeting given by it's id.
     def delete
       user = self.load_user(params)
