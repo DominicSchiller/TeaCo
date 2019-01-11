@@ -31,6 +31,10 @@ Rails.application.routes.draw do
       resource :votes do
         put '/', to: "votes#update"
       end
+
+      resource :suggestions do
+        put '/', to: "suggestions#update"
+      end
     end
   end
 

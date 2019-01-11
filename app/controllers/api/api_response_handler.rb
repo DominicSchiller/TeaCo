@@ -10,9 +10,9 @@ class APIResponseHandler < ApplicationController
   def load_user(params)
     key = params[:user_key]
     if key =~ /^(\d)+$/
-      return User.find(key)
+      User.find(key)
     else
-      return User.find_by_key(key)
+      User.find_by_key(key)
     end
   end
 
@@ -20,12 +20,12 @@ class APIResponseHandler < ApplicationController
   # Load one specific meeting defined by it's unique ID
   def load_meeting(params)
     id = params["meeting_id"]
-    return Meeting.find_by_id(id)
+    Meeting.find_by_id(id)
   end
 
   def load_suggestion(params)
     id = params["suggestion_id"]
-    return Suggestion.find_by_id(id)
+    Suggestion.find_by_id(id)
   end
 
   ##

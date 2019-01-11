@@ -62,6 +62,41 @@ module Api
     end
 
     ##
+    # Update a suggestion's information.
+    # - Note: allowed properties: picked, start and end time as well as date.
+    def update
+      user = self.load_user(params)
+      suggestion = Suggestion.find(params["suggestion"]["id"])
+      if user != nil and suggestion != nil
+        picked = params["isPicked"]
+        start_time = params["startTime"]
+        end_time = params["endTime"]
+        date = params["date"]
+
+        if picked != nil
+          suggestion.picked = picked
+        end
+        if start_time != nil
+          suggestion.start = start_time
+        end
+        if end_time != nil
+          suggestion.end = end_time
+        end
+        if date != nil
+          suggestion.date = date
+        end
+        result = suggestion.save!
+        if result
+          self.send_ok
+        else
+          self.send_error
+        end
+      else
+        self.send_error
+      end
+    end
+
+    ##
     # Delete a specific suggestion
     def delete
       suggestion = load_suggestion(params)

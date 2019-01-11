@@ -65,7 +65,6 @@ gem 'whenever', :require => false
 gem 'haml', '~> 5.0', '>= 5.0.1'
 gem 'tilt', '~> 2.0', '>= 2.0.7'
 gem 'responders', '~> 2.4'
-gem 'webpacker', github: 'rails/webpacker'
 gem 'fontello_rails_converter'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
