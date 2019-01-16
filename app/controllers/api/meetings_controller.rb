@@ -11,26 +11,38 @@ module Api
     ##
     # Fetches all meetings associated with a specific user recorded in TeaCo.
     def index
-      req_meeting_type = params["type"]
-      user = load_user(params)
-      if req_meeting_type == nil || req_meeting_type == "all"
-        meetings = user.meetings
+      user = self.load_user(params)
+
+      if user != nil
+        req_meeting_type = params["type"]
+        user = load_user(params)
+        if req_meeting_type == nil || req_meeting_type == "all"
+          meetings = user.meetings
+        else
+          meetings = user.meetings.select{ |meeting| meeting.is_closed == (req_meeting_type == "closed") }
+        end
+        self.send_json(self.convert_to_custom_json(meetings: meetings))
       else
-        meetings = user.meetings.select{ |meeting| meeting.is_closed == (req_meeting_type == "closed") }
+        self.send_error
       end
-      self.send_json(self.convert_to_custom_json(meetings: meetings))
     end
 
     ##
     # Fetches one specific meeting defined by it's unique ID
     def show
+      user = self.load_user(params)
       meeting = load_meeting(params)
-      self.send_json(
-        meeting.to_json(:include => {
-            :participants => {:only => [:id, :name, :email]},
-            :suggestions => {:include => [:votes]}
-        })
-      )
+
+      if user != nil && meeting != nil
+        self.send_json(
+            meeting.to_json(:include => {
+                :participants => {:only => [:id, :name, :email]},
+                :suggestions => {:include => [:votes]}
+            })
+        )
+      else
+        self.send_error
+      end
     end
 
     ##
