@@ -179,9 +179,9 @@ class Meeting < ApplicationRecord
     suggestions_count = self.suggestions.count
 
     progress = MeetingProgress.new
-    progress.pending = pending_count / suggestions_count
-    progress.started = started_count / suggestions_count
-    progress.completed = completed_count / suggestions_count
+    progress.pending = suggestions_count == 0 ? 1: pending_count / suggestions_count
+    progress.started = suggestions_count == 0 ? 0 : started_count / suggestions_count
+    progress.completed = suggestions_count == 0 ? 0 : completed_count / suggestions_count
     progress
   end
 
