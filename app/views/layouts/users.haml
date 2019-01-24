@@ -16,7 +16,7 @@
 
     = csrf_meta_tag
 
-    = javascript_tag " var AUTH_TOKEN = '#{form_authenticity_token.inspect}';" if protect_against_forgery?
+    = javascript_tag " var AUTH_TOKEN = '#{form_authenticity_token.inspect}';"
     = javascript_tag " var NOT_FROM_WITHIN = '#{@not_from_within}';"
 
 
