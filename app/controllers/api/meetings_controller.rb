@@ -129,6 +129,8 @@ module Api
             meeting.suggestions.each do |suggestion|
               suggestion.votes << Vote.new(:voter => new_participant, :decision => "?")
             end
+
+            NotificationService.send_meeting_invitation(user, new_participant, meeting, "")
           end
         end
         self.send_ok

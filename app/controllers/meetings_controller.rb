@@ -312,14 +312,13 @@ class MeetingsController < ApplicationController
       comment_text << if first then " " else ", " end
       first = false
       comment_text << (user.name.blank? ? user.email : user.name)
-      # Send an invitation mail to the user:
-      I18n.locale = user.language
-      TeacoMailer.invitation(user, @meeting, @user, text).deliver
+      # Notify user
+      NotificationService.send_meeting_invitation(@user, user, @meeting, text)
       # Add message to push service
-      PushService.add_invitation(user, @meeting, @user)
+      # PushService.add_invitation(user, @meeting, @user)
     end
     # Push added messages
-    PushService.send_notifications()
+    # PushService.send_notifications()
 
     # Restore user's locale:
     I18n.locale = @user.language
