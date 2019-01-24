@@ -4,14 +4,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'railstest.pandacode.org', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'teaco6.th-brandenburg.de', port: 3000 }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      user_name:            'teacorwd@gmail.com',
-      password:             'KWYZ76thZTAG',
+      user_name:            'teaco.thb@gmail.com',
+      password:             'gyxqum-rYtrez-0qudse',
       authentication:       :plain,
       enable_starttls_auto: true
   }

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace 'api' do
 
     resource :register_in_app, param: :key do
-      get '/:key', to: "register_in_app#redirect"
+      get '/:key', to: "register_in_app#redirect", :as => "register_in_app"
     end
 
     resources :users, param: :key do

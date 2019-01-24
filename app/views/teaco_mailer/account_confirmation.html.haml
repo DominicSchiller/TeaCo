@@ -1,18 +1,20 @@
 %h3= raw t('layouts.users.welcome')
 
 %p= raw t('.welcome_user', :user => @user.name.length > 0 ? @user.name : @user.email)
-%br/
 %p
   = raw t('.myteaco_link')
   %br/
+  %br/
   - admin_url = show_administration_url(:user_key => @user.key)
-  = link_to admin_url, admin_url
+  = link_to "Hier geht es zu Ihrem MyTeaCo Dashboard", admin_url
 %br/
 %p
-  If you have the TeaCo app installed on your smartphone, please use the following link:
+  Wenn Sie die TeaCo-App für Ihr Smartphone installiert haben,
+  nutzen Sie bitte den nachfolgenden Link, um Ihren TeaCo-Account in Ihrer App direkt zu registrieren:
   %br/
-  - teaco_app_url = "http://192.168.2.177:3000/api/register_in_app/" + @user.key
-  = link_to "Register in your app", teaco_app_url
+  - teaco_app_url = api_register_in_app_url(:key => @user.key)
+  - teaco_app_url.sub!('?key=', '/')
+  = link_to "Registrieren Sie Ihren Account in Ihrer App", teaco_app_url
   %br/
   %br/
 

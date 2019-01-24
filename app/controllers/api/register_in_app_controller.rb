@@ -1,3 +1,5 @@
+require_relative 'api_response_handler'
+
 ##
 # API module  grouping all REST API related classes.
 module Api
