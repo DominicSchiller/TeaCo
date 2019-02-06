@@ -11,8 +11,20 @@ module Api
     ##
     # Fetches all users recorded in TeaCo.
     def index
-      users = User.order('created_at DESC')
-      send_json(users)
+      registered_user = load_user(params)
+      if registered_user != nil
+        email = params["email"]
+        users = []
+        if email != nil
+          users = User.where("email like ?","%#{email}%")
+        else
+          users = User.order('created_at DESC')
+        end
+        send_json(users)
+      else
+        send_error
+      end
+
     end
 
     ##
@@ -22,6 +34,10 @@ module Api
     def show
       user = load_user(params)
       send_json(user)
+    end
+
+    def search
+      index
     end
 
   end

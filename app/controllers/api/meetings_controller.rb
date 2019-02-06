@@ -50,14 +50,14 @@ module Api
     # Note: Requires at least a title property as parameter and
     # optionally a pre-defined list of participant objects.
     def create
-      creator = self.load_user(params)
+      initiator = self.load_user(params)
       participants_list = params["participants"]
 
-      if creator != nil
+      if initiator != nil
         new_meeting = Meeting.create
-        new_meeting.initiator_id = creator.id
+        new_meeting.initiator_id = initiator.id
         new_meeting.title = params["meeting"]["title"]
-        new_meeting.participants << creator
+        new_meeting.participants << initiator
         new_meeting.save!
 
         if participants_list != nil

@@ -9,6 +9,9 @@ class APIResponseHandler < ApplicationController
   # (2) hash key
   def load_user(params)
     key = params[:user_key]
+    if key.nil?
+      key = params[:key]
+    end
     if key =~ /^(\d)+$/
       User.find(key)
     else

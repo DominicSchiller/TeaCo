@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     resources :users, param: :key do
       get '/', to: "users#show"
+      get '/search', to: "users#index"
 
       resources :meetings, param: :id do
         get '/', to: "meetings#show"
