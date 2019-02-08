@@ -4,6 +4,10 @@
 # of these.
 class NotificationService
 
+  def self.send_account_confirmation(user)
+    TeacoMailer.account_confirmation(user).deliver
+  end
+
   ##
   # Send a meeting invitation.
   def self.send_meeting_invitation(organizer, participant, meeting, comment)

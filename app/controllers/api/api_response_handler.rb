@@ -26,9 +26,37 @@ class APIResponseHandler < ApplicationController
     Meeting.find_by_id(id)
   end
 
+  ##
+  # Load one specific suggestion defined by it's unique ID
   def load_suggestion(params)
     id = params["suggestion_id"]
     Suggestion.find_by_id(id)
+  end
+
+  ##
+  # Create a brand new suggestion instance defined by
+  # @param creator The suggestion's creator
+  # @param meeting The suggestion's associated meeting
+  # @param params Array of params to assign the suggestion with
+  # @return The created and saved suggestion instance
+  def create_suggestion(creator, meeting, params)
+    new_suggestion = Suggestion.create
+    new_suggestion.meeting_id = meeting.id
+    new_suggestion.start = params["startTime"]
+    new_suggestion.end = params["endTime"]
+    new_suggestion.date = params["date"]
+    new_suggestion.creator_id = creator.id
+    new_suggestion.save!
+    # create empty votes
+    meeting.participants.each do |participant|
+      new_vote = Vote.create
+      new_vote.suggestion_id = new_suggestion.id
+      new_vote.voter_id = participant.id
+      new_vote.decision = participant.id == new_suggestion.creator_id ? "yes": "?"
+      new_vote.save!
+      new_suggestion.votes << new_vote
+    end
+    new_suggestion
   end
 
   ##

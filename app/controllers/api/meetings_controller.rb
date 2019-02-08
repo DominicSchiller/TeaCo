@@ -52,6 +52,7 @@ module Api
     def create
       initiator = self.load_user(params)
       participants_list = params["participants"]
+      suggestions_list = params["suggestions"]
 
       if initiator != nil
         new_meeting = Meeting.create
@@ -60,11 +61,36 @@ module Api
         new_meeting.participants << initiator
         new_meeting.save!
 
+        # assign participants
         if participants_list != nil
           participants_list.each do |participant_params|
-            user = User.find(participant_params["id"])
-            if participant_params != nil
-              new_meeting.participants << user
+            if participant_params != nil && participant_params["id"] != nil && participant_params["id"] > -1
+              user = User.find(participant_params["id"])
+              if user != nil
+                  new_meeting.participants << user
+              end
+            else
+              # check if user is not already recorded in TeaCo via his/her email
+              user = User.find_by_email(participant_params["email"])
+              if user != nil
+                new_meeting.participants << user
+              else
+                # create a brand new user and invite him to teaco
+                new_user = User.create
+                new_user.email = participant_params["email"]
+                new_user.save!
+                new_meeting.participants << new_user
+                NotificationService.send_account_confirmation(new_user)
+              end
+            end
+          end
+          new_meeting.save!
+        end
+        # assign suggestions
+        if suggestions_list != nil
+          suggestions_list.each do |suggestion_params|
+            if suggestion_params != nil && suggestion_params["date"] != nil && suggestion_params["startTime"] != nil && suggestion_params["endTime"] != nil
+              self.create_suggestion(initiator, new_meeting, suggestion_params)
             end
           end
           new_meeting.save!
