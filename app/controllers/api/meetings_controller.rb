@@ -69,8 +69,7 @@ module Api
           end
           new_meeting.save!
         end
-
-        self.send_json(new_meeting)
+        self.send_json(build_custom_meeting_json(meeting: new_meeting))
       else
         self.send_error
       end
@@ -170,23 +169,28 @@ module Api
     def convert_to_custom_json(meetings: Meeting[])
       json_meetings = []
       meetings.each do |meeting|
-        json_meeting = JSON.parse(meeting.to_json(:include => {
-            # :participants => {:only => [:id]},
-            # :suggestions => {
-            #     :only => [:id], :include => [:votes => {:only => [:id, :decision]}]}
-        }))
-
-        if meeting.is_closed && !meeting.is_cancelled
-          picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
-          json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
-        end
-
-        json_meeting["numberOfParticipants"] = meeting.participants.count
-        json_meeting["numberOfSuggestions"] = meeting.suggestions.count
-        json_meeting["progress"] = JSON.parse(meeting.meeting_progress.to_json)
+        json_meeting = build_custom_meeting_json(meeting: meeting)
         json_meetings.push(json_meeting)
       end
       json_meetings
+    end
+
+    def build_custom_meeting_json(meeting: Meeting)
+      json_meeting = JSON.parse(meeting.to_json(:include => {
+          # :participants => {:only => [:id]},
+          # :suggestions => {
+          #     :only => [:id], :include => [:votes => {:only => [:id, :decision]}]}
+      }))
+
+      if meeting.is_closed && !meeting.is_cancelled
+        picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
+        json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
+      end
+
+      json_meeting["numberOfParticipants"] = meeting.participants.count
+      json_meeting["numberOfSuggestions"] = meeting.suggestions.count
+      json_meeting["progress"] = JSON.parse(meeting.meeting_progress.to_json)
+      json_meeting
     end
     
   end
