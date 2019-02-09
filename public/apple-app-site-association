@@ -1,0 +1,11 @@
+{
+	"applinks": {
+	    "apps": [],
+	    "details": [
+	        {
+	            "appID": "BBRLVAVRKA.de.th-brandenburg.TeaCo",
+	            "paths": ["*"]
+	        }
+	    ]
+	}
+}
