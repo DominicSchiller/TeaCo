@@ -320,8 +320,8 @@ de:
     keep_link: "Geben Sie diesen Link an niemanden weiter - andere können so auf Ihren TeaCo Account zugreifen! Achten Sie auch darauf, falls Sie auf diese Mail antworten oder sie weiterleiten sollten!"
     jump_to_meeting: Mit dem untenstehenden Link gelangen Sie direkt zu der entsprechenden Abstimmung in TeaCo.
     account_confirmation:
-      welcome_user: "Hallo %{user}, willkommen bei TeaCo."
-      myteaco_link: "Ihr persönlicher MyTeaCo-Link:"
+      welcome_user: "Hallo %{user}, <br />willkommen bei TeaCo."
+      myteaco_link: "Ihr persönlicher MyTeaCo-Key:"
     comment_notification:
       subject: "TeaCo: Neuer Kommentar bei %{meeting}"
       new_comment_written: "Ein neuer Kommentar wurde in der Abstimmung %{meeting} von %{user} verfasst:"
