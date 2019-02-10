@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         put '/', to: 'meetings#update'
         put '/add_participant', to: 'meetings#add_participant'
         put '/remove_participant', to: 'meetings#remove_participant'
+        put '/finish', to: 'meetings#finish_planning'
         delete '/', to: 'meetings#delete'
 
         resources :suggestions, param: :id do

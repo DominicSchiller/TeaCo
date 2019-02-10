@@ -52,7 +52,7 @@ module Api
     def create
       initiator = self.load_user(params)
       participants_list = params["participants"]
-      suggestions_list = params["suggestions"]
+      suggestions_list = params["suggestionsInfo"]
 
       if initiator != nil
         new_meeting = Meeting.create
@@ -86,7 +86,7 @@ module Api
           end
           new_meeting.save!
         end
-        # assign suggestions
+        # assign suggestionsInfo
         if suggestions_list != nil
           suggestions_list.each do |suggestion_params|
             if suggestion_params != nil && suggestion_params["date"] != nil && suggestion_params["startTime"] != nil && suggestion_params["endTime"] != nil
@@ -191,6 +191,36 @@ module Api
     end
 
     ##
+    # Finish the meeting planning
+    def finish_planning
+      user = load_user(params)
+      meeting = load_meeting(params)
+      if user != nil && meeting != nil
+        meeting.is_closed = true
+        meeting.is_cancelled = false
+        location = params["location"]
+        if location != nil
+          meeting.location = location
+        end
+        #meeting.save!
+        suggestionsInfo = params["suggestions"]
+        if suggestionsInfo != nil
+          suggestionsInfo.each do |suggestionInfo|
+            suggestion = Suggestion.find(suggestionInfo["id"])
+            suggestion.picked = true
+            suggestion.save!
+          end
+          comment = params["comment"] != nil ? params["comment"]: ""
+          # send dates
+          NotificationService.send_finished_meeting_details(user, meeting, comment, location)
+          send_ok
+        end
+      else
+        send_error
+      end
+    end
+
+    ##
     # Convert a list of meetings to a JSON array with customized properties
     def convert_to_custom_json(meetings: Meeting[])
       json_meetings = []
@@ -204,13 +234,13 @@ module Api
     def build_custom_meeting_json(meeting: Meeting)
       json_meeting = JSON.parse(meeting.to_json(:include => {
           # :participants => {:only => [:id]},
-          # :suggestions => {
+          # :suggestionsInfo => {
           #     :only => [:id], :include => [:votes => {:only => [:id, :decision]}]}
       }))
 
       if meeting.is_closed && !meeting.is_cancelled
         picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
-        json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
+        json_meeting["suggestionsInfo"] = JSON.parse(picked_suggestions.to_json)
       end
 
       json_meeting["numberOfParticipants"] = meeting.participants.count

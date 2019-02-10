@@ -20,4 +20,17 @@ class NotificationService
     # PushService.send_notifications()
   end
 
+  ##
+  # Send finished meeting details to each participant.
+  def self.send_finished_meeting_details(currentUser, meeting, message, location)
+    meeting.participants.each do |participant|
+      I18n.locale = participant.language
+      TeacoMailer.dates_confirmation(participant, message, meeting, currentUser, location).deliver
+      # Add message to push service (exclude sending user)
+      if participant != currentUser
+        #PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
+      end
+    end
+  end
+
 end
