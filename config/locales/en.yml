@@ -298,8 +298,8 @@ for your participants may not be available at the new date.\n\nClick OK to reset
     keep_link: "Don't give this link to anyone else, neither forward this mail or reply to it - others could gain access to your TeaCo account that way!"
     jump_to_meeting: You can access the respective meeting with the following link.
     account_confirmation:
-      welcome_user: "Hello %{user}, welcome to TeaCo."
-      myteaco_link: "Your personal MyTeaCo-Link:"
+      welcome_user: "Hello %{user}, <br />welcome to TeaCo."
+      myteaco_link: "Your personal MyTeaCo-Key:"
     comment_notification:
       subject: "TeaCo: New comment at %{meeting}"
       new_comment_written: "%{user} has written a new comment in the meeting '%{meeting}':"

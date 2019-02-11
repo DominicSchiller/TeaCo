@@ -1,6 +1,6 @@
-%h3= raw t('.planning_finished', :meeting => @meeting.title)
+%h3= raw t('teaco_mailer.dates_confirmation_html.planning_finished', :meeting => @meeting.title)
 
-%p= raw t('.picked_dates', :user => user_name_or_email(@sending_user))
+%p= raw t('teaco_mailer.dates_confirmation_html.picked_dates', :user => user_name_or_email(@sending_user))
 
 %ul
   - picked_suggestions = @meeting.picked_suggestions
@@ -8,7 +8,7 @@
     %li= "#{ l(sugg.date, :format => :short_with_weekday) }: #{sugg.start_as_readable} - #{sugg.end_as_readable}#{(', ' + @location) unless @location.blank?}"
 
 - unless @message.blank?
-  %p= raw t('.associated_message')
+  %p= raw t('teaco_mailer.dates_confirmation_html.associated_message')
   %div{ :style => "background: #eeeeee; border: 2px solid #cccccc; padding: 10px; margin: 10px;" }
     = '"' + h(@message) + '"'
 

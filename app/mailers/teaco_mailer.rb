@@ -1,3 +1,5 @@
+require_relative '../helpers/app-link-generator'
+
 class TeacoMailer < ActionMailer::Base
   #default :from => "'TeaCo <teaco@teaco.imis.uni-luebeck.de>"
   default :from => "TeaCo <teacorwd@gmail.com>"

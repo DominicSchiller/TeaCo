@@ -485,14 +485,15 @@ class MeetingsController < ApplicationController
     @meeting.picked_suggestions.each do |suggestion|
       final_dates << ("\n* #{l(suggestion.date, :format => :short_with_weekday)}: #{suggestion.start_as_readable} - #{suggestion.end_as_readable}")
     end
-    @meeting.participants.each do |participant|
-      I18n.locale = participant.language
-      TeacoMailer.dates_confirmation(participant, message, @meeting, @user, location).deliver
-      # Add message to push service (exclude sending user)
-      if participant != @user
-        PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
-      end
-    end
+    NotificationService.send_finished_meeting_details(@user, @meeting, message, location)
+    # @meeting.participants.each do |participant|
+    #   I18n.locale = participant.language
+    #   TeacoMailer.dates_confirmation(participant, message, @meeting, @user, location).deliver
+    #   # Add message to push service (exclude sending user)
+    #   if participant != @user
+    #     PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
+    #   end
+    # end
 
     # If the user want's to enter the message text as a comment
     # as well, do so:

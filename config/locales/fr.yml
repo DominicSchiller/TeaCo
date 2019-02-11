@@ -293,7 +293,7 @@ fr:
     keep_link: "Ne passez ce lien &agrave; personne - autres gens auraient acc&egrave;s &agrave; votre compte de TeaCo! Faites attention &agrave; ce fait si vous r&eacute;pondiez &agrave; cet e-mail ou le transf&eacute;riez!"
     jump_to_meeting: Avec le lien ci-dessous vous avec acc&egrave;s au meeting correnspondant chez TeaCo.
     account_confirmation:
-      welcome_user: "Salut %{user}, bienvenue chez TeaCo."
+      welcome_user: "Salut %{user}, <br />bienvenue chez TeaCo."
       myteaco_link: "Votre lien personnel de MyTeaCo:"
     comment_notification:
       subject: "TeaCo: Nouveau commentaire chez %{meeting}"
