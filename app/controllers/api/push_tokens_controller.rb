@@ -31,8 +31,8 @@ module Api
 
         is_token_updated = false
         user.push_tokens.each do |push_token|
-          if push_token.operating_system == operating_system and
-              push_token.device_class == device_class
+          if push_token.operating_system.to_s == operating_system.to_s and
+              push_token.device_class.to_s == device_class.to_s
             push_token.token = token
             push_token.save!
             is_token_updated = true

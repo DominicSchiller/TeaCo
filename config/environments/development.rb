@@ -16,6 +16,8 @@ Rails.application.configure do
       enable_starttls_auto: true
   }
 
+  config.fcm_server_key = "AAAAYlW35TA:APA91bFdz0V-8_ShbmDlFVK_egttC0UfHOc3iMrA73TvdIeqZV3ZVROWP1KXlZzVqJgti2ld1vo2yHYaoGgdHEzlIZJeSNGUbk4in7QTbklSnNx1DKhLswfcAjY3AcphCP7quoql38Gg"
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
