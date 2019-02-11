@@ -25,12 +25,31 @@ module Api
     def update
       user = load_user(params)
       if !user.nil?
-        push_token = PushToken.new(
-            :operating_system => params["os"],
-            :device_class => params["device_class"],
-            :token => params["token"])
-        push_token.save!
-        user.push_tokens << push_token
+        operating_system = params["os"]
+        device_class = params["device_class"]
+        token = params["token"]
+
+        is_token_updated = false
+        user.push_tokens.each do |push_token|
+          if push_token.operating_system == operating_system and
+              push_token.device_class == device_class
+            push_token.token = token
+            push_token.save!
+            is_token_updated = true
+            break
+          end
+        end
+        # only create new push token instance if user doesn't have any for
+        # the given combination of operating system and device class
+        unless is_token_updated
+          push_token = PushToken.new(
+              :operating_system => params["os"],
+              :device_class => params["device_class"],
+              :token => params["token"])
+          push_token.save!
+          user.push_tokens << push_token
+        end
+
         send_ok
       else
         send_error
