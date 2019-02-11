@@ -49,7 +49,6 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'debase'
   gem 'ruby-debug-ide', '0.7.0.beta6'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -68,6 +67,9 @@ gem 'responders', '~> 2.4'
 gem 'fontello_rails_converter'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
+
+# = = = = = = = = = = Firebase = = = = = = = = = =
+gem 'fcm', '~> 0.0.6'
 
 # = = = = = = = = = = Bootstrap = = = = = = = = = =
 gem 'bootstrap3-rails', '~> 3.2'

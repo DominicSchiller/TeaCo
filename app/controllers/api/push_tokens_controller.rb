@@ -49,7 +49,6 @@ module Api
           push_token.save!
           user.push_tokens << push_token
         end
-
         send_ok
       else
         send_error
