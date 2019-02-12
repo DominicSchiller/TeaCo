@@ -27,7 +27,7 @@ class NotificationService
       notification = {
         "notification": {
           "title": "Einladung zur Terminabstimmung",
-          "body": "Sie wurden soeben von #{organizer.name}zur Terminabstimmung von »#{meeting.title}« eingeladen",
+          "body": "Sie wurden soeben von #{organizer.name} zur Terminabstimmung von »#{meeting.title}« eingeladen",
           "data": {
             "meetingId": meeting.id
           }
