@@ -205,7 +205,7 @@ module Api
         if location != nil
           meeting.location = location
         end
-        #meeting.save!
+        meeting.save!
         suggestionsInfo = params["suggestions"]
         if suggestionsInfo != nil
           suggestionsInfo.each do |suggestionInfo|
@@ -243,7 +243,7 @@ module Api
 
       if meeting.is_closed && !meeting.is_cancelled
         picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
-        json_meeting["suggestionsInfo"] = JSON.parse(picked_suggestions.to_json)
+        json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
       end
 
       json_meeting["numberOfParticipants"] = meeting.participants.count
