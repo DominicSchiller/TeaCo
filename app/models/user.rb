@@ -11,6 +11,7 @@ class User < ApplicationRecord
   attr_accessor :password
 
   has_and_belongs_to_many :meetings
+  has_and_belongs_to_many :push_tokens
 
   # The meetings initiated by the user are destroyed when the user is deleted:
   has_many :initiated_meetings, :class_name => "Meeting", :foreign_key => "initiator_id", :dependent => :destroy

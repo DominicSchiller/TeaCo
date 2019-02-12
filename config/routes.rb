@@ -11,6 +11,11 @@ Rails.application.routes.draw do
       get '/', to: "users#show"
       get '/search', to: "users#index"
 
+      resource :push_tokens do
+        get '/', to: "push_tokens#show"
+        put '/', to: "push_tokens#update"
+      end
+
       resources :meetings, param: :id do
         get '/', to: "meetings#show"
         post '/', to: 'meetings#create'

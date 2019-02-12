@@ -65,15 +65,17 @@ module Api
         if participants_list != nil
           participants_list.each do |participant_params|
             if participant_params != nil && participant_params["id"] != nil && participant_params["id"] > -1
-              user = User.find(participant_params["id"])
-              if user != nil
-                  new_meeting.participants << user
+              participant = User.find(participant_params["id"])
+              if participant != nil
+                  new_meeting.participants << participant
+                  NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
               end
             else
               # check if user is not already recorded in TeaCo via his/her email
-              user = User.find_by_email(participant_params["email"])
-              if user != nil
-                new_meeting.participants << user
+              participant = User.find_by_email(participant_params["email"])
+              if participant != nil
+                new_meeting.participants << participant
+                NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
               else
                 # create a brand new user and invite him to teaco
                 new_user = User.create
@@ -81,6 +83,7 @@ module Api
                 new_user.save!
                 new_meeting.participants << new_user
                 NotificationService.send_account_confirmation(new_user)
+                NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
               end
             end
           end
@@ -202,7 +205,7 @@ module Api
         if location != nil
           meeting.location = location
         end
-        #meeting.save!
+        meeting.save!
         suggestionsInfo = params["suggestions"]
         if suggestionsInfo != nil
           suggestionsInfo.each do |suggestionInfo|
@@ -240,7 +243,7 @@ module Api
 
       if meeting.is_closed && !meeting.is_cancelled
         picked_suggestions = meeting.suggestions.select { |suggestion| suggestion.picked }
-        json_meeting["suggestionsInfo"] = JSON.parse(picked_suggestions.to_json)
+        json_meeting["suggestions"] = JSON.parse(picked_suggestions.to_json)
       end
 
       json_meeting["numberOfParticipants"] = meeting.participants.count
