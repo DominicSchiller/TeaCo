@@ -321,7 +321,7 @@ de:
     jump_to_meeting: Mit dem untenstehenden Link gelangen Sie direkt zu der entsprechenden Abstimmung in TeaCo.
     account_confirmation:
       welcome_user: "Hallo %{user}, <br />willkommen bei TeaCo."
-      myteaco_link: "Ihr persönlicher MyTeaCo-Key:"
+      myteaco_link: "Dein persönlicher MyTeaCo-Key:"
     comment_notification:
       subject: "TeaCo: Neuer Kommentar bei %{meeting}"
       new_comment_written: "Ein neuer Kommentar wurde in der Abstimmung %{meeting} von %{user} verfasst:"

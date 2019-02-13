@@ -1,17 +1,16 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      html, body {
-        width: 100%;
-        height: 100%;
-      }
       * {
         text-decoration: none;
         font-family: 'Source Sans Pro', sans-serif;
       }
       .button {
         height:44px;
+        width: calc(100% - 30px);
+        max-width: 800px !important;
         color: #fff;
         background-color: #cc0a2f;
         border-radius: 36px;
@@ -24,15 +23,20 @@
         text-align: center;
       }
       a {
+        width: calc(100% - 30px);
+        max-width: 800px !important;
         color: #fff;
         text-decoration: none;
       }
       .button div {
         margin-top: 10px;
       }
-      .text-button {
+      .text-button.primary{
         color: #cc0a2f;
       }
+        .text-button.secondary {
+          color: #00bae5;
+        }
     </style>
   </head>
   <body>
@@ -46,7 +50,7 @@
       <br />
       <br />
       <span style="font-weight: 500;"><% admin_url = show_administration_url(:user_key => @user.key) %></span>
-      <a class="text-button" href="<%= admin_url %>">
+      <a class="text-button primary" href="<%= admin_url %>">
         MyTeaCo Dashboard
       </a>
       <br />
@@ -71,8 +75,8 @@
       </a>
       <br />
       <br />
-      <span style="font-style: italic;">* Sollte dieser Button in deinem EMail-Client nicht funktionieren, nutze bitte den nachfolgenden Link:</span>
-      <a class="text-button" href="<%= teaco_fallback_app_url %>">App registrieren</a>
+      <span style="font-style: italic;">* Sollte dieser Button in deinem EMail-Client nicht funktionieren, nutze bitte den nachfolgenden Link: </span>
+      <a class="text-button secondary" href="<%= teaco_fallback_app_url %>">Account in App registrieren</a>
     </p>
     <h4>
       <%= raw t('teaco_mailer.keep_link') %>
