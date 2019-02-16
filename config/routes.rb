@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         get '/', to: "meetings#show"
         post '/', to: 'meetings#create'
         put '/', to: 'meetings#update'
+        get '/participants', to: 'meetings#get_participants'
         put '/add_participant', to: 'meetings#add_participant'
         put '/remove_participant', to: 'meetings#remove_participant'
         put '/finish', to: 'meetings#finish_planning'

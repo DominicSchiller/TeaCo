@@ -57,6 +57,7 @@ module Api
       if initiator != nil
         new_meeting = Meeting.create
         new_meeting.initiator_id = initiator.id
+        new_meeting.location = params["meeting"]["location"]
         new_meeting.title = params["meeting"]["title"]
         new_meeting.participants << initiator
         new_meeting.save!
@@ -190,6 +191,20 @@ module Api
         self.send_ok
       else
         self.send_error
+      end
+    end
+
+    ##
+    # Get all participants associated to an explicit meeting.
+    def get_participants
+      user = self.load_user(params)
+      meeting = self.load_meeting(params)
+
+      if user != nil and meeting != nil
+        users = meeting.participants
+        send_json(users)
+      else
+        send_error
       end
     end
 
