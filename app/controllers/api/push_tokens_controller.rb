@@ -14,7 +14,7 @@ module Api
       if !user.nil?
         send_json(user.push_tokens)
       else
-        send_error
+        send_error 401
       end
     end
 
@@ -51,7 +51,7 @@ module Api
         end
         send_ok
       else
-        send_error
+        send_error 401
       end
     end
   end

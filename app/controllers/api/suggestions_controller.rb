@@ -40,7 +40,7 @@ module Api
             new_suggestion.to_json(:include => [:votes])
           )
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -72,10 +72,10 @@ module Api
         if result
           self.send_ok
         else
-          self.send_error
+          self.send_error 422
         end
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -88,7 +88,7 @@ module Api
         deleted_suggestion.votes.delete_all
         self.send_ok
       else
-        self.send_error
+        self.send_error 404
       end
     end
 

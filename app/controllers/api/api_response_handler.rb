@@ -69,8 +69,8 @@ class APIResponseHandler < ApplicationController
     render :json => {  }, status: :ok
   end
 
-  def send_error
-    render :json => {}, :status => 422
+  def send_error(errorCode)
+    render :json => {}, :status => errorCode
   end
 
   ##

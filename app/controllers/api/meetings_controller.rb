@@ -23,7 +23,7 @@ module Api
         end
         self.send_json(self.convert_to_custom_json(meetings: meetings))
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -41,7 +41,7 @@ module Api
             })
         )
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -61,7 +61,7 @@ module Api
         new_meeting.save!
         self.send_json(build_custom_meeting_json(meeting: new_meeting))
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -79,10 +79,10 @@ module Api
           if result
             self.send_ok
           else
-            self.send_error
+            self.send_error 422
           end
        else
-         self.send_error
+         self.send_error 401
        end
     end
 
@@ -98,7 +98,7 @@ module Api
         meeting.delete
         self.send_ok
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -124,7 +124,7 @@ module Api
         end
         self.send_ok
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -150,7 +150,7 @@ module Api
         end
         self.send_ok
       else
-        self.send_error
+        self.send_error 401
       end
     end
 
@@ -164,7 +164,7 @@ module Api
         users = meeting.participants
         send_json(users)
       else
-        send_error
+        send_error 401
       end
     end
 
@@ -194,7 +194,7 @@ module Api
           send_ok
         end
       else
-        send_error
+        send_error 401
       end
     end
 

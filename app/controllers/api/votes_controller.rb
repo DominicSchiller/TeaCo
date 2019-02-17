@@ -28,7 +28,7 @@ module Api
       vote = Vote.find_by_id(update_data["id"])
 
       if vote == nil
-        send_error
+        send_error 404
       else
         vote.decision = update_data["decision"]
         vote.save!

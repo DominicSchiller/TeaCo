@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     end
 
     resources :users, param: :key do
-      get '/', to: "users#show"
-      get '/search', to: "users#index"
+      get '/', to: 'users#show'
+      post '/', to: 'users#create'
+      get '/search', to: 'users#index'
 
       resource :push_tokens do
         get '/', to: "push_tokens#show"
