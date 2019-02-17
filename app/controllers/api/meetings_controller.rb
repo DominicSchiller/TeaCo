@@ -51,8 +51,6 @@ module Api
     # optionally a pre-defined list of participant objects.
     def create
       initiator = self.load_user(params)
-      participants_list = params["participants"]
-      suggestions_list = params["suggestionsInfo"]
 
       if initiator != nil
         new_meeting = Meeting.create
@@ -61,44 +59,6 @@ module Api
         new_meeting.title = params["meeting"]["title"]
         new_meeting.participants << initiator
         new_meeting.save!
-
-        # assign participants
-        if participants_list != nil
-          participants_list.each do |participant_params|
-            if participant_params != nil && participant_params["id"] != nil && participant_params["id"] > -1
-              participant = User.find(participant_params["id"])
-              if participant != nil
-                  new_meeting.participants << participant
-                  NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
-              end
-            else
-              # check if user is not already recorded in TeaCo via his/her email
-              participant = User.find_by_email(participant_params["email"])
-              if participant != nil
-                new_meeting.participants << participant
-                NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
-              else
-                # create a brand new user and invite him to teaco
-                new_user = User.create
-                new_user.email = participant_params["email"]
-                new_user.save!
-                new_meeting.participants << new_user
-                NotificationService.send_account_confirmation(new_user)
-                NotificationService.send_meeting_invitation(initiator, participant, new_meeting, "")
-              end
-            end
-          end
-          new_meeting.save!
-        end
-        # assign suggestionsInfo
-        if suggestions_list != nil
-          suggestions_list.each do |suggestion_params|
-            if suggestion_params != nil && suggestion_params["date"] != nil && suggestion_params["startTime"] != nil && suggestion_params["endTime"] != nil
-              self.create_suggestion(initiator, new_meeting, suggestion_params)
-            end
-          end
-          new_meeting.save!
-        end
         self.send_json(build_custom_meeting_json(meeting: new_meeting))
       else
         self.send_error
