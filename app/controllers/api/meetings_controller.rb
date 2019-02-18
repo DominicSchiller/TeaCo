@@ -108,6 +108,7 @@ module Api
       user = self.load_user(params)
       meeting = self.load_meeting(params)
       participant_ids = params["participant_ids"]
+      comment = params["comment"].nil? ? "" : params["comment"]
 
       if user != nil and meeting != nil and participant_ids.length > 0
         participant_ids.each do |participant_id|
@@ -119,7 +120,7 @@ module Api
               suggestion.votes << Vote.new(:voter => new_participant, :decision => "?")
             end
 
-            NotificationService.send_meeting_invitation(user, new_participant, meeting, "")
+            NotificationService.send_meeting_invitation(user, new_participant, meeting, comment)
           end
         end
         self.send_ok
