@@ -41,15 +41,20 @@ class NotificationService
   ##
   # Send finished meeting details to each participant.
   def self.send_finished_meeting_details(current_user, meeting, message, location)
+    push_tokens = []
+
     meeting.participants.each do |participant|
       I18n.locale = participant.language
       TeacoMailer.dates_confirmation(participant, message, meeting, current_user, location).deliver
 
-      to_tokens = []
-      participant.push_tokens.each do |push_token|
-        to_tokens.push(push_token.token)
+      # don't send a push notification to the user which triggered the finish process
+      if participant.id != current_user.id
+        participant.push_tokens.each do |push_token|
+          push_tokens.push(push_token.token)
+        end
       end
-      unless to_tokens.empty?
+
+      unless push_tokens.empty?
         notification = {
             "notification": {
                 "title": "Termine finalisiert",
@@ -60,7 +65,7 @@ class NotificationService
                 }
             }
         }
-        @@fcm.send_notification(to_tokens, notification)
+        @@fcm.send_notification(push_tokens, notification)
       end
     end
   end
