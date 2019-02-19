@@ -27,9 +27,10 @@ class NotificationService
       notification = {
         "notification": {
           "title": "Einladung zur Terminabstimmung",
-          "body": "Sie wurden soeben von #{organizer.name} zur Terminabstimmung von »#{meeting.title}« eingeladen",
+          "body": "Du wurdest soeben von #{organizer.name} zur Terminabstimmung von »#{meeting.title}« eingeladen",
           "data": {
-            "meetingId": meeting.id
+              "messageCode": 1,
+              "meetingId": meeting.id
           }
         }
       }
@@ -43,9 +44,23 @@ class NotificationService
     meeting.participants.each do |participant|
       I18n.locale = participant.language
       TeacoMailer.dates_confirmation(participant, message, meeting, current_user, location).deliver
-      # Add message to push service (exclude sending user)
-      if participant != current_user
-        # PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
+
+      to_tokens = []
+      participant.push_tokens.each do |push_token|
+        to_tokens.push(push_token.token)
+      end
+      unless to_tokens.empty?
+        notification = {
+            "notification": {
+                "title": "Termine finalisiert",
+                "body": "Die Abstimmung von »#{meeting.title}« wurde erfolgreich beendet.",
+                "data": {
+                    "messageCode": 1,
+                    "meetingId": meeting.id
+                }
+            }
+        }
+        @@fcm.send_notification(to_tokens, notification)
       end
     end
   end

@@ -1,4 +1,5 @@
 require_relative 'api_response_handler'
+require_relative '../../services/notification_service'
 
 ##
 # API module  grouping all REST API related classes.
@@ -11,7 +12,7 @@ module Api
     ##
     # Fetches all users recorded in TeaCo.
     def index
-      registered_user = load_user(params)
+        registered_user = load_user(params)
       if registered_user != nil
         email = params["email"]
         users = []

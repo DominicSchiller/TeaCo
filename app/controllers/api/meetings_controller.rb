@@ -1,4 +1,5 @@
 require_relative 'api_response_handler'
+require_relative '../../services/notification_service'
 
 ##
 # API module  grouping all REST API related classes.
