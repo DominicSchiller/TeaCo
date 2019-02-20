@@ -1,3 +1,4 @@
+
 .container-fluid
   .row#diplayNewSuggestion.sugg_times
     = form_for [@user, @meeting, sugg], html: { class: 'ajax', style: "text-align: center" } do |f|
@@ -28,4 +29,9 @@
               = f.hidden_field :date, { class: "date_field", id: "date_field_id", data: { value: get_default_date(sugg) } }
               = f.hidden_field :meeting_id, 'value' => @meeting.id
               = f.hidden_field :creator_id, 'value' => @user.id
-              .hidden-xs.hidden-sm#sugg_submit_button= f.submit get_edit_submit_button_text(sugg), id: 'suggestion_submit', class: "btn btn-primary btn-block"#, "data-dismiss":"modal"
+              .hidden-xs.hidden-sm#sugg_submit_button= f.submit get_edit_submit_button_text(sugg), id: 'suggestion_submit', class: "btn btn-primary btn-block"
+
+  :javascript
+    $('#suggestion_submit').on("click", function() {
+      $('#edit_form_modal').modal('hide');
+    });

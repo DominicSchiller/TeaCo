@@ -5,7 +5,7 @@
     .col-md-3.align-label.label_margin
       = label_tag :email, t("users.login.email") + ":"
     .col-md-9
-      = text_field("user", "email", :class => "gain_focus", :size => nil, class: "form-control")
+      = text_field("user", "email", :class => ["gain_focus", "form-control"], :size => nil)
   .row.form-group
     .col-md-3.align-label.label_margin
       = label_tag :password, t("users.login.password") + ":"

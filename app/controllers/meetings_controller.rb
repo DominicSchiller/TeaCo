@@ -46,6 +46,11 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting ||= Meeting.new
+    @meeting = Meeting.create(meeting_params)
+    @meeting.is_closed = false
+    @meeting.is_cancelled = false
+    @meeting.location = ""
+    @meeting.save!
     render :layout => false, :template => 'meetings/new.haml'
   end
 
@@ -159,6 +164,11 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.create(meeting_params)
+    @meeting.is_closed = false
+    @meeting.is_cancelled = false
+    @meeting.location = ""
+    @meeting.save!
+
     if @meeting.present? && @meeting.valid?
       flash[:notice] = t("notices.meeting_created")
       respond_to do |format|
@@ -302,14 +312,13 @@ class MeetingsController < ApplicationController
       comment_text << if first then " " else ", " end
       first = false
       comment_text << (user.name.blank? ? user.email : user.name)
-      # Send an invitation mail to the user:
-      I18n.locale = user.language
-      TeacoMailer.invitation(user, @meeting, @user, text).deliver
+      # Notify user
+      NotificationService.send_meeting_invitation(@user, user, @meeting, text)
       # Add message to push service
-      PushService.add_invitation(user, @meeting, @user)
+      # PushService.add_invitation(user, @meeting, @user)
     end
     # Push added messages
-    PushService.send_notifications()
+    # PushService.send_notifications()
 
     # Restore user's locale:
     I18n.locale = @user.language
@@ -456,6 +465,11 @@ class MeetingsController < ApplicationController
   def send_dates
     load_object # Load the user and the meeting
 
+    @meeting.is_closed = true
+    @meeting.is_cancelled = false
+    @meeting.location = params[:location]
+    @meeting.save!
+
     if request.request_method == :get
       render :partial => "meetings/send_dates_form"
       return
@@ -471,14 +485,15 @@ class MeetingsController < ApplicationController
     @meeting.picked_suggestions.each do |suggestion|
       final_dates << ("\n* #{l(suggestion.date, :format => :short_with_weekday)}: #{suggestion.start_as_readable} - #{suggestion.end_as_readable}")
     end
-    @meeting.participants.each do |participant|
-      I18n.locale = participant.language
-      TeacoMailer.dates_confirmation(participant, message, @meeting, @user, location).deliver
-      # Add message to push service (exclude sending user)
-      if participant != @user
-        PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
-      end
-    end
+    NotificationService.send_finished_meeting_details(@user, @meeting, message, location)
+    # @meeting.participants.each do |participant|
+    #   I18n.locale = participant.language
+    #   TeacoMailer.dates_confirmation(participant, message, @meeting, @user, location).deliver
+    #   # Add message to push service (exclude sending user)
+    #   if participant != @user
+    #     PushService.add_final_dates_confirmation(participant, @meeting, final_dates, location)
+    #   end
+    # end
 
     # If the user want's to enter the message text as a comment
     # as well, do so:
@@ -498,13 +513,32 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       flash[:notice] = t("notices.date_sent")
-      format.html
+      format.html { redirect_to user_meeting_path(@user, @meeting) }
       format.js
       # format.mobile
       # format.iphone_native { render :file => "meetings/send_dates_iphone_native.haml" }
       # format.android_native { render :file => "meetings/send_dates_android_native.haml" }
     end
 
+  end
+
+  # send_cancellation responds POST requests, so behaviour
+  # - POST: cancels meeting planning and delivers an email to
+  #         all participants to inform about the cancellation.
+  def send_cancellation
+    # TODO: add sending mail and push notification
+    load_object
+    @meeting.is_closed = true
+    @meeting.is_cancelled = true
+    @meeting.location = ""
+    @meeting.save!
+
+    respond_to do |format|
+      format.html {
+        redirect_to show_meeting_url(@user.key, @meeting)
+      }
+      format.js
+    end
   end
 
   # Removes the current user from the meeting. (Accepts this only as a DELETE

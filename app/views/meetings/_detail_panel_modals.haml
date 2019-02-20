@@ -36,3 +36,14 @@
           %h4.modal-title= t("meetings.buttons.finish_planing")
         .modal-body
           .text-left= render :partial => "send_dates_form"
+
+  #send_cancellation_form_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      // Modal content
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss": "modal", type: "button"}
+            %span.icon-cancel.large_icon
+          %h4.modal-title= t("meetings.buttons.cancel_planning")
+        .modal-body
+          .text-left= render :partial => "send_cancellation_form"

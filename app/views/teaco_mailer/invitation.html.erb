@@ -1,0 +1,92 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      text-decoration: none;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    .button {
+      height:44px;
+      width: calc(100% - 30px);
+      max-width: 800px !important;
+      color: #fff;
+      background-color: #cc0a2f;
+      border-radius: 36px;
+      text-decoration: none;
+      padding: 5px 10px;
+      position: relative;
+
+      color: #fff;
+      font-weight: 500;
+      text-align: center;
+    }
+    a {
+      width: calc(100% - 30px);
+      max-width: 800px !important;
+      color: #fff;
+      text-decoration: none;
+    }
+    .button div {
+      margin-top: 10px;
+    }
+    .text-button.primary{
+      color: #cc0a2f;
+    }
+    .text-button.secondary {
+      color: #00bae5;
+    }
+  </style>
+</head>
+<body>
+<h3><%= raw t('.invited') %></h3>
+<p>
+  <%= raw t('.user_invited_you', :user => user_name_or_email(@inviting_user) ) %>
+  <span style="font-weight: 600;">&raquo;<%= @meeting.title %>&laquo;</span>
+</p>
+<p>
+  <% unless @invitation_text.blank? %>
+    <div class="comment-box"
+         style="background: #eeeeee; border: 2px solid #cccccc; padding: 10px; margin: 10px;">
+      <%= '"' + h(@invitation_text) + '"' %>
+    </div>
+  <% end %>
+  <%= raw t('teaco_mailer.jump_to_meeting') %>
+  <br />
+
+  <span style="font-weight: 500;"><% meeting_link = show_meeting_url(:user_key => @user.key, :id => @meeting.id) %></span>
+  <br />
+  <a class="text-button primary" href="<%= meeting_link %>">
+    Abstimmung im Browser aufrufen
+  </a>
+  <br />
+</p>
+<p>
+  Sollten Sie die TeaCo-App für Ihr Smartphone installiert haben,
+  nutzen Sie bitte folgenden Link, um die Abstimmung direkt in Ihrer App aufzurufen:
+  <br />
+  <br />
+  <%
+    teaco_fallback_app_url = root_url + "api/app_forward/meeting/#{@user.key}/#{@meeting.id}"
+    teaco_direct_app_url = AppLinkGenerator.generate_meeting_link(@user.key, @meeting.id)
+  %>
+  <a href="<%= teaco_direct_app_url %>"
+     href="<%= teaco_fallback_app_url %>"
+     href="<%= teaco_direct_app_url %>">
+    <div class="button">
+      <div>
+        Abstimmung in der App aufrufen
+      </div>
+    </div>
+  </a>
+  <br />
+  <br />
+  <span style="font-style: italic;">* Sollte dieser Button in deinem EMail-Client nicht funktionieren, nutze bitte den nachfolgenden Link: </span>
+  <a class="text-button secondary" href="<%= teaco_fallback_app_url %>">Abstimmung in der App aufrufen</a>
+</p>
+<h4>
+  <%= raw t('teaco_mailer.keep_link') %>
+</h4>
+</body>
+</html>

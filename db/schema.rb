@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810193901) do
+ActiveRecord::Schema.define(version: 20190127191404) do
 
   create_table "alias_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "address", null: false
@@ -42,11 +42,27 @@ ActiveRecord::Schema.define(version: 20130810193901) do
     t.datetime "updated_at", null: false
     t.integer "initiator_id", null: false
     t.boolean "restricted", default: false, null: false
+    t.boolean "is_closed", default: false, null: false
+    t.boolean "is_cancelled", default: false, null: false
+    t.string "location", default: "", null: false
   end
 
   create_table "meetings_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "meeting_id", null: false
     t.integer "user_id", null: false
+  end
+
+  create_table "push_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "token"
+    t.string "device_class"
+    t.string "operating_system"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "push_tokens_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "push_token_id", null: false
   end
 
   create_table "suggestions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -74,7 +74,7 @@ class SuggestionsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find_by_key(params[:user_id])
     @meeting = Meeting.find(params[:meeting_id])
     @suggestion = Suggestion.create(suggestion_params)
 

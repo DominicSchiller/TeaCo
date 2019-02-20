@@ -1,5 +1,57 @@
 Rails.application.routes.draw do
 
+  # Route Definitions for REST API
+  namespace 'api' do
+
+    resource :app_forward, params: [:key, :meeting_id] do
+      get 'login/:key', to: "app_forward#redirect_to_app_login"
+      get 'meeting/:key/:meeting_id', to: "app_forward#redirect_to_app_meeting"
+    end
+
+    resources :users, param: :key do
+      get '/', to: 'users#show'
+      post '/', to: 'users#create'
+      get '/search', to: 'users#index'
+
+      resource :push_tokens do
+        get '/', to: "push_tokens#show"
+        put '/', to: "push_tokens#update"
+      end
+
+      resources :meetings, param: :id do
+        get '/', to: "meetings#show"
+        post '/', to: 'meetings#create'
+        put '/', to: 'meetings#update'
+        get '/participants', to: 'meetings#get_participants'
+        put '/add_participant', to: 'meetings#add_participant'
+        put '/remove_participant', to: 'meetings#remove_participant'
+        put '/finish', to: 'meetings#finish_planning'
+        delete '/', to: 'meetings#delete'
+
+        resources :suggestions, param: :id do
+          get '/', to: "suggestions#show"
+          post '/', to: "suggestions#create"
+          delete '/', to: "suggestions#delete"
+
+          resource :votes, param: :vote_id do
+            get '/', to: "votes#index"
+            get '/:vote_id', to: "votes#show"
+            put '/', to: "votes#update"
+          end
+        end
+      end
+
+      resource :votes do
+        put '/', to: "votes#update"
+      end
+
+      resource :suggestions do
+        put '/', to: "suggestions#update"
+      end
+    end
+  end
+
+  # Route Definitions for the TeaCo Web App
   resources :known_addresses
 
   root 'users#new'
@@ -27,6 +79,7 @@ Rails.application.routes.draw do
         post :send_message
         get :send_dates
         post :send_dates
+        post :send_cancellation
         delete :leave
       end
     end

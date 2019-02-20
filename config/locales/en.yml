@@ -183,6 +183,10 @@ for your participants may not be available at the new date.\n\nClick OK to reset
       location: "Location (optional):"
       also_create_comment: "Also post message as comment"
       send_dates_submit: "Send dates!"
+    send_cancellation_form:
+      message: "Message:"
+      also_create_comment: "Also post message as comment"
+      send_dates_submit_cancel: "Cancel planning"
     send_message_form:
       message: "Message:"
       send_message_submit: "Send message!"
@@ -203,6 +207,10 @@ for your participants may not be available at the new date.\n\nClick OK to reset
       send_dates_button: Send appointment dates
       check_final_dates: Send appointment dates
       open_suggestions: Unvoted suggestions
+    buttons:
+      manage_participants: "Manage Participants"
+      finish_planing: "Finish planning"
+      cancel_planning: "Cancel planning"
 
   suggestions:
     created: New suggestion created!
@@ -290,8 +298,8 @@ for your participants may not be available at the new date.\n\nClick OK to reset
     keep_link: "Don't give this link to anyone else, neither forward this mail or reply to it - others could gain access to your TeaCo account that way!"
     jump_to_meeting: You can access the respective meeting with the following link.
     account_confirmation:
-      welcome_user: "Hello %{user}, welcome to TeaCo."
-      myteaco_link: "Your personal MyTeaCo-Link:"
+      welcome_user: "Hello %{user}, <br />welcome to TeaCo."
+      myteaco_link: "Your personal MyTeaCo-Key:"
     comment_notification:
       subject: "TeaCo: New comment at %{meeting}"
       new_comment_written: "%{user} has written a new comment in the meeting '%{meeting}':"

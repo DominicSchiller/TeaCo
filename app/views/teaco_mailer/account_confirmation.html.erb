@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * {
+        text-decoration: none;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      .button {
+        height:44px;
+        width: calc(100% - 30px);
+        max-width: 800px !important;
+        color: #fff;
+        background-color: #cc0a2f;
+        border-radius: 36px;
+        text-decoration: none;
+        padding: 5px 10px;
+        position: relative;
+
+        color: #fff;
+        font-weight: 500;
+        text-align: center;
+      }
+      a {
+        width: calc(100% - 30px);
+        max-width: 800px !important;
+        color: #fff;
+        text-decoration: none;
+      }
+      .button div {
+        margin-top: 10px;
+      }
+      .text-button.primary{
+        color: #cc0a2f;
+      }
+        .text-button.secondary {
+          color: #00bae5;
+        }
+    </style>
+  </head>
+  <body>
+    <h3><%= raw t('layouts.users.welcome') %></h3>
+    <p>
+      <%= raw t('.welcome_user', :user => @user.name.length > 0 ? @user.name : '') %>
+    </p>
+    <p>
+      <%= raw t('.myteaco_link') %><br />
+      <span style="font-weight: 500;"><%= @user.key %></span>
+      <br />
+      <br />
+      <span style="font-weight: 500;"><% admin_url = show_administration_url(:user_key => @user.key) %></span>
+      <a class="text-button primary" href="<%= admin_url %>">
+        MyTeaCo Dashboard
+      </a>
+      <br />
+    </p>
+    <p>
+      Solltest du die TeaCo-App für dein Smartphone installiert haben,
+      kannst du dich mit deinem TeaCo-Account direkt in deiner App registrieren:
+      <br />
+      <br />
+      <%
+        teaco_fallback_app_url = root_url + "api/app_forward/login/#{@user.key}"
+        teaco_direct_app_url = AppLinkGenerator.generate_registration_link(@user.key)
+      %>
+      <a href="<%= teaco_direct_app_url %>"
+         href="<%= teaco_fallback_app_url %>"
+         href="<%= teaco_direct_app_url %>">
+        <div class="button">
+          <div>
+            Account in App Registrieren
+          </div>
+        </div>
+      </a>
+      <br />
+      <br />
+      <span style="font-style: italic;">* Sollte dieser Button in deinem EMail-Client nicht funktionieren, nutze bitte den nachfolgenden Link: </span>
+      <a class="text-button secondary" href="<%= teaco_fallback_app_url %>">Account in App registrieren</a>
+    </p>
+    <h4>
+      <%= raw t('teaco_mailer.keep_link') %>
+    </h4>
+  </body>
+</html>
+
+

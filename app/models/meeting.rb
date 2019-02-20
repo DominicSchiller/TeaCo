@@ -160,4 +160,29 @@ class Meeting < ApplicationRecord
     return dates
   end
 
+  ##
+  # Calculate a meeting's overall progress and add the progress result to an JSON object
+  public def meeting_progress
+    pending_count = 0
+    started_count = 0
+    completed_count = 0
+    self.suggestions.each do |suggestion|
+      case suggestion.votes.select{ |vote| vote.decision != Vote::DONTKNOW }.length
+      when 0
+        pending_count += 1
+      when self.participants.count
+        completed_count += 1
+      else
+        started_count += 1
+      end
+    end
+    suggestions_count = self.suggestions.count
+
+    progress = MeetingProgress.new
+    progress.pending = suggestions_count == 0 ? 1: pending_count / suggestions_count
+    progress.started = suggestions_count == 0 ? 0 : started_count / suggestions_count
+    progress.completed = suggestions_count == 0 ? 0 : completed_count / suggestions_count
+    progress
+  end
+
 end

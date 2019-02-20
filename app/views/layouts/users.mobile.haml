@@ -24,6 +24,6 @@
     = javascript_include_tag "mobile/loginPanel", "mobile/meetingPanel", "mobile/settingsPanel", "mobile/commentsPanel", "mobile/suggestionItem", "mobile/participantsPanel", "mobile/invitePanel", "mobile/messagePanel", "mobile/suggestionPanel"
     = javascript_include_tag "mobile/loadingMasks"
      
-    = javascript_tag " var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+    = javascript_tag " var AUTH_TOKEN = #{form_authenticity_token.inspect};"
 
   %body#body{ 'style' => "-webkit-text-size-adjust:none;" }

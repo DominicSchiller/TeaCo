@@ -10,11 +10,13 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      user_name:            'teacorwd@gmail.com',
-      password:             'KWYZ76thZTAG',
+      user_name:            'teaco.thb@gmail.com',
+      password:             'gyxqum-rYtrez-0qudse',
       authentication:       :plain,
       enable_starttls_auto: true
   }
+
+  config.fcm_server_key = "AAAAYlW35TA:APA91bFdz0V-8_ShbmDlFVK_egttC0UfHOc3iMrA73TvdIeqZV3ZVROWP1KXlZzVqJgti2ld1vo2yHYaoGgdHEzlIZJeSNGUbk4in7QTbklSnNx1DKhLswfcAjY3AcphCP7quoql38Gg"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
