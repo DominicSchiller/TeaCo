@@ -61,7 +61,7 @@
       <br />
       <br />
       <%
-        teaco_fallback_app_url = api_register_in_app_url(:key => @user.key)
+        teaco_fallback_app_url = root_url + "api/app_forward/login/#{@user.key}"
         teaco_direct_app_url = AppLinkGenerator.generate_registration_link(@user.key)
       %>
       <a href="<%= teaco_direct_app_url %>"

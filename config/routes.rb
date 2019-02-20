@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   # Route Definitions for REST API
   namespace 'api' do
 
-    resource :register_in_app, param: :key do
-      get '/:key', to: "register_in_app#redirect", :as => "register_in_app"
+    resource :app_forward, params: [:key, :meeting_id] do
+      get 'login/:key', to: "app_forward#redirect_to_app_login"
+      get 'meeting/:key/:meeting_id', to: "app_forward#redirect_to_app_meeting"
     end
 
     resources :users, param: :key do

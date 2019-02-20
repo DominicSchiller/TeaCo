@@ -332,7 +332,7 @@ de:
       associated_message: "Folgende Nachricht wurde dazu verfasst:"
     invitation:
       subject: "TeaCo: Einladung zu %{meeting}"
-      invited: Sie wurden eingeladen.
+      invited: Sie wurden zur Terminabstimmung eingeladen.
       user_invited_you: "%{user} hat Sie eingeladen zur Planung von"
     user_message:
       subject: "TeaCo: Nachricht zu %{meeting}"
