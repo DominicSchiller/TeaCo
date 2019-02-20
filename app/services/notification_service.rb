@@ -60,7 +60,7 @@ class NotificationService
                 "title": "Termine finalisiert",
                 "body": "Die Abstimmung von »#{meeting.title}« wurde erfolgreich beendet.",
                 "data": {
-                    "messageCode": 1,
+                    "messageCode": 2,
                     "meetingId": meeting.id
                 }
             }
